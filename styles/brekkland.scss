@@ -73,18 +73,20 @@ $navHeight: max(22vh, 24rem);
   $a: color.$stripe-one,
   $b: color.$stripe-two,
   $gridSize: 1.2rem,
-  $gridLineSize: 1px
+  $gridLineSize: 1px,
+  $rotA: 0deg,
+  $rotB: 90deg
 ) {
   background-image:
     repeating-linear-gradient(
-      0deg,
-      $a 0 $gridSize,
-      $b $gridSize calc($gridSize + $gridLineSize)
+      $rotA,
+      $a 0 calc($gridSize - $gridLineSize),
+      $b calc($gridSize - $gridLineSize) $gridSize
     ),
     repeating-linear-gradient(
-      90deg,
-      $a 0 $gridSize,
-      $b $gridSize calc($gridSize + $gridLineSize)
+      $rotB,
+      $a 0 calc($gridSize - $gridLineSize),
+      $b calc($gridSize - $gridLineSize) $gridSize
     );
 }
 
@@ -100,7 +102,13 @@ $navHeight: max(22vh, 24rem);
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
   background-position: center center;
-  @include cssGrid();
+  background-color: color.$bg;
+  @include cssGrid(
+    $b: color.$fg,
+    $gridSize: 1.8vw,
+    $rotA: 30deg,
+    $rotB: 100deg
+  );
   &__logo-box {
     display: flex;
     flex-direction: column;
@@ -294,9 +302,6 @@ $navHeight: max(22vh, 24rem);
     border: none;
     padding: 0.25rem;
     transition: background 0.3s ease-out;
-    &:focus {
-      background-color: color.$fg;
-    }
   }
   &:where(:has(.Search__input:focus)) {
     background-color: color.$fg;
