@@ -6,6 +6,7 @@ import { pipe, path } from "ramda"
 import { search } from "@/stores/search"
 import { Search as MagIcon, X as Kill } from "lucide-react"
 import Debug from "@/components/Debug"
+import SpeechBubble from "@/svg-components/SpeechBubble"
 import {
   type BemProps,
   bemifyProps,
@@ -14,6 +15,7 @@ import {
   blemEl,
 } from "#/utilities/react"
 import { exact, icon } from "@/components/Icons"
+import Magnifier from "@/components/SearchLogo"
 
 const BASE = "Search"
 const bem = blem(BASE)
@@ -23,21 +25,18 @@ const Search = () => {
   const onClick = () => search.set("")
   return (
     <div className={bem("")}>
-      <TextField
-        iconHead={icon(MagIcon, { className: bem("icon", "search") })}
-        iconTail={
-          $search
-            ? icon(Kill, {
-                className: bem("icon", "kill"),
-                onClick,
-              })
-            : null
-        }
-        id="global-search"
-        bem={bem}
-        value={$search}
-        onChange={pipe(eventValue, search.set)}
-      />
+      <div className={bem("search-wrapper", ["waiting"])}>
+        <div className={bem("search-icon-wrapper")}>
+          <Magnifier className={bem("search-icon")} alt="Search" />
+<input
+          type="text"
+          className={bem("input")}
+          placeholder="Search Brekk.land"
+          id="global-search"
+        />
+        </div>
+       <SpeechBubble /> 
+      </div>
     </div>
   )
 }

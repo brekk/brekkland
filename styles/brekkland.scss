@@ -84,8 +84,7 @@ $navHeight: max(22vh, 24rem);
   background-image:
     repeating-linear-gradient(
       $rotA,
-      $a 0 calc($gridSize -
-      $gridLineSize),
+      $a 0 calc($gridSize - $gridLineSize),
       $b calc($gridSize - $gridLineSize) $gridSize
     ),
     repeating-linear-gradient(
@@ -165,7 +164,9 @@ $navHeight: max(22vh, 24rem);
       margin-top: 0;
     }
   }
-
+  &__locations {
+    @extend %flexRow;
+  }
   &__background {
     position: absolute;
     top: 0;
@@ -216,6 +217,10 @@ $navHeight: max(22vh, 24rem);
   &__link-icon {
     transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
     transition: transform 0.4s ease-in-out;
+  }
+  &__speech-bubble {
+    fill: color.$fg;
+    max-width: 5rem;
   }
 
   &__link {
@@ -301,13 +306,16 @@ $navHeight: max(22vh, 24rem);
     padding: 0 1rem 1rem;
     background-color: color.$fg;
     z-index: layer.$user;
-    transition: margin 0.6s ease-in, padding 0.1s ease-in, width 0.3s ease-out;
+    transition:
+      margin 0.45s ease-out,
+      padding 0.3s ease-in,
+      width 0.25s ease-in-out;
 
     // border-radius: 1rem;
     @media screen and (min-width: breakpoint.$medium) {
-      margin-top: 4rem;
+      margin-bottom: 4rem;
       padding: 1rem;
-      width: auto;
+      width: min(45%, 30rem);
       max-width: 50rem;
     }
   }
@@ -315,8 +323,8 @@ $navHeight: max(22vh, 24rem);
   @media screen and (min-width: breakpoint.$medium) {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+    // align-items: flex-end;
+    // justify-content: space-between;
   }
 }
 
@@ -331,7 +339,33 @@ $navHeight: max(22vh, 24rem);
   transition:
     box-shadow 0.3s ease-out,
     background 0.3s ease-out;
-    width: 100%;
+  width: 100%;
+
+  &__search-wrapper {
+    cursor: pointer;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid white;
+    // background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 0 0 white;
+    display: flex;
+    flex-direction: row;
+    transition: background 0.3s ease-out, width 0.3s 0.3s ease-out,
+      filter 0.3s ease-out;
+    &:focus-within,
+    &--searching {
+      cursor: text;
+      width: 10rem;
+      box-shadow: 0 0 8px white;
+      background-color: white;
+      z-index: 100;
+      .nav__search-icon {
+        filter: invert(100%);
+      }
+    }
+  }
 
   &__textfield {
     @extend %flexRow;
@@ -341,6 +375,11 @@ $navHeight: max(22vh, 24rem);
     padding: 0 0.25rem;
 
     // outline: 1px solid cyan;
+  }
+  &__search-icon {
+    fill: black;
+    max-width: 1.25rem;
+    max-height: 1.25rem;
   }
 
   &__input {
