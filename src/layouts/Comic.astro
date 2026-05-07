@@ -1,0 +1,35 @@
+---
+import blem from "#/utilities/blem"
+
+interface Props {
+  title: string
+  description?: string
+  meta: {
+    published: string
+    modified: string
+    index?: number
+    authors?: string[]
+  }
+}
+const { title, description, meta } = Astro.props
+const { published, modified, index = -1, authors = ["brekk"] } = meta
+const bem = blem("ComicLayout")
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>but is it any good? {title}</title>
+  </head>
+  <body>
+    <slot name="header"/>
+    <div class={bem("content")}>
+      <slot />
+    </div>
+    <slot name="footer"/>
+  </body>
+</html>

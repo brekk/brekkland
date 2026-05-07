@@ -1,0 +1,298 @@
+@use "flex";
+@use "color" as color;
+@use "media" as breakpoint;
+@use "button";
+@use "layer" as layer;
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cal Sans", sans-serif;
+}
+
+.grid {
+  background-image:
+    top left
+      repeating-linear-gradient(
+        to left,
+        rgba(cyan, 0.2) 0,
+        rgba(cyan, 0.2) 1px,
+        transparent 1px,
+        transparent 1rem
+      ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(cyan, 0.2) 0,
+      rgba(cyan, 0.2) 1px,
+      transparent 1px,
+      transparent 1rem
+    );
+}
+
+@keyframes MoveScaleUpInitial {
+  to {
+    transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes MoveScaleUpEnd {
+  from {
+    transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes zoomDown {
+  from {
+    transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+$navHeight: max(22vh, 24rem);
+.Gallery {
+  width: 100%;
+
+  height: $navHeight;
+  &__header {
+  }
+}
+
+@mixin cssGrid(
+  $a: color.$stripe-one,
+  $b: color.$stripe-two,
+  $gridSize: 1.2rem,
+  $gridLineSize: 1px
+) {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      $a 0 $gridSize,
+      $b $gridSize calc($gridSize + $gridLineSize)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      $a 0 $gridSize,
+      $b $gridSize calc($gridSize + $gridLineSize)
+    );
+}
+
+.Nav {
+  @extend %flexCol;
+  position: relative;
+  // max-width: 40rem;
+  width: 100%;
+  overflow: hidden;
+  z-index: layer.$user;
+  // height: $navHeight;
+  // padding: 1rem 1rem 0;
+  font-family: "BBH Bartle", sans-serif;
+  font-size: 1rem;
+  background-position: center center;
+  @include cssGrid();
+  &__logo-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+    min-height: 4rem;
+  }
+  &__logo {
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 28rem;
+    fill: black;
+    transition:
+      transform 0.3s ease-out,
+      fill 0.1s ease-out;
+    &--swapped {
+      transform: translateY(-1rem);
+      fill: transparent;
+    }
+    @media screen and (min-width: breakpoint.$small) {
+      transform: translateY(1rem);
+      fill: transparent;
+      &--swapped {
+        transform: translateY(0);
+        fill: black;
+      }
+    }
+  }
+  &__background {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: auto;
+    @media screen and (min-width: breakpoint.$small) {
+      top: 0;
+
+      width: 100%;
+      height: auto;
+    }
+    // mix-blend-mode: difference;
+    // mix-blend-mode: hard-light;
+    // mix-blend-mode: luminosity;
+    // mix-blend-mode: hue;
+    // filter: blur(0.125rem);
+  }
+  &__menu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(1rem, auto);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    @media screen and (min-width: breakpoint.$tiny) {
+      display: flex;
+      flex-direction: row;
+      // grid-template-columns: repeat(4, 1fr);
+      // grid-auto-rows: minmax(1rem, auto);
+      max-width: 28rem;
+      font-size: 1rem;
+    }
+  }
+  &__menu-item {
+    @extend %flexRow;
+    position: relative;
+    list-style: none;
+  }
+  &__link-icon {
+    transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
+    transition: transform 0.4s ease-in-out;
+  }
+  &__link {
+    @extend %button;
+    color: color.$bg;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    gap: 0.25rem;
+    // padding: 0.5rem;
+    text-decoration: none;
+    overflow: hidden;
+    &-text {
+      display: block;
+      position: relative;
+      // mix-blend-mode: difference;
+      // z-index: 30;
+    }
+    &::before {
+      background: color.$fg;
+      width: 120%;
+      padding-bottom: 120%;
+      top: -110%;
+      left: -10%;
+      border-radius: 100%;
+      transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+    }
+    &--home {
+      &::before {
+        display: none;
+      }
+    }
+    &::after {
+      transform: translate3d(0, 100%, 0);
+      transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+    }
+    &:hover,
+    &--active {
+      .Nav__link-text {
+        animation:
+          MoveScaleUpInitial 0.3s forwards,
+          MoveScaleUpEnd 0.3s forwards 0.3s;
+      }
+      .Nav__link-icon {
+        animation: zoomDown 0.3s forwards 0.3s;
+      }
+      &::before {
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+      }
+      &::after {
+        transform: translate3d(0, 0, 0);
+        transition-duration: 0.05s;
+        transition-delay: 0.4s;
+        transition-timing-function: linear;
+      }
+    }
+    @media screen and (min-width: breakpoint.$tiny) {
+      width: auto;
+      padding: 0.5rem;
+    }
+  }
+  &__menu {
+    @extend %flexCol;
+    justify-content: space-around;
+    gap: 0.5rem;
+    width: calc(100% - 2rem);
+    padding: 0 1rem 1rem;
+    background-color: color.$fg;
+    z-index: layer.$user;
+    // border-radius: 1rem;
+    @media screen and (min-width: breakpoint.$medium) {
+      margin-top: 4rem;
+      padding: 1rem;
+      width: auto;
+      max-width: 50rem;
+    }
+  }
+  @media screen and (min-width: breakpoint.$medium) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.Search {
+  @extend %flexRow;
+  gap: 0;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 1px color.$border;
+  overflow: hidden;
+  background-color: transparent;
+  transition:
+    box-shadow 0.3s ease-out,
+    background 0.3s ease-out;
+  &__textfield {
+    @extend %flexRow;
+    gap: 0;
+    padding: 0 0.25rem;
+    // outline: 1px solid cyan;
+  }
+
+  &__input {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    padding: 0.25rem;
+    transition: background 0.3s ease-out;
+    &:focus {
+      background-color: color.$fg;
+    }
+  }
+  &:where(:has(.Search__input:focus)) {
+    background-color: color.$fg;
+    box-shadow:
+      inset 0 0 1px color.$highlight,
+      0 0 1px color.$highlight,
+      0 0 5px color.$highlight;
+  }
+}
