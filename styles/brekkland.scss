@@ -108,6 +108,10 @@ $navHeight: max(22vh, 24rem);
     width: 100%;
     max-width: 28rem;
     min-height: 4rem;
+    padding-bottom: 1rem;
+    @media screen and (min-width: breakpoint.$medium) {
+      padding-bottom: 0;
+    }
   }
   &__logo {
     position: absolute;
@@ -121,6 +125,9 @@ $navHeight: max(22vh, 24rem);
     &--swapped {
       transform: translateY(-1rem);
       fill: transparent;
+    transition:
+      transform 0.3s ease-out,
+      fill 0.1s ease-out;
     }
     @media screen and (min-width: breakpoint.$small) {
       transform: translateY(1rem);
@@ -129,6 +136,9 @@ $navHeight: max(22vh, 24rem);
         transform: translateY(0);
         fill: black;
       }
+    }
+    @media screen and (min-width: breakpoint.$medium) {
+      margin-top: 0;
     }
   }
   &__background {
