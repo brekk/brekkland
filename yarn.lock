@@ -2395,6 +2395,9 @@ __metadata:
     typescript-language-server: "npm:5.1.3"
     vite: "npm:8.0.8"
     vitest: "npm:4.1.4"
+  dependenciesMeta:
+    prettier-plugin-astro@0.14.1:
+      unplugged: true
   languageName: unknown
   linkType: soft
 

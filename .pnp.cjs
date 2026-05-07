@@ -5701,7 +5701,7 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["prettier-plugin-astro", [\
       ["npm:0.14.1", {\
-        "packageLocation": "../../.yarn/berry/cache/prettier-plugin-astro-npm-0.14.1-98e3207b66-10c0.zip/node_modules/prettier-plugin-astro/",\
+        "packageLocation": "./.yarn/unplugged/prettier-plugin-astro-npm-0.14.1-98e3207b66/node_modules/prettier-plugin-astro/",\
         "packageDependencies": [\
           ["@astrojs/compiler", "npm:2.13.1"],\
           ["prettier", "npm:3.8.2"],\

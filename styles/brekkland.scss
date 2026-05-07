@@ -125,9 +125,9 @@ $navHeight: max(22vh, 24rem);
     &--swapped {
       transform: translateY(-1rem);
       fill: transparent;
-    transition:
-      transform 0.3s ease-out,
-      fill 0.1s ease-out;
+      transition:
+        transform 0.3s ease-out,
+        fill 0.1s ease-out;
     }
     @media screen and (min-width: breakpoint.$small) {
       transform: translateY(1rem);

@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from "astro:assets"
 import blem from "#/utilities/blem"
 import Search from "@/components/Nav/Search.tsx"
-import {Rss, Home, BookX, LibraryBig } from "@lucide/astro"
+import { Rss, Home, BookX, LibraryBig } from "@lucide/astro"
 import Logo from "@/assets/brekkland.svg"
 import LogoSwapped from "@/assets/brekkland-swapped.svg"
 
@@ -18,23 +18,24 @@ const locations = Object.entries({
 <nav class={bem("")}>
   <div class={bem("menu")}>
     <div class={bem("logo-box")}>
-              <Logo className={bem("logo")}  />
-              <LogoSwapped className={bem("logo", ["swapped"])}  />
+      <Logo className={bem("logo")} />
+      <LogoSwapped className={bem("logo", ["swapped"])} />
     </div>
     <ul class={bem("menu-list")}>
-      {locations.map(([k, [v, Icon]]) => {
-      const label = k.toLowerCase()
-        const isHome = v == "/"
-        const active = isHome ? "active" : "inactive"
-        const mods = [active, label]
-        return (
-        <li class={bem("menu-item", mods)}>
-            <a href={v} class={bem("link", mods)}>
-              <span className={bem("link-text")}>{k}</span>
-              
-            </a>
-          </li>
-        )})
+      {
+        locations.map(([k, [v, Icon]]) => {
+          const label = k.toLowerCase()
+          const isHome = v == "/"
+          const active = isHome ? "active" : "inactive"
+          const mods = [active, label]
+          return (
+            <li class={bem("menu-item", mods)}>
+              <a href={v} class={bem("link", mods)}>
+                <span className={bem("link-text")}>{k}</span>
+              </a>
+            </li>
+          )
+        })
       }
     </ul>
     <Search client:load />
