@@ -5,11 +5,13 @@
 
 %flexRow {
   @extend %flexCentered;
+
   display: flex;
   flex-direction: row;
 }
 %flexCol {
   @extend %flexCentered;
+
   display: flex;
   flex-direction: column;
 }

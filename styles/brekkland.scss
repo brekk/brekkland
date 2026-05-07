@@ -18,15 +18,15 @@ body {
     top left
       repeating-linear-gradient(
         to left,
-        rgba(cyan, 0.2) 0,
-        rgba(cyan, 0.2) 1px,
+        rgb(cyan, 0.2) 0,
+        rgb(cyan, 0.2) 1px,
         transparent 1px,
         transparent 1rem
       ),
     repeating-linear-gradient(
       to bottom,
-      rgba(cyan, 0.2) 0,
-      rgba(cyan, 0.2) 1px,
+      rgb(cyan, 0.2) 0,
+      rgb(cyan, 0.2) 1px,
       transparent 1px,
       transparent 1rem
     );
@@ -44,16 +44,19 @@ body {
     transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
     opacity: 0;
   }
+
   to {
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
+
 @keyframes zoomDown {
   from {
     transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
     opacity: 0;
   }
+
   to {
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
     opacity: 1;
@@ -61,10 +64,11 @@ body {
 }
 
 $navHeight: max(22vh, 24rem);
+
 .Gallery {
   width: 100%;
-
   height: $navHeight;
+
   &__header {
   }
 }
@@ -80,7 +84,8 @@ $navHeight: max(22vh, 24rem);
   background-image:
     repeating-linear-gradient(
       $rotA,
-      $a 0 calc($gridSize - $gridLineSize),
+      $a 0 calc($gridSize -
+      $gridLineSize),
       $b calc($gridSize - $gridLineSize) $gridSize
     ),
     repeating-linear-gradient(
@@ -92,23 +97,28 @@ $navHeight: max(22vh, 24rem);
 
 .Nav {
   @extend %flexCol;
+
   position: relative;
+
   // max-width: 40rem;
   width: 100%;
   overflow: hidden;
   z-index: layer.$user;
+
   // height: $navHeight;
   // padding: 1rem 1rem 0;
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
   background-position: center center;
   background-color: color.$bg;
+
   @include cssGrid(
     $b: color.$fg,
     $gridSize: 1.8vw,
     $rotA: 30deg,
     $rotB: 100deg
   );
+
   &__logo-box {
     display: flex;
     flex-direction: column;
@@ -117,10 +127,12 @@ $navHeight: max(22vh, 24rem);
     max-width: 28rem;
     min-height: 4rem;
     padding-bottom: 1rem;
+
     @media screen and (min-width: breakpoint.$medium) {
       padding-bottom: 0;
     }
   }
+
   &__logo {
     position: absolute;
     margin-top: 1rem;
@@ -130,6 +142,7 @@ $navHeight: max(22vh, 24rem);
     transition:
       transform 0.3s ease-out,
       fill 0.1s ease-out;
+
     &--swapped {
       transform: translateY(-1rem);
       fill: transparent;
@@ -137,35 +150,41 @@ $navHeight: max(22vh, 24rem);
         transform 0.3s ease-out,
         fill 0.1s ease-out;
     }
+
     @media screen and (min-width: breakpoint.$small) {
       transform: translateY(1rem);
       fill: transparent;
+
       &--swapped {
         transform: translateY(0);
         fill: black;
       }
     }
+
     @media screen and (min-width: breakpoint.$medium) {
       margin-top: 0;
     }
   }
+
   &__background {
     position: absolute;
     top: 0;
     height: 100%;
     width: auto;
+
     @media screen and (min-width: breakpoint.$small) {
       top: 0;
-
       width: 100%;
       height: auto;
     }
+
     // mix-blend-mode: difference;
     // mix-blend-mode: hard-light;
     // mix-blend-mode: luminosity;
     // mix-blend-mode: hue;
     // filter: blur(0.125rem);
   }
+
   &__menu-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -175,41 +194,52 @@ $navHeight: max(22vh, 24rem);
     margin: 0;
     gap: 0.5rem;
     font-size: 1.25rem;
+
     @media screen and (min-width: breakpoint.$tiny) {
       display: flex;
       flex-direction: row;
+
       // grid-template-columns: repeat(4, 1fr);
       // grid-auto-rows: minmax(1rem, auto);
       max-width: 28rem;
       font-size: 1rem;
     }
   }
+
   &__menu-item {
     @extend %flexRow;
+
     position: relative;
     list-style: none;
   }
+
   &__link-icon {
     transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
     transition: transform 0.4s ease-in-out;
   }
+
   &__link {
     @extend %button;
+
     color: color.$bg;
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: left;
     gap: 0.25rem;
+
     // padding: 0.5rem;
     text-decoration: none;
     overflow: hidden;
+
     &-text {
       display: block;
       position: relative;
+
       // mix-blend-mode: difference;
       // z-index: 30;
     }
+
     &::before {
       background: color.$fg;
       width: 120%;
@@ -219,15 +249,18 @@ $navHeight: max(22vh, 24rem);
       border-radius: 100%;
       transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
     }
+
     &--home {
       &::before {
         display: none;
       }
     }
+
     &::after {
       transform: translate3d(0, 100%, 0);
       transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
     }
+
     &:hover,
     &--active {
       .Nav__link-text {
@@ -235,13 +268,16 @@ $navHeight: max(22vh, 24rem);
           MoveScaleUpInitial 0.3s forwards,
           MoveScaleUpEnd 0.3s forwards 0.3s;
       }
+
       .Nav__link-icon {
         animation: zoomDown 0.3s forwards 0.3s;
       }
+
       &::before {
         transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
         transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
       }
+
       &::after {
         transform: translate3d(0, 0, 0);
         transition-duration: 0.05s;
@@ -249,19 +285,24 @@ $navHeight: max(22vh, 24rem);
         transition-timing-function: linear;
       }
     }
+
     @media screen and (min-width: breakpoint.$tiny) {
       width: auto;
       padding: 0.5rem;
     }
   }
+
   &__menu {
     @extend %flexCol;
+
     justify-content: space-around;
     gap: 0.5rem;
     width: calc(100% - 2rem);
     padding: 0 1rem 1rem;
     background-color: color.$fg;
     z-index: layer.$user;
+    transition: margin 0.6s ease-in, padding 0.1s ease-in, width 0.3s ease-out;
+
     // border-radius: 1rem;
     @media screen and (min-width: breakpoint.$medium) {
       margin-top: 4rem;
@@ -270,6 +311,7 @@ $navHeight: max(22vh, 24rem);
       max-width: 50rem;
     }
   }
+
   @media screen and (min-width: breakpoint.$medium) {
     display: flex;
     flex-direction: row;
@@ -280,6 +322,7 @@ $navHeight: max(22vh, 24rem);
 
 .Search {
   @extend %flexRow;
+
   gap: 0;
   border-radius: 0.25rem;
   box-shadow: inset 0 0 1px color.$border;
@@ -288,21 +331,30 @@ $navHeight: max(22vh, 24rem);
   transition:
     box-shadow 0.3s ease-out,
     background 0.3s ease-out;
+    width: 100%;
+
   &__textfield {
     @extend %flexRow;
+
+    // width: 100%;
     gap: 0;
     padding: 0 0.25rem;
+
     // outline: 1px solid cyan;
   }
 
   &__input {
+    // background-color: color.$fg;
     background-color: transparent;
     outline: none;
     box-shadow: none;
     border: none;
     padding: 0.25rem;
     transition: background 0.3s ease-out;
+
+    // width: 100%;
   }
+
   &:where(:has(.Search__input:focus)) {
     background-color: color.$fg;
     box-shadow:
