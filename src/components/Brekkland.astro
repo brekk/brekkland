@@ -2,11 +2,13 @@
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 
-const bem = blem("Gallery")
+const bem = blem("Brekkland")
+import "#/styles/brekkland.scss"
 ---
 
-<div id="gallery" class={bem("")}>
+<div id="brekkland" class={bem("")}>
   <header class={bem("header")}>
     <Nav />
   </header>
+  <slot  />
 </div>

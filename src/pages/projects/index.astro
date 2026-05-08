@@ -1,0 +1,8 @@
+---
+const posts = Object.values(import.meta.glob('./*.md', { eager: true }));
+---
+
+<p>Projects</p>
+<ul>
+  {posts.map(post => <li><a href={post.url}>{post?.frontmatter?.title ?? post?.file}</a></li>)}
+</ul>
