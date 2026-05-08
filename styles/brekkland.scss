@@ -127,55 +127,35 @@ $navHeight: max(22vh, 24rem);
     --blHeaderTriangle2: #{color.$blHeaderTriangle2};
     --blHeaderSquare: #{color.$blHeaderSquare};
   }
-  17% {
+  50% {
     --blHeaderTriangle: #{color.$blHeaderTriangle_b};
     --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
     --blHeaderSquare: #{color.$blHeaderSquare_b};
   }
-33% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle_c};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2_c};
-    --blHeaderSquare: #{color.$blHeaderSquare_c};
-  }
-50% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle_d};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2_d};
-    --blHeaderSquare: #{color.$blHeaderSquare_d};
-  }
-67% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle_e};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2_e};
-    --blHeaderSquare: #{color.$blHeaderSquare_e};
-  }
-83% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle_f};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2_f};
-    --blHeaderSquare: #{color.$blHeaderSquare_f};
-  }
 }
 
 @property --blHeaderTriangle {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: black;
 }
 @property --blHeaderTriangle2 {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: black;
 }
 @property --blHeaderSquare {
-  syntax: '<color>';
+  syntax: "<color>";
   inherits: false;
   initial-value: white;
 }
 
 .Nav {
   @extend %flexCol;
---blHeaderTriangle: color.$bg;
---blHeaderTriangle2: color.$bg;
---blHeaderSquare: color.$fg;
---blHeaderSize: max(5vw, 5vh);
+  --blHeaderTriangle: color.$bg;
+  --blHeaderTriangle2: color.$bg;
+  --blHeaderSquare: color.$fg;
+  --blHeaderSize: max(5vw, 5vh);
   position: relative;
 
   // max-width: 40rem;
@@ -192,7 +172,12 @@ $navHeight: max(22vh, 24rem);
   background-position: center center;
   background-color: color.$bg;
   background-image:
-    conic-gradient(from 15deg at 86.6%, var(--blHeaderSquare) 25%, var(--blHeaderTriangle2) 0 150deg, #0000 0),
+    conic-gradient(
+      from 15deg at 86.6%,
+      var(--blHeaderSquare) 25%,
+      var(--blHeaderTriangle2) 0 150deg,
+      #0000 0
+    ),
     conic-gradient(
       from -75deg at 50% 13.39%,
       var(--blHeaderTriangle) 60deg,
@@ -208,7 +193,7 @@ $navHeight: max(22vh, 24rem);
       var(--blHeaderTriangle2) 0 75%,
       var(--blHeaderSquare) 0
     );
-  transition:background 1s ease-out, background-size 1s ease-out, --blHeaderTriangle 0.3s ease-out, --blHeaderTriangle2 0.3s ease-out, --blHeaderSquare 0.3s ease-out;
+
   background-size: var(--blHeaderSize) var(--blHeaderSize);
   // animation-play-state: paused;
   &:hover {
@@ -241,25 +226,36 @@ $navHeight: max(22vh, 24rem);
     width: 100%;
     max-width: 28rem;
     fill: black;
-    transition:
-      transform 0.3s ease-out,
-      fill 0.1s ease-out;
 
-    &--swapped {
-      transform: translateY(-1rem);
-      fill: transparent;
+    @media screen and (prefers-reduced-motion: no-preference) {
       transition:
         transform 0.3s ease-out,
         fill 0.1s ease-out;
     }
 
+    &--swapped {
+      transform: translateY(-1rem);
+      fill: transparent;
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition:
+          transform 0.3s ease-out,
+          fill 0.1s ease-out;
+      }
+    }
+
     @media screen and (min-width: breakpoint.$small) {
-      transform: translateY(1rem);
       fill: transparent;
 
       &--swapped {
-        transform: translateY(0);
         fill: black;
+      }
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transform: translateY(1rem);
+        &--swapped {
+          transform: translateY(0);
+        }
       }
     }
 
@@ -319,7 +315,10 @@ $navHeight: max(22vh, 24rem);
 
   &__link-icon {
     transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
-    transition: transform 0.4s ease-in-out;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: transform 0.4s ease-in-out;
+    }
   }
   &__speech-bubble {
     fill: color.$fg;
@@ -365,8 +364,10 @@ $navHeight: max(22vh, 24rem);
     }
 
     &::after {
-      transform: translate3d(0, 100%, 0);
-      transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transform: translate3d(0, 100%, 0);
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+      }
     }
 
     &:hover,
@@ -381,16 +382,18 @@ $navHeight: max(22vh, 24rem);
         animation: zoomDown 0.3s forwards 0.3s;
       }
 
-      &::before {
-        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
-      }
+      @media screen and (prefers-reduced-motion: no-preference) {
+        &::before {
+          transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+          transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        }
 
-      &::after {
-        transform: translate3d(0, 0, 0);
-        transition-duration: 0.05s;
-        transition-delay: 0.4s;
-        transition-timing-function: linear;
+        &::after {
+          transform: translate3d(0, 0, 0);
+          transition-duration: 0.05s;
+          transition-delay: 0.4s;
+          transition-timing-function: linear;
+        }
       }
     }
 
@@ -409,11 +412,12 @@ $navHeight: max(22vh, 24rem);
     padding: 0 1rem 1rem;
     background-color: color.$fg;
     z-index: layer.$user;
-    transition:
-      margin 0.45s ease-out,
-      padding 0.3s ease-in,
-      width 0.25s ease-in-out;
-
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition:
+        margin 0.45s ease-out,
+        padding 0.3s ease-in,
+        width 0.25s ease-in-out;
+    }
     // border-radius: 1rem;
     @media screen and (min-width: breakpoint.$medium) {
       margin-bottom: 4rem;
@@ -422,14 +426,27 @@ $navHeight: max(22vh, 24rem);
       max-width: 50rem;
     }
   }
-
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition:
+      background 1s ease-out,
+      background-size 1s ease-out,
+      --blHeaderTriangle 0.15s ease-in,
+      --blHeaderTriangle2 0.3s ease-in,
+      --blHeaderSquare 0.6s ease-in;
+  }
   @media screen and (min-width: breakpoint.$medium) {
     // display: flex;
     // flex-direction: row;
     // align-items: flex-end;
     // justify-content: space-between;
-
-  animation: 3s infinite forwards brekkLikeBrekkfast ease-in;
+    &:hover {
+      --blHeaderTriangle: #{color.$blHeaderTriangle_b};
+      --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
+      --blHeaderSquare: #{color.$blHeaderSquare_b};
+      @media screen and (prefers-reduced-motion: no-preference) {
+        background-size: 7vw 7vw;
+      }
+    }
   }
 }
 
@@ -441,9 +458,7 @@ $navHeight: max(22vh, 24rem);
   box-shadow: inset 0 0 1px color.$border;
   overflow: hidden;
   background-color: transparent;
-  transition:
-    box-shadow 0.3s ease-out,
-    background 0.3s ease-out;
+
   width: 100%;
 
   &__search-wrapper {
@@ -496,7 +511,9 @@ $navHeight: max(22vh, 24rem);
     box-shadow: none;
     border: none;
     padding: 0.25rem;
-    transition: background 0.3s ease-out;
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: background 0.3s ease-out;
+    }
 
     // width: 100%;
   }
@@ -507,5 +524,10 @@ $navHeight: max(22vh, 24rem);
       inset 0 0 1px color.$highlight,
       0 0 1px color.$highlight,
       0 0 5px color.$highlight;
+  }
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition:
+      box-shadow 0.3s ease-out,
+      background 0.3s ease-out;
   }
 }

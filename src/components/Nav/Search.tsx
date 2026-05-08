@@ -27,12 +27,12 @@ const Search = () => {
       <div className={bem("search-wrapper", ["waiting"])}>
         <div className={bem("search-icon-wrapper")}>
           <Magnifier className={bem("search-icon")} alt="Search" />
-<input
-          type="text"
-          className={bem("input")}
-          placeholder="Search Brekk.land"
-          id="global-search"
-        />
+          <input
+            type="text"
+            className={bem("input")}
+            placeholder="Search Brekk.land"
+            id="global-search"
+          />
         </div>
       </div>
     </div>
