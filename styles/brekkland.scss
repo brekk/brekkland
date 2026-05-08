@@ -94,9 +94,88 @@ $navHeight: max(22vh, 24rem);
     );
 }
 
+@mixin trisquare(
+  $tri1: color.$c1,
+  $tri2: color.$c2,
+  $square: color.$c3,
+  $size: max(7vw, 7vh)
+) {
+  background-image:
+    conic-gradient(from 15deg at 86.6%, $square 25%, $tri2 0 150deg, #0000 0),
+    conic-gradient(
+      from -75deg at 50% 13.39%,
+      $tri1 60deg,
+      $square 0 150deg,
+      $tri2 0 210deg,
+      #0000 0
+    ),
+    conic-gradient(
+      from 15deg at 36.6% 63.4%,
+      $tri1 60deg,
+      $square 0 150deg,
+      $tri1 0 210deg,
+      $tri2 0 75%,
+      $square 0
+    );
+  background-size: $size $size;
+}
+
+@keyframes brekkLikeBrekkfast {
+  0%,
+  100% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2};
+    --blHeaderSquare: #{color.$blHeaderSquare};
+  }
+  17% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle_b};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
+    --blHeaderSquare: #{color.$blHeaderSquare_b};
+  }
+33% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle_c};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2_c};
+    --blHeaderSquare: #{color.$blHeaderSquare_c};
+  }
+50% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle_d};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2_d};
+    --blHeaderSquare: #{color.$blHeaderSquare_d};
+  }
+67% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle_e};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2_e};
+    --blHeaderSquare: #{color.$blHeaderSquare_e};
+  }
+83% {
+    --blHeaderTriangle: #{color.$blHeaderTriangle_f};
+    --blHeaderTriangle2: #{color.$blHeaderTriangle2_f};
+    --blHeaderSquare: #{color.$blHeaderSquare_f};
+  }
+}
+
+@property --blHeaderTriangle {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: black;
+}
+@property --blHeaderTriangle2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: black;
+}
+@property --blHeaderSquare {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: white;
+}
+
 .Nav {
   @extend %flexCol;
-
+--blHeaderTriangle: color.$bg;
+--blHeaderTriangle2: color.$bg;
+--blHeaderSquare: color.$fg;
+--blHeaderSize: max(5vw, 5vh);
   position: relative;
 
   // max-width: 40rem;
@@ -104,19 +183,43 @@ $navHeight: max(22vh, 24rem);
   overflow: hidden;
   z-index: layer.$user;
 
+  --accent: ;
+
   // height: $navHeight;
   // padding: 1rem 1rem 0;
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
   background-position: center center;
   background-color: color.$bg;
-
-  @include cssGrid(
-    $b: color.$fg,
-    $gridSize: 1.8vw,
-    $rotA: 30deg,
-    $rotB: 100deg
-  );
+  background-image:
+    conic-gradient(from 15deg at 86.6%, var(--blHeaderSquare) 25%, var(--blHeaderTriangle2) 0 150deg, #0000 0),
+    conic-gradient(
+      from -75deg at 50% 13.39%,
+      var(--blHeaderTriangle) 60deg,
+      var(--blHeaderSquare) 0 150deg,
+      var(--blHeaderTriangle2) 0 210deg,
+      #0000 0
+    ),
+    conic-gradient(
+      from 15deg at 36.6% 63.4%,
+      var(--blHeaderTriangle) 60deg,
+      var(--blHeaderSquare) 0 150deg,
+      var(--blHeaderTriangle) 0 210deg,
+      var(--blHeaderTriangle2) 0 75%,
+      var(--blHeaderSquare) 0
+    );
+  transition:background 1s ease-out, background-size 1s ease-out, --blHeaderTriangle 0.3s ease-out, --blHeaderTriangle2 0.3s ease-out, --blHeaderSquare 0.3s ease-out;
+  background-size: var(--blHeaderSize) var(--blHeaderSize);
+  // animation-play-state: paused;
+  &:hover {
+    // animation-play-state: running;
+  }
+  // @include cssGrid(
+  //   $b: color.$fg,
+  //   $gridSize: 1.8vw,
+  //   $rotA: 30deg,
+  //   $rotB: 100deg
+  // );
 
   &__logo-box {
     display: flex;
@@ -321,10 +424,12 @@ $navHeight: max(22vh, 24rem);
   }
 
   @media screen and (min-width: breakpoint.$medium) {
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
     // align-items: flex-end;
     // justify-content: space-between;
+
+  animation: 3s infinite forwards brekkLikeBrekkfast ease-in;
   }
 }
 
@@ -352,7 +457,9 @@ $navHeight: max(22vh, 24rem);
     box-shadow: 0 0 0 white;
     display: flex;
     flex-direction: row;
-    transition: background 0.3s ease-out, width 0.3s 0.3s ease-out,
+    transition:
+      background 0.3s ease-out,
+      width 0.3s 0.3s ease-out,
       filter 0.3s ease-out;
     &:focus-within,
     &--searching {

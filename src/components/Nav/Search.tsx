@@ -6,7 +6,6 @@ import { pipe, path } from "ramda"
 import { search } from "@/stores/search"
 import { Search as MagIcon, X as Kill } from "lucide-react"
 import Debug from "@/components/Debug"
-import SpeechBubble from "@/svg-components/SpeechBubble"
 import {
   type BemProps,
   bemifyProps,
@@ -35,7 +34,6 @@ const Search = () => {
           id="global-search"
         />
         </div>
-       <SpeechBubble /> 
       </div>
     </div>
   )
