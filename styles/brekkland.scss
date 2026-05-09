@@ -169,23 +169,38 @@ $navHeight: max(22vh, 24rem);
   // padding: 1rem 1rem 0;
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
-  --s: 5vw;
-  --c1: black;
-  --c2: white;
-
-  --d1: yellow;
-  --d2: magenta;
+  --s: 2.4vw;
+ 
+  --c1: #{color.$fg};
+  --c2: #{color.$bg};
   
-  --_g: 
-    #0000 calc(-650%/13) calc(50%/13),var(--c1) 0 calc(100%/13),
-    #0000 0 calc(150%/13),var(--c1) 0 calc(200%/13),
-    #0000 0 calc(250%/13),var(--c1) 0 calc(300%/13);
-  --_g0: repeating-linear-gradient( 45deg,var(--_g));
-  --_g1: repeating-linear-gradient(-45deg,var(--_g));
+  --_c1: var(--c1) 99%,#0000 101%;
+  --_c2: var(--c2) 99%,#0000 101%;
+  
+  --r:calc(var(--s)*.866); 
+  --g0:radial-gradient(var(--s),var(--_c1));
+  --g1:radial-gradient(var(--s),var(--_c2));
+  --f:radial-gradient(var(--s) at calc(100% + var(--r)) 50%,var(--_c1));
+  --p:radial-gradient(var(--s) at 100% 50%,var(--_c2));
   background:
-    var(--_g0),var(--_g0) var(--s) var(--s),
-    var(--_g1),var(--_g1) var(--s) var(--s) var(--c2);
-  background-size: calc(2*var(--s)) calc(2*var(--s));
+    var(--f) 0 calc(-5*var(--s)/2),
+    var(--f) calc(-2*var(--r)) calc(var(--s)/2),
+    var(--p) 0 calc(-2*var(--s)),
+    var(--g0) var(--r) calc(-5*var(--s)/2),
+    var(--g1) var(--r) calc( 5*var(--s)/2),
+    radial-gradient(var(--s) at 100% 100%,var(--_c1)) 0 calc(-1*var(--s)),   
+    radial-gradient(var(--s) at 0%   50% ,var(--_c1)) 0 calc(-4*var(--s)),
+    var(--g1) calc(-1*var(--r)) calc(-7*var(--s)/2),
+    var(--g0) calc(-1*var(--r)) calc(-5*var(--s)/2),
+    var(--p) calc(-2*var(--r)) var(--s),
+    var(--g0) calc(-1*var(--r)) calc(var(--s)/ 2),
+    var(--g1) calc(-1*var(--r)) calc(var(--s)/-2),
+    var(--g0) 0 calc(-1*var(--s)),
+    var(--g1) var(--r) calc(var(--s)/-2),
+    var(--g0) var(--r) calc(var(--s)/ 2) 
+    var(--c2);
+  background-size: calc(4*var(--r)) calc(6*var(--s));
+
   /*
   background-size: var(--s) var(--s), calc(var(--s)/5) calc(var(--s)/5);
   background-image:
