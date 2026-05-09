@@ -8,9 +8,9 @@ console.log("POSTS", posts)
 <Brekkland>
 <p>Projects</p>
 <ul>
-  {posts.map(({data: post})=> <li><a href={`//github.com/${post.repo}`}>Repo
+  {posts.map(({id, data: post})=> <li><a href={`//github.com/${post.repo}`}>Repo
   </a>{' '}
-  <a href={`/projects/${post.id}`}>{post?.title ?? post?.id}</a>
+  <a href={`/projects/${id}`}>{post?.title ?? id}</a>
   </li>)}
 </ul>
 
