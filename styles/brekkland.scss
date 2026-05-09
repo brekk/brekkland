@@ -169,8 +169,25 @@ $navHeight: max(22vh, 24rem);
   // padding: 1rem 1rem 0;
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
-  background-position: center center;
-  background-color: color.$bg;
+  --s: 5vw;
+  --c1: black;
+  --c2: white;
+
+  --d1: yellow;
+  --d2: magenta;
+  
+  --_g: 
+    #0000 calc(-650%/13) calc(50%/13),var(--c1) 0 calc(100%/13),
+    #0000 0 calc(150%/13),var(--c1) 0 calc(200%/13),
+    #0000 0 calc(250%/13),var(--c1) 0 calc(300%/13);
+  --_g0: repeating-linear-gradient( 45deg,var(--_g));
+  --_g1: repeating-linear-gradient(-45deg,var(--_g));
+  background:
+    var(--_g0),var(--_g0) var(--s) var(--s),
+    var(--_g1),var(--_g1) var(--s) var(--s) var(--c2);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
+  /*
+  background-size: var(--s) var(--s), calc(var(--s)/5) calc(var(--s)/5);
   background-image:
     conic-gradient(
       from 15deg at 86.6%,
@@ -195,6 +212,7 @@ $navHeight: max(22vh, 24rem);
     );
 
   background-size: var(--blHeaderSize) var(--blHeaderSize);
+  */
   // animation-play-state: paused;
   &:hover {
     // animation-play-state: running;
@@ -428,6 +446,7 @@ $navHeight: max(22vh, 24rem);
       --blHeaderSquare 0.6s ease-in;
   }
   @media screen and (min-width: breakpoint.$medium) {
+    /*
     &:hover {
       --blHeaderTriangle: #{color.$blHeaderTriangle_b};
       --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
@@ -436,6 +455,7 @@ $navHeight: max(22vh, 24rem);
         background-size: 7vw 7vw;
       }
     }
+    */
   }
 }
 
