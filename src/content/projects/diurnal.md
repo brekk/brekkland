@@ -15,12 +15,14 @@ tags:
 ---
 
 ###### Features
- - Tool for recording daily practice
- - 
+
+- Tool for recording daily practice
+-
 
 ###### Uses
- - [[jam]] - Persistent file storage in `~/.config/dayfile`
+
+- [[jam]] - Persistent file storage in `~/.config/dayfile`
 
 ###### Leverages
- - 
 
+-

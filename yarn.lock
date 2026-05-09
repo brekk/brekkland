@@ -2630,6 +2630,8 @@ __metadata:
   dependenciesMeta:
     prettier-plugin-astro@0.14.1:
       unplugged: true
+    prettier@3.8.2:
+      unplugged: true
     stylelint@17.11.0:
       unplugged: true
   languageName: unknown

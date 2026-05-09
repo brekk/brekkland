@@ -1,5 +1,4 @@
 ---
-
 repo: brekk/madafuda
 title: madafuda
 description: Hanafuda gameplay written in Madlib
@@ -14,12 +13,14 @@ tags:
   - games
   - playing cards
 ---
+
 # madafuda
 
 An implementation of Sakura gameplay (as played in Hawai'i) as well as a Hanafuda deck API
 
---------
+---
 
 ###### Features
- - Hanafuda card library
- - Sakura gameplay
+
+- Hanafuda card library
+- Sakura gameplay

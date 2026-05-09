@@ -14,11 +14,13 @@ tags:
   - random
   - markov chain
 ---
+
 # nathan-brazil
 
 Markov chains in Madlib
 
----------
+---
 
 ###### Features
+
 - Create Markov chains

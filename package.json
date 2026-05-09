@@ -53,6 +53,9 @@
     "vitest": "4.1.4"
   },
   "dependenciesMeta": {
+    "prettier@3.8.2": {
+      "unplugged": true
+    },
     "prettier-plugin-astro@0.14.1": {
       "unplugged": true
     },

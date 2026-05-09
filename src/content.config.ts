@@ -1,10 +1,10 @@
-import { defineCollection } from 'astro:content'
-import { glob } from 'astro/loaders'
-import { z } from 'astro/zod'
+import { defineCollection } from "astro:content"
+import { glob } from "astro/loaders"
+import { z } from "astro/zod"
 
 const projects = defineCollection({
   // Load Markdown and MDX files in the `src/content/projects/` directory.
-  loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       repo: z.string(),
@@ -18,12 +18,12 @@ const projects = defineCollection({
           // Transform string to Date object
           published: z.coerce.date(),
           updated: z.coerce.date().optional(),
-        })
+        }),
       }),
       image: z.optional(image()),
       dependencies: z.optional(z.array(z.string())),
       related: z.optional(z.array(z.string())),
-      tags: z.optional(z.array(z.string()))
+      tags: z.optional(z.array(z.string())),
     }),
 })
 

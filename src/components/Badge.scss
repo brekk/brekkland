@@ -1,0 +1,8 @@
+@use "../../styles/_flex";
+.Badge {
+  @extend %flexCol;
+  &__icon {
+  }
+  &__text {
+  }
+}

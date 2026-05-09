@@ -14,15 +14,16 @@ tags:
   - event
   - logging
 ---
+
 # PartyBus
 
 Conditional and contextual logging for Madlib
 
---------
+---
 
 ###### Features
+
 - Structured logging
 - Event system
 
 PartyBus is designed to be a near drop-in replacement for `IO.pTrace`. It affords conditional logging, log transformers, and color!
-

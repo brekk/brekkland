@@ -1,17 +1,20 @@
 ---
 import Brekkland from "@/layouts/Brekkland.astro"
-import { getCollection } from 'astro:content'
-const posts = await getCollection('projects')
+import { getCollection } from "astro:content"
+const posts = await getCollection("projects")
 console.log("POSTS", posts)
 ---
 
 <Brekkland>
-<p>Projects</p>
-<ul>
-  {posts.map(({id, data: post})=> <li><a href={`//github.com/${post.repo}`}>Repo
-  </a>{' '}
-  <a href={`/projects/${id}`}>{post?.title ?? id}</a>
-  </li>)}
-</ul>
-
+  <p>Projects</p>
+  <ul>
+    {
+      posts.map(({ id, data: post }) => (
+        <li>
+          <a href={`//github.com/${post.repo}`}>Repo</a>{" "}
+          <a href={`/projects/${id}`}>{post?.title ?? id}</a>
+        </li>
+      ))
+    }
+  </ul>
 </Brekkland>

@@ -1,0 +1,10 @@
+---
+import "@/components/Badge.scss"
+import blem from "#/utilities/blem"
+const bem = blem("Badge")
+const { m: mods = [] } = Astro.props
+---
+
+<div class={bem("", mods)}>
+  <slot />
+</div>
