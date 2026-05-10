@@ -4,20 +4,23 @@ import Brekkland from "@/layouts/Brekkland.astro"
 import Project from "@/components/Project.astro"
 
 export async function getStaticPaths() {
-  const posts = await getCollection("projects")
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post,
+  const projects = await getCollection("projects")
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
   }))
 }
 type Props = CollectionEntry<"projects">
-
-const post = Astro.props
-const { Content } = await render(post)
-console.log("POST", post)
+console.log("ASTRO.PROPS", Astro.props)
+const { project } = Astro.props
+if (!project) {
+  return Astro.redirect("/projects", 404)
+}
+const { Content } = await render(Astro.props)
+console.log("POST", project)
 ---
 
 <Brekkland>
-  <Project {...post.data} />
+  <Project {...project.data} />
   <Content />
 </Brekkland>

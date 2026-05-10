@@ -40,7 +40,6 @@
     "@vitest/coverage-v8": "4.1.4",
     "astro-font-picker": "^0.2.2",
     "astro-loader-obsidian": "^0.10.0",
-    "astro-spaceship": "^0.10.0",
     "postcss": "8.5.14",
     "prettier": "3.8.2",
     "prettier-plugin-astro": "0.14.1",
@@ -53,16 +52,5 @@
     "typescript-language-server": "5.1.3",
     "vite": "8.0.8",
     "vitest": "4.1.4"
-  },
-  "dependenciesMeta": {
-    "prettier@3.8.2": {
-      "unplugged": true
-    },
-    "prettier-plugin-astro@0.14.1": {
-      "unplugged": true
-    },
-    "stylelint@17.11.0": {
-      "unplugged": true
-    }
   }
 }
