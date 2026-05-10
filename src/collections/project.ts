@@ -7,7 +7,7 @@ export default defineCollection({
   // Load Markdown and MDX files in the `src/content/projects/` directory.
   loader: glob({
     base: "./src/content/projects",
-    pattern: "**/*.{md,mdx} ",
+    pattern: "**/*.{md,mdx}",
   }),
   schema: ({ image }) =>
     z.object({
