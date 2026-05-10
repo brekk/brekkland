@@ -2,7 +2,11 @@
 import { type CollectionEntry, getCollection, render } from "astro:content"
 import Brekkland from "@/layouts/Brekkland.astro"
 import Project from "@/components/Project.astro"
+import type { Project as BrekkProject } from "@/types"
 
+interface Props {
+  project?: CollectionEntry<"projects">
+}
 export async function getStaticPaths() {
   const projects = await getCollection("projects")
   return projects.map((project) => ({
@@ -10,17 +14,15 @@ export async function getStaticPaths() {
     props: { project },
   }))
 }
-type Props = CollectionEntry<"projects">
-console.log("ASTRO.PROPS", Astro.props)
 const { project } = Astro.props
 if (!project) {
   return Astro.redirect("/projects", 404)
 }
-const { Content } = await render(Astro.props)
-console.log("POST", project)
+const { Content } = await render(project)
 ---
 
 <Brekkland>
-  <Project {...project.data} />
-  <Content />
+  <Project {...project.data}>
+    <Content />
+  </Project>
 </Brekkland>
