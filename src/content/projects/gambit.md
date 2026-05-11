@@ -10,14 +10,7 @@ updated: 01/01/2020
 tags:
   - library
   - playing-cards
+hypothetical: false
 ---
 
-# gambit
-
-French-suited playing cards
-
----
-
-###### Features
-
-- French-suited card library
+Want to ~play cards~ build a card game? If it's French-suited cards (Ace / King / Queen / Jack / 10 - 2), maybe `gambit` is a library for you!

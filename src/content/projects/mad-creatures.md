@@ -9,11 +9,10 @@ published: 01/01/2020
 updated: 01/01/2020
 tags:
   - simulation
+hypothetical: false
 ---
 
-###### Features
-
-- Randomly seeded life simulations
+Randomly seeded life simulations
 
 ###### Uses
 

@@ -11,15 +11,10 @@ tags:
   - library
   - file
   - storage
+hypothetical: true
 ---
 
-###### Features
-
-- Persistent file storage
-
-###### Uses
-
--
+Lazy-load a file-backed content store on application start
 
 ###### Leverages
 

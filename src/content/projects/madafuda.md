@@ -10,13 +10,10 @@ updated: 01/01/2020
 tags:
   - games
   - playing-cards
+hypothetical: false
 ---
-
-# madafuda
 
 An implementation of Sakura gameplay (as played in Hawai'i) as well as a Hanafuda deck API
-
----
 
 ###### Features
 

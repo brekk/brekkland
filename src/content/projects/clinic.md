@@ -13,9 +13,8 @@ tags:
   - cli
   - tool
   - library
+hypothetical: false
 ---
-
-# clinic
-
 _noun_ - an exemplary display or performance
-Tooling for writing CLI tools
+
+A helper library for writing CLI tools

@@ -10,17 +10,13 @@ updated: 01/01/2020
 tags:
   - daily
   - diary
+hypothetical: true
 ---
 
-###### Features
-
-- Tool for recording daily practice
--
+A tool for recording daily practice and encouraging self-defined goals
 
 ###### Uses
 
 - [[jam]] - Persistent file storage in `~/.config/dayfile`
 
 ###### Leverages
-
--

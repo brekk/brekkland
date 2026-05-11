@@ -10,8 +10,8 @@ updated: 01/01/2020
 tags:
   - fsm
   - library
+hypothetical: false
 ---
-
 ###### Features
 
 - finite state machines

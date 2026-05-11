@@ -10,8 +10,8 @@ updated: 01/01/2020
 tags:
   - web
   - library
+hypothetical: true
 ---
-
 ###### Features
 
 - Segmentation and re-structuring of the core ideas of `MadUI`

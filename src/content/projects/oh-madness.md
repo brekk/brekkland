@@ -10,11 +10,10 @@ updated: 01/01/2020
 tags:
   - games
   - playing-cards
+hypothetical: false
 ---
 
-###### Features
-
-- Implementation of Oh Hell
+Oh hell / Screw-your-neighbor / contact whist as a ard game written in Madlib.
 
 ###### Uses
 

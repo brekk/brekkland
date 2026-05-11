@@ -11,14 +11,7 @@ tags:
   - tool
   - parser
   - yaml
+hypothetical: true
 ---
 
-# mad-yaml
-
-YAML parsing in Madlib
-
----
-
-###### Features
-
-- YAML parser
+What it says on the tin. YAML parsing in Madlib.

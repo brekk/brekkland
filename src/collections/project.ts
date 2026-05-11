@@ -24,5 +24,6 @@ export default defineCollection({
       dependencies: z.optional(z.array(z.string())),
       related: z.optional(z.array(z.string())),
       tags: z.optional(z.array(z.string())),
+      hypothetical: z.boolean(),
     }),
 })

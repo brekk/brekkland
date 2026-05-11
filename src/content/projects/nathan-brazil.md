@@ -11,14 +11,7 @@ tags:
   - library
   - random
   - markov-chain
+hypothetical: false
 ---
 
-# nathan-brazil
-
-Markov chains in Madlib
-
----
-
-###### Features
-
-- Create Markov chains
+A stochastic model for probabilistic outcomes, written in Madlib.

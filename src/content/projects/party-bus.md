@@ -11,11 +11,10 @@ tags:
   - library
   - event
   - logging
+hypothetical: false
 ---
 
-# PartyBus
-
-Conditional and contextual logging for Madlib
+PartyBus is a helpful library which affords conditional, filterable and contextual logging. Much like `IO.pTrace`, it is designed to be a binary function that helps annotate an existing value as it passes through the `pipe`. It also supports a `tap` function which allows you to manipulate the shape of the value being logged without changing the underlying value. It is based upon the prior art of the `debug` node module as well as `envtrace` (which similarly helped inform the existing `IO.pTrace` pattern that Madlib uses today). PartyBus is significantly easier to use after `madlib@0.25.0` and up, as it relies upon `Show` constraints.
 
 ---
 

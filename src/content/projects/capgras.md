@@ -13,14 +13,7 @@ tags:
   - library
   - event
   - logging
+hypothetical: true
 ---
 
-# capgras
-
-Link libraries locally
-
----
-
-###### Features
-
-- Link libraries locally
+A tool for connecting together Madlib modules locally, without going through the full-loop of publishing via GH

@@ -12,8 +12,8 @@ tags:
   - comparison
   - interface
   - library
+hypothetical: true
 ---
-
 ###### Naming
 
 - Olivia Dunham is a helluva investigator

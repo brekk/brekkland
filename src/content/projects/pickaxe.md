@@ -12,11 +12,9 @@ updated: 01/01/2020
 tags:
   - cli
   - tool
+hypothetical: false
 ---
 
-###### Features
-
-- Convert Obsidian-style markdown into a structure
 
 ###### Uses
 
