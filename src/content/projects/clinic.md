@@ -7,10 +7,8 @@ isPublished: false
 hasBinary: false
 related:
   - rage
-meta:
-  date:
-    published: 01/01/2020
-    updated: 01/01/2020
+published: 01/01/2020
+updated: 01/01/2020
 tags:
   - cli
   - tool

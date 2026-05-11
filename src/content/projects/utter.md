@@ -5,10 +5,8 @@ description: state machines
 version: v0.0.0
 isPublished: false
 hasBinary: false
-meta:
-  date:
-    published: 01/01/2020
-    updated: 01/01/2020
+published: 01/01/2020
+updated: 01/01/2020
 tags:
   - fsm
   - library

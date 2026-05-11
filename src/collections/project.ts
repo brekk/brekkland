@@ -17,13 +17,9 @@ export default defineCollection({
       version: z.string(),
       isPublished: z.boolean(),
       hasBinary: z.boolean(),
-      meta: z.object({
-        date: z.object({
-          // Transform string to Date object
-          published: z.coerce.date(),
-          updated: z.coerce.date().optional(),
-        }),
-      }),
+      // Transform string to Date object
+      published: z.coerce.date(),
+      updated: z.coerce.date().optional(),
       image: z.optional(image()),
       dependencies: z.optional(z.array(z.string())),
       related: z.optional(z.array(z.string())),
