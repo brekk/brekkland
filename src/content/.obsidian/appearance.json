@@ -1,1 +1,13 @@
-{}
+{
+  "cssTheme": "Rose Pine",
+  "showViewHeader": true,
+  "showRibbon": false,
+  "enabledCssSnippets": [
+    "astro-modular-styling"
+  ],
+  "theme": "system",
+  "accentColor": "",
+  "interfaceFontFamily": "FiraCode Nerd Font",
+  "textFontFamily": "FiraCode Nerd Font",
+  "monospaceFontFamily": "FiraCode Nerd Font"
+}
