@@ -506,7 +506,7 @@ export function remarkWikilinks() {
               postPath.endsWith("/index") && postPath.split("/").length === 2
                 ? postPath.replace("/index", "")
                 : postPath
-            url = `/projects/${cleanPath}`
+            url = `/posts/${cleanPath}`
             wikilinkData = cleanPath
           } else if (link.includes("/")) {
             // Handle folder-based post format: folder-name/index
@@ -515,7 +515,7 @@ export function remarkWikilinks() {
             if (link.endsWith("/index") && link.split("/").length === 2) {
               // This is a folder-based post: folder-name/index -> folder-name
               const folderName = link.replace("/index", "")
-              url = `/projects/${folderName}`
+              url = `/posts/${folderName}`
               wikilinkData = folderName
             } else {
               // Other paths with slashes that don't start with posts/ are not valid for wikilinks
@@ -525,7 +525,7 @@ export function remarkWikilinks() {
           } else {
             // Handle simple slug format - ASSUMES POSTS COLLECTION
             const slugifiedLink = createSlugFromTitle(link)
-            url = `/projects/${slugifiedLink}`
+            url = `/posts/${slugifiedLink}`
             wikilinkData = link.trim()
           }
 
