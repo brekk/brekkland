@@ -1,0 +1,20 @@
+@use "../../styles/_flex";
+@use "../../styles/_color" as color;
+
+.Tag {
+  @extend %flexRow;
+
+  background-color: color.$bg;
+  color: color.$fg;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;
+
+  &:hover {
+    background-color: color.$highlight;
+  }
+
+  &__text {
+    @extend %flexRow;
+  }
+}

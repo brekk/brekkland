@@ -1,8 +1,16 @@
 @use "../../styles/_flex";
+@use "../../styles/_color" as color;
+
 .Badge {
   @extend %flexCol;
+
+  background-color: color.$stripe-two;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+
   &__icon {
   }
+
   &__text {
   }
 }

@@ -8,23 +8,23 @@ import LogoSwapped from "@/assets/brekkland-swapped.svg"
 import SpeechBubble from "@/assets/speech-bubble.svg"
 const bem = blem("Nav")
 const locations = Object.entries({
-  UI: ["/ui", BookX],
-  Software: ["/software", BookX],
-  Art: ["/art", LibraryBig],
-  Type: ["/type", LibraryBig],
+  UI: "/ui",
+  Software: "/software",
+  Art: "/art",
+  Type: "/type",
 })
 ---
 
 <nav class={bem("")}>
   <div class={bem("menu")}>
     <div class={bem("logo-box")}>
-      <Logo className={bem("logo")} />
-      <LogoSwapped className={bem("logo", ["swapped"])} />
+      <Logo class={bem("logo")} />
+      <LogoSwapped class={bem("logo", ["swapped"])} />
     </div>
     <div class={bem("locations")}>
       <ul class={bem("menu-list")}>
         {
-          locations.map(([k, [v, Icon]]) => {
+          locations.map(([k, v]) => {
             const label = k.toLowerCase()
             const isHome = v == "/"
             const active = isHome ? "active" : "inactive"
@@ -32,7 +32,7 @@ const locations = Object.entries({
             return (
               <li class={bem("menu-item", mods)}>
                 <a href={v} class={bem("link", mods)}>
-                  <span className={bem("link-text")}>{k}</span>
+                  <span class={bem("link-text")}>{k}</span>
                 </a>
               </li>
             )

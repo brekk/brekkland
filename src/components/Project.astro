@@ -17,26 +17,46 @@ const {
   related = [],
   tags = [],
 } = Astro.props
+import { slug } from "#/utilities/string"
+import Tag from "@/components/Tag.astro"
 ---
 
-<div class={bem("")}>
-  <article class={bem("content")}>
+<article class={bem("")}>
+  <section class={bem("section", "details")}>
+    <strong class={bem("second-title")}>{title}</strong>
+    <div class={bem("badges")}>
+      <Badge m={[hasBinary ? "tool" : "library"]}>
+        {hasBinary ? "Tool" : "Library"}
+      </Badge>
+    </div>
+    <div class={bem("row", "version")}>
+      <strong class={bem("label", "version")}>Version</strong>
+      {version}
+    </div>
+
+    <div class={bem("row")}>
+      <strong class={bem("label", "tags")}>Tags</strong>
+      <ul class={bem("tags")}>
+        {
+          tags.map((t: string) => (
+            <li class={bem("tag-item")}>
+              <Tag value={t} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+  <section class={bem("section", "content")}>
     <header class={bem("header")}>
       <h1 class={bem("title")}>{title}</h1>
-      <small class={bem("version")}>
-        {version}
-      </small>
-      <div class={bem("details")}>
-        <div class={bem("badges")}>
-          <Badge m={[hasBinary ? "tool" : "library"]}>
-            {hasBinary ? "Tool" : "Library"}
-          </Badge>
-        </div>
-      </div>
+
       <p class={bem("description")}>
         {description}
       </p>
     </header>
-  </article>
-  <slot />
-</div>
+    <div class={bem("slot")}>
+      <slot />
+    </div>
+  </section>
+</article>

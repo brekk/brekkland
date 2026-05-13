@@ -1,0 +1,13 @@
+---
+import "@/components/Tag.scss"
+import blem from "#/utilities/blem"
+const bem = blem("Tag")
+const { value } = Astro.props
+import { iconForTag } from "#/utilities/icons"
+const icon = iconForTag(value)
+---
+
+<a href={`/tags/${value}`} class={bem("", [value])}>
+  {icon ? <div class={bem("icon")}>{icon}</div> : null}
+  <div class={bem("text", [value])}>{value}</div>
+</a>

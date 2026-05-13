@@ -2,17 +2,107 @@
 @use "../../styles/_flex";
 
 .Project {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  display: grid;
+  grid-template: "content content details" 1fr / 3fr 1fr;
+  position: relative;
+  width: 100%;
+
   &__header {
-    border: 1px solid color.$fg;
+    @extend %flexCol;
+
+    align-items: flex-start;
   }
-  &__version {
-    &::before {
-      content: "Version";
-      text-transform: uppercase;
-      font-size: 1.2em;
+
+  &__section {
+    @extend %flexCol;
+
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &--content {
+      grid-area: content;
+      order: 1;
+      display: flex;
+    }
+
+    &--details {
+      grid-area: details;
+      box-shadow: -1px 0 1px #000;
+      order: 2;
+      position: sticky;
+
+      // important to make sticky work in grid
+      align-self: start;
+      top: 0;
+      min-height: calc(100vh - 2rem);
+    }
+  }
+
+  &__badges {
+    padding: 0;
+    margin: 0;
+
+    @extend %flexRow;
+
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  &__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @extend %flexRow;
+
+    gap: 0.5rem;
+  }
+
+  &__row {
+    @extend %flexCol;
+
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 4rem;
+  }
+
+  &__label {
+    font-family: "BBH Bartle", sans-serif;
+    width: 10rem;
+    margin-right: 1rem;
+  }
+
+  &__slot {
+    p {
+      line-height: 1.75rem;
+    }
+
+    code {
+      background: color.$bg;
+      color: color.$fg;
+      padding: 0.125rem 0.25rem;
+    }
+
+    pre {
+      padding: 1rem;
+      background: color.$bg !important;
+
+      code {
+        @extend %flexCol;
+
+        align-items: flex-start;
+        background: transparent;
+        color: color.$fg;
+
+        span.line {
+          @extend %flexCol;
+
+          align-items: flex-start;
+          line-height: 1.75rem;
+        }
+      }
     }
   }
 }

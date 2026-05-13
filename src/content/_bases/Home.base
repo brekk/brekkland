@@ -53,6 +53,9 @@ views:
     filters:
       and:
         - file.folder.startsWith("projects")
+    groupBy:
+      property: hypothetical
+      direction: ASC
     sort:
       - property: updated
         direction: DESC
