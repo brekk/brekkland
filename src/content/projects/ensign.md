@@ -245,7 +245,7 @@ Will print a final output:
   base: Just("red sauce"),
   cheese: Just("mozzarella"),
   help: false,
-  isGlutenFree: true,
+  isGlutenFree: false,
   name: Just("Pizzapants"),
   size: Just(4),
   toppings: ["pepperoni", "corn", "habanero"]
@@ -253,8 +253,11 @@ Will print a final output:
 ```
 
 And if you pass something invalid, you can see how we are able to recover because it's an Either:
-```shell
+
+```sh
 madlib run src/Main.mad -- --name Pizzapants -x garlic
+```
+```
 Errors during parsing.
         Unexpected flag x.
 ```

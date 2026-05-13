@@ -13,6 +13,20 @@
     align-items: flex-start;
   }
 
+  &__heading-link {
+    &--size-2 {
+      padding-left: 1rem;
+    }
+
+    &--size-3 {
+      padding-left: 1.5rem;
+    }
+
+    &--size-6 {
+      padding-left: 3rem;
+    }
+  }
+
   &__section {
     @extend %flexCol;
 
@@ -97,7 +111,7 @@
         color: color.$fg;
 
         span.line {
-          @extend %flexCol;
+          @extend %flexRow;
 
           align-items: flex-start;
           line-height: 1.75rem;

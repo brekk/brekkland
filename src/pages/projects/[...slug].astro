@@ -14,6 +14,11 @@ export async function getStaticPaths() {
     props: { project },
   }))
 }
+console.log(
+  "YOYOYOYO",
+  Object.keys(Astro.props.project),
+  Astro.props.project.rendered.metadata.headings,
+)
 const { project } = Astro.props
 if (!project) {
   return Astro.redirect("/projects", 404)
@@ -22,7 +27,7 @@ const { Content } = await render(project)
 ---
 
 <Brekkland>
-  <Project {...project.data}>
+  <Project {...project}>
     <Content />
   </Project>
 </Brekkland>

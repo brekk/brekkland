@@ -4,6 +4,7 @@ import Badge from "@/components/Badge.astro"
 import blem from "#/utilities/blem"
 const bem = blem("Project")
 console.log("poprops", Astro.props)
+const { rendered, data } = Astro.props
 const {
   title,
   description,
@@ -16,7 +17,10 @@ const {
   dependencies = [],
   related = [],
   tags = [],
-} = Astro.props
+} = data
+const {
+  metadata: { headings },
+} = rendered
 import { slug } from "#/utilities/string"
 import Tag from "@/components/Tag.astro"
 ---
@@ -34,7 +38,7 @@ import Tag from "@/components/Tag.astro"
       {version}
     </div>
 
-    <div class={bem("row")}>
+    <div class={bem("row", "tags")}>
       <strong class={bem("label", "tags")}>Tags</strong>
       <ul class={bem("tags")}>
         {
@@ -45,6 +49,19 @@ import Tag from "@/components/Tag.astro"
           ))
         }
       </ul>
+    </div>
+    <div class={bem("row", "explorer")}>
+      <strong class={bem("label", "headings")}>Explore</strong>
+      {
+        headings.map((h) => (
+          <a
+            class={bem("heading-link", [`size-${h.depth}`])}
+            href={`#${h.slug}`}
+          >
+            {h.text}
+          </a>
+        ))
+      }
     </div>
   </section>
   <section class={bem("section", "content")}>
