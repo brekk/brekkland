@@ -1,0 +1,9 @@
+---
+import "@/components/Guide.scss"
+import blem from "#/utilities/blem"
+const bem = blem("Guide")
+const { label, v } = Astro.props
+---
+
+<div class={bem("")} data-size={v} data-label={label} style={`left: ${v};`}>
+</div>

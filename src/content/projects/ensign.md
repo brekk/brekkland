@@ -1,7 +1,7 @@
 ---
 repo: brekk/ensign
 title: ensign
-description: arg parsing in madlib
+description: Argument parsing in Madlib
 version: v0.1.0
 isPublished: true
 related:
@@ -17,8 +17,6 @@ id: ensign
 hasBinary: false
 hypothetical: false
 ---
-
-Argument parsing in Madlib.
 
 ## Example
 

@@ -1,0 +1,13 @@
+---
+import Guide from "@/components/Guide.astro"
+// const $showGuides = !!(Astro.url.searchParams.get("guides") ?? "")
+---
+
+<!--$showGuides ? (-->
+<div id="guides">
+  <Guide label="tiny" v="30rem" />
+  <Guide label="small" v="48rem" />
+  <Guide label="medium" v="74rem" />
+  <Guide label="large" v="91rem" />
+</div>
+<!--) : null-->

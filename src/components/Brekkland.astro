@@ -4,9 +4,11 @@ import Nav from "@/components/Nav.astro"
 
 const bem = blem("Brekkland")
 import "#/styles/brekkland.scss"
+import Guides from "@/components/Guides.astro"
 ---
 
 <div id="brekkland" class={bem("")}>
+  <Guides />
   <header class={bem("header")}>
     <Nav />
   </header>

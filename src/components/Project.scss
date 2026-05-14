@@ -4,19 +4,28 @@
 
 .Project {
   display: grid;
+  font-size: 1.25rem;
+  font-family: "Fira Code";
 
   // grid-template: "content" 1fr "details" 8fr "usage" 21fr / 1fr;
   grid-template-areas: "content" "details" "usage";
-  grid-template-columns: 0fr;
-  grid-template-rows: 0fr 0fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
   position: relative;
   width: 100%;
   max-width: 100%;
+  background-color: red;
 
   &__header {
     @extend %flexCol;
 
     align-items: flex-start;
+    position: relative;
+  }
+
+  &__title {
+    font-family: Silkscreen;
+    margin: 0;
   }
 
   &__heading-link {
@@ -89,8 +98,9 @@
 
     margin: 0;
     padding: 1rem;
-    width: calc(100% - 2rem);
-    max-width: calc(100% - 2rem);
+
+    // width: calc(100% - 2rem);
+    max-width: 100%;
     align-items: flex-start;
     justify-content: flex-start;
 
@@ -112,6 +122,28 @@
       h5,
       h6 {
         margin: 0;
+        font-family: Silkscreen;
+
+        a {
+          @extend %flexRow;
+
+          color: color.$bg;
+          justify-content: flex-start;
+          text-decoration: none;
+
+          &::after {
+            @extend %flexCol;
+
+            margin-left: 0.5rem;
+            content: "#";
+          }
+
+          &:hover {
+            &::after {
+              color: color.$highlight;
+            }
+          }
+        }
       }
     }
 
@@ -119,7 +151,7 @@
       grid-area: details;
       display: flex;
 
-      @media screen and (min-width: breakpoint.$small) {
+      @media screen and (min-width: breakpoint.$medium) {
         box-shadow:
           -1px 0 0 color.$bg,
           1px 0 0 color.$bg;
@@ -131,6 +163,7 @@
         align-self: start;
         top: 0;
         min-height: calc(100vh - 2rem);
+        min-width: 20rem;
       }
     }
   }
@@ -158,16 +191,6 @@
     gap: 0.5rem;
   }
 
-  &__tags {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    @extend %flexRow;
-
-    gap: 0.5rem;
-  }
-
   &__row {
     @extend %flexCol;
 
@@ -177,9 +200,19 @@
     margin-bottom: 0.5rem;
   }
 
+  &__tag-wrapper {
+    @extend %flexRow;
+
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
   &__label {
     font-family: "BBH Bartle", sans-serif;
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 0.5rem;
   }
 
@@ -197,7 +230,8 @@
     pre {
       padding: 1rem;
       background: color.$bg !important;
-      width: calc(100vw - 4rem);
+
+      // width: calc(100vw - 4rem);
       max-width: calc(100vw - 4rem);
 
       code {
@@ -214,22 +248,32 @@
           line-height: 1.75rem;
         }
       }
-
-      @media screen and (min-width: breakpoint.$small) {
-        max-width: calc(60vw - 4rem);
-      }
     }
   }
 
+  @media screen and (min-width: breakpoint.$tiny) {
+    background: yellow;
+  }
+
   @media screen and (min-width: breakpoint.$small) {
+    background: green;
+  }
+
+  @media screen and (min-width: breakpoint.$medium) {
+    outline: 1px solid red;
     grid-template-areas:
       "content details"
       "usage details";
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 0fr;
     position: relative;
-    max-width: 100vw;
-    max-width: 80rem;
+    width: 100vw;
+    max-width: 90rem;
     margin: 0 auto;
+  }
+
+  @media screen and (min-width: breakpoint.$large) {
+    // font-size: 1.5rem;
+    max-width: 112rem;
   }
 }

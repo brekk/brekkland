@@ -1,0 +1,43 @@
+@use "../../styles/_color" as color;
+@use "../../styles/_flex";
+
+#guides {
+  z-index: 1000;
+  top: 0;
+  position: sticky;
+  display: block;
+  max-width: 100vw;
+}
+
+.Guide {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  width: 2px;
+  background: transparent;
+  box-shadow: -1px 0 0 transparentize(color.$guide, 0.6);
+  transition: box-shadow 0.3s ease-in;
+  cursor: crosshair;
+
+  &::before {
+    display: flex;
+    font-size: 0.75rem;
+    height: 1rem;
+    padding: 0.25rem;
+    font-family: "Fira Code";
+    content: attr(data-label) ":" attr(data-size);
+    background-color: color.$guide;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &:hover {
+    box-shadow: -1px 0 0 color.$guide;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}

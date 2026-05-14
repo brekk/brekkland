@@ -23,6 +23,11 @@ const {
 } = rendered
 import { slug } from "#/utilities/string"
 import Tag from "@/components/Tag.astro"
+interface HeadingType {
+  depth: number
+  slug: string
+  text: string
+}
 ---
 
 <article class={bem("")}>
@@ -49,21 +54,15 @@ import Tag from "@/components/Tag.astro"
 
     <div class={bem("row", "tags")}>
       <strong class={bem("label", "tags")}>Tags</strong>
-      <ul class={bem("tags")}>
-        {
-          tags.map((t: string) => (
-            <li class={bem("tag-item")}>
-              <Tag value={t} />
-            </li>
-          ))
-        }
-      </ul>
+      <div class={bem("tag-wrapper")}>
+        {tags.map((t: string) => <Tag value={t} />)}
+      </div>
     </div>
     <div class={bem("row", "explorer")}>
       <strong class={bem("label", "headings")}>Explore</strong>
       <ol class={bem("headings-list")}>
         {
-          headings.map((h) => {
+          headings.map((h: HeadingType) => {
             const sizeCl = `size-${h.depth}`
             return (
               <li class={bem("heading-list-item", [sizeCl])}>
