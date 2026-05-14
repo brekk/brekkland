@@ -28,7 +28,7 @@ import Tag from "@/components/Tag.astro"
 <article class={bem("")}>
   <section class={bem("section", "details")}>
     <strong class={bem("second-title")}>{title}</strong>
-    <div class={bem("badges")}>
+    <div class={bem("row", "badges")}>
       <Badge m={[hasBinary ? "tool" : "library"]}>
         {hasBinary ? "Tool" : "Library"}
       </Badge>
@@ -52,16 +52,20 @@ import Tag from "@/components/Tag.astro"
     </div>
     <div class={bem("row", "explorer")}>
       <strong class={bem("label", "headings")}>Explore</strong>
-      {
-        headings.map((h) => (
-          <a
-            class={bem("heading-link", [`size-${h.depth}`])}
-            href={`#${h.slug}`}
-          >
-            {h.text}
-          </a>
-        ))
-      }
+      <ol class={bem("headings-list")}>
+        {
+          headings.map((h) => {
+            const sizeCl = `size-${h.depth}`
+            return (
+              <li class={bem("heading-list-item", [sizeCl])}>
+                <a class={bem("heading-link", [sizeCl])} href={`#${h.slug}`}>
+                  {h.text}
+                </a>
+              </li>
+            )
+          })
+        }
+      </ol>
     </div>
   </section>
   <section class={bem("section", "content")}>

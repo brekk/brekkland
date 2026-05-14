@@ -2,11 +2,12 @@
 @use "../../styles/_color" as color;
 
 .Badge {
-  @extend %flexCol;
+  @extend %flexRow;
 
   background-color: color.$stripe-two;
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
+  width: calc(100% - 1rem);
 
   &__icon {
   }
