@@ -26,6 +26,15 @@ import Tag from "@/components/Tag.astro"
 ---
 
 <article class={bem("")}>
+  <section class={bem("section", "content")}>
+    <header class={bem("header")}>
+      <h1 class={bem("title")}>{title}</h1>
+
+      <p class={bem("description")}>
+        {description}
+      </p>
+    </header>
+  </section>
   <section class={bem("section", "details")}>
     <strong class={bem("second-title")}>{title}</strong>
     <div class={bem("row", "badges")}>
@@ -68,14 +77,7 @@ import Tag from "@/components/Tag.astro"
       </ol>
     </div>
   </section>
-  <section class={bem("section", "content")}>
-    <header class={bem("header")}>
-      <h1 class={bem("title")}>{title}</h1>
-
-      <p class={bem("description")}>
-        {description}
-      </p>
-    </header>
+  <section class={bem("section", "usage")}>
     <div class={bem("slot")}>
       <slot />
     </div>
