@@ -14,6 +14,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
+  container: project / size;
 
   // background-color: red;
 
@@ -39,6 +40,7 @@
   }
 
   &__scroll-to-top {
+    z-index: 10;
     font-size: 2rem;
     position: fixed;
     bottom: -3rem;
@@ -347,6 +349,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    background-color: color.$body;
+    z-index: 40;
 
     @extend %flexCol;
 
@@ -379,6 +383,7 @@
     padding: 0;
     width: 100%;
     background: color.$body;
+    z-index: 40;
 
     @media screen and (min-width: breakpoint.$medium) {
       // order: 2;
@@ -495,6 +500,14 @@
       &--content {
         font-size: 1.5rem;
       }
+    }
+  }
+
+  @media screen and (height < 44rem) {
+    .Project__scroll-to-top {
+      opacity: 0;
+      pointer-events: none;
+      bottom: -2rem;
     }
   }
 }

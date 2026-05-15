@@ -1,0 +1,298 @@
+@use "../../styles/_flex";
+@use "../../styles/_color" as color;
+@use "../../styles/_media" as breakpoint;
+@use "../../styles/_button";
+@use "../../styles/_layer" as layer;
+
+// based on https://codepen.io/t_afif/pen/oNdKYge
+
+@keyframes static {
+  100% {
+    background-position:
+      50% 0,
+      60% 50%;
+  }
+}
+
+@keyframes MoveScaleUpInitial {
+  to {
+    transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes MoveScaleUpEnd {
+  from {
+    transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomDown {
+  from {
+    transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+.Nav {
+  @extend %flexCol;
+
+  position: relative;
+
+  // max-width: 40rem;
+  width: 100%;
+  overflow: hidden;
+  z-index: layer.$user;
+
+  --accent: ;
+
+  // height: $navHeight;
+  // padding: 1rem 1rem 0;
+  font-family: var(--font-obviously-narrow), sans-serif;
+  text-transform: uppercase;
+  background:
+    repeating-radial-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 50%
+      0/150rem 150rem,
+    repeating-conic-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 60%
+      60%/150rem 150rem;
+  background-blend-mode: difference;
+
+  // @include cssGrid(
+  //   $b: color.$fg,
+  //   $gridSize: 1.8vw,
+  //   $rotA: 30deg,
+  //   $rotB: 100deg
+  // );
+
+  &__logo-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+    min-height: 4rem;
+    padding-bottom: 1rem;
+
+    @media screen and (min-width: breakpoint.$medium) {
+      padding-bottom: 0;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 28rem;
+    fill: color.$bg;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 0.3s ease-out,
+        fill 0.1s ease-out;
+    }
+
+    &--swapped {
+      transform: translateY(-1rem);
+      fill: transparent;
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition:
+          transform 0.3s ease-out,
+          fill 0.1s ease-out;
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$small) {
+      fill: transparent;
+
+      &--swapped {
+        fill: color.$bg;
+      }
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transform: translateY(1rem);
+
+        &--swapped {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$medium) {
+      margin-top: 0;
+    }
+  }
+
+  &__locations {
+    @extend %flexRow;
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: auto;
+
+    @media screen and (min-width: breakpoint.$small) {
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    // mix-blend-mode: difference;
+    // mix-blend-mode: hard-light;
+    // mix-blend-mode: luminosity;
+  }
+
+  &__menu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(1rem, auto);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+    font-size: 2rem;
+
+    @media screen and (min-width: breakpoint.$tiny) {
+      display: flex;
+      flex-direction: row;
+
+      // grid-template-columns: repeat(4, 1fr);
+      // grid-auto-rows: minmax(1rem, auto);
+      max-width: 28rem;
+      font-size: 1rem;
+    }
+  }
+
+  &__menu-item {
+    @extend %flexRow;
+
+    position: relative;
+    list-style: none;
+  }
+
+  &__link-icon {
+    transform: translate3d(0, 500%, 0) scale3d(2, 2, 2);
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+
+  &__link {
+    @extend %button;
+
+    color: color.$bg;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    gap: 0.25rem;
+    text-decoration: none;
+    overflow: hidden;
+    font-size: 2rem;
+
+    &-text {
+      display: block;
+      position: relative;
+    }
+
+    &::before {
+      background: color.$fg;
+      width: 120%;
+      padding-bottom: 120%;
+      top: -110%;
+      left: -10%;
+      border-radius: 100%;
+      transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+    }
+
+    &--home {
+      &::before {
+        display: none;
+      }
+    }
+
+    &::after {
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transform: translate3d(0, 100%, 0);
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+      }
+    }
+
+    &:hover,
+    &--active {
+      .Nav__link-text {
+        animation:
+          MoveScaleUpInitial 0.3s forwards,
+          MoveScaleUpEnd 0.3s forwards 0.3s;
+      }
+
+      .Nav__link-icon {
+        animation: zoomDown 0.3s forwards 0.3s;
+      }
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        &::before {
+          transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+          transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        }
+
+        &::after {
+          transform: translate3d(0, 0, 0);
+          transition-duration: 0.05s;
+          transition-delay: 0.4s;
+          transition-timing-function: linear;
+        }
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$tiny) {
+      width: auto;
+      padding: 0.5rem;
+    }
+  }
+
+  &__menu {
+    @extend %flexCol;
+
+    justify-content: space-around;
+    gap: 0.5rem;
+    width: calc(100% - 2rem);
+    padding: 0 1rem 1rem;
+    background-color: color.$fg;
+    z-index: layer.$user;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition:
+        margin 0.45s ease-out,
+        padding 0.3s ease-in,
+        width 0.25s ease-in-out;
+    }
+
+    @media screen and (min-width: breakpoint.$medium) {
+      margin-bottom: 4rem;
+      padding: 1rem;
+      width: min(45%, 30rem);
+      max-width: 50rem;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition:
+      background 1s ease-out,
+      background-size 1s ease-out;
+  }
+}
