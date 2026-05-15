@@ -1,11 +1,8 @@
 ---
-import { Image } from "astro:assets"
 import blem from "#/utilities/blem"
-import Search from "@/components/Nav/Search.tsx"
-import { Rss, Home, BookX, LibraryBig } from "@lucide/astro"
+import Search from "@/components/Search.tsx"
 import Logo from "@/assets/brekkland.svg"
 import LogoSwapped from "@/assets/brekkland-swapped.svg"
-import SpeechBubble from "@/assets/speech-bubble.svg"
 const bem = blem("Nav")
 const locations = Object.entries({
   UI: "/ui",
@@ -39,7 +36,7 @@ const locations = Object.entries({
           })
         }
       </ul>
-      <Search client:load />
     </div>
+    <Search client:load />
   </div>
 </nav>

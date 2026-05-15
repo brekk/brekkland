@@ -134,7 +134,7 @@ export default defineConfig({
     },
   },
   devToolbar: {
-    enabled: true,
+    enabled: false,
   },
   redirects:
     process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "build"

@@ -25,6 +25,61 @@
     width: 100%;
   }
 
+  &__svg--arrow {
+    max-width: 2rem;
+    max-height: 2rem;
+    stroke: transparent;
+    stroke-width: 2px;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        fill 0.3s ease-out,
+        stroke 0.3s ease-out;
+    }
+  }
+
+  &__scroll-to-top {
+    font-size: 2rem;
+    position: fixed;
+    bottom: -3rem;
+    align-self: center;
+    text-decoration: none;
+    color: color.$bg;
+    transition:
+      color 0 ease-out,
+      opacity 0 ease-out,
+      transform 0 ease-out,
+      text-shadow 0 0 ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+
+    // transform: scale(2);
+
+    &:hover {
+      .Project__svg--arrow {
+        fill: color.$fg;
+        stroke: color.$bg;
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$medium) {
+      opacity: 1;
+      pointer-events: all;
+      bottom: 1rem;
+    }
+
+    @media screen and (min-width: breakpoint.$medium) and (prefers-reduced-motion: no-preference) {
+      transition:
+        color 0.3s ease-out,
+        opacity 0.3s ease-out,
+        // transform 0.2s 0.2s ease-in,
+        text-shadow 0.3s 0.4s ease-in-out,
+        bottom 0.4s cubic-bezier(0.3, 0.8, 0.3, 2.3);
+
+      // transform: scale(1);
+    }
+  }
+
   &__title,
   &__second-title {
     font-family: var(--font-obviously-compressed);
@@ -57,6 +112,7 @@
     top: 0;
 
     @media screen and (min-width: breakpoint.$medium) {
+      pointer-events: all;
       opacity: 1;
       transition:
         height 0.3s ease-out,
@@ -175,6 +231,7 @@
     &--content {
       grid-area: content;
       height: 8rem;
+      margin-bottom: 1rem;
     }
 
     &--usage {

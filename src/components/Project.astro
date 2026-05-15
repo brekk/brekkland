@@ -1,5 +1,6 @@
 ---
 import "@/components/Project.scss"
+import ArrowUp from "#/public/svg/arrow.svg"
 import Badge from "@/components/Badge.astro"
 import blem from "#/utilities/blem"
 const bem = blem("Project")
@@ -76,6 +77,9 @@ interface HeadingType {
           }
         </ol>
       </div>
+      <a class={bem("scroll-to-top")} href="#body"
+        ><ArrowUp class={bem("svg", "arrow")} /></a
+      >
     </div>
   </section>
   <section class={bem("section", "usage")}>
