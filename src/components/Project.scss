@@ -5,7 +5,7 @@
 .Project {
   display: grid;
   font-size: 1rem;
-  font-family: "Fira Code";
+  font-family: var(--font-fira-code);
 
   // grid-template: "content" 1fr "details" 8fr "usage" 21fr / 1fr;
   grid-template-areas: "content" "details" "usage";

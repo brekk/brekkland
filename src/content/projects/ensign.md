@@ -50,7 +50,7 @@ PIZZA_FLAGS = [
 
 This gives us a basis for validating whether what our user gave us is correct and interpretable.
 
-###### Adding Help
+#### Adding Help
 
 Let's also add a `--help` / `-h` flag to our `PIZZA_FLAGS` list to give our users a better experience if they make a mistake or don't know the expected flags:
 

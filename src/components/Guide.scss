@@ -26,7 +26,7 @@
     font-size: 0.75rem;
     height: 1rem;
     padding: 0.25rem;
-    font-family: "Fira Code";
+    font-family: var(--font-fira-code);
     content: attr(data-label) ":" attr(data-size);
     background-color: color.$guide;
     opacity: 0;
