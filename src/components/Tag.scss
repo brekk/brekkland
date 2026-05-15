@@ -4,14 +4,28 @@
 .Tag {
   @extend %flexRow;
 
+  transition:
+    background 0.3s ease-in,
+    width 0.15s ease-in,
+    height 0.15s ease-in,
+    border-radius 0.3s ease-out,
+    box-shadow 0.3s ease-in;
   background-color: color.$bg;
   color: color.$fg;
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 0 0 transparent;
 
   &:hover {
-    background-color: color.$highlight;
+    color: color.$bg;
+    background-color: color.$fg;
+    box-shadow:
+      -1px 0 0 color.$bg,
+      1px 0 0 color.$bg,
+      0 -1px 0 color.$bg,
+      0 1px 0 color.$bg;
   }
 
   &__text {

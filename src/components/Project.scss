@@ -39,14 +39,15 @@
   }
 
   &__second-title {
-    height: 0.1rem;
+    height: 0.01rem;
+    pointer-events: none;
 
     // transform: scaleX(0.0000001);
-    opacity: 0.5;
+    opacity: 0;
     transition:
-      height 0.3s ease-out,
-      transform 0.3s ease-out,
-      opacity 0.15s ease-out;
+      height 0s ease-out,
+      transform 0s ease-out,
+      opacity 0s ease-out;
 
     // order: 2;
     position: sticky;
@@ -54,26 +55,53 @@
     // important to make sticky work in grid
     align-self: start;
     top: 0;
+
+    @media screen and (min-width: breakpoint.$medium) {
+      opacity: 1;
+      transition:
+        height 0.3s ease-out,
+        transform 0.3s ease-out,
+        opacity 0.15s ease-out;
+    }
   }
 
   &__heading-link {
-    @extend %flexRow;
-
     margin: 0;
-    padding: 0;
     position: relative;
+
+    @extend %flexCol;
+
+    padding: 0.25rem 0.5rem 0.25rem 2rem;
+    text-decoration: none;
+
+    // background: red;
+
+    background: transparent;
+    color: color.$bg;
+    border-radius: 0.25rem;
+    transition:
+      background 0.15s ease-out,
+      color 0.2s ease-out;
 
     &::before {
       content: "";
       height: 0.25rem;
-      width: 1rem;
+      width: 0.75rem;
       background-color: color.$bg;
+      transition:
+        background 0.3s ease-in,
+        width 0.15s ease-in,
+        height 0.15s ease-in,
+        border-radius 0.3s ease-out;
+      border-radius: 20% / 100%;
       position: absolute;
-      left: -1rem;
+      left: 0.25rem;
+
+      // left: -1rem;
     }
 
     &--size-1 {
-      padding-left: 0;
+      padding-left: 1.25rem;
 
       &::before {
         width: 0.75rem;
@@ -81,42 +109,54 @@
     }
 
     &--size-2 {
-      padding-left: 0.25rem;
-
-      &::before {
-        width: 1rem;
-      }
-    }
-
-    &--size-3 {
-      padding-left: 0.5rem;
+      padding-left: 1.75rem;
 
       &::before {
         width: 1.25rem;
       }
     }
 
-    &--size-4 {
-      padding-left: 0.75rem;
-
-      &::before {
-        width: 1.5rem;
-      }
-    }
-
-    &--size-5 {
-      padding-left: 1rem;
+    &--size-3 {
+      padding-left: 2.25rem;
 
       &::before {
         width: 1.75rem;
       }
     }
 
-    &--size-6 {
-      padding-left: 1.25rem;
+    &--size-4 {
+      padding-left: 2.75rem;
 
       &::before {
-        width: 2rem;
+        width: 2.25rem;
+      }
+    }
+
+    &--size-5 {
+      padding-left: 3.25rem;
+
+      &::before {
+        width: 2.75rem;
+      }
+    }
+
+    &--size-6 {
+      padding-left: 3.75rem;
+
+      &::before {
+        width: 3.25rem;
+      }
+    }
+
+    &:hover {
+      background: color.$fg;
+      color: color.$bg;
+
+      &::before {
+        background-color: color.$bg;
+        border-radius: 100%;
+        width: 0.35rem;
+        height: 0.35rem;
       }
     }
   }
@@ -201,26 +241,35 @@
           }
         }
       }
-    }
 
-    h2 {
-      font-size: 3rem;
-    }
+      h2 {
+        font-size: 3rem;
+      }
 
-    h3 {
-      font-size: 2.66rem;
-    }
+      h3 {
+        font-size: 2.66rem;
+      }
 
-    h4 {
-      font-size: 2.33rem;
-    }
+      h4 {
+        font-size: 2.33rem;
+      }
 
-    h5 {
-      font-size: 2rem;
-    }
+      h5 {
+        font-size: 2rem;
+      }
 
-    h6 {
-      font-size: 1.75rem;
+      h6 {
+        font-size: 1.75rem;
+      }
+
+      @media screen and (min-width: breakpoint.$medium) {
+        &__section {
+          &--usage,
+          &--content {
+            font-size: 1.25rem;
+          }
+        }
+      }
     }
 
     &--details {
@@ -241,13 +290,19 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    padding-left: 1rem;
+
+    @extend %flexCol;
+
+    gap: 0.5rem;
   }
 
   &__heading-list-item {
     @extend %flexRow;
 
     justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
   }
 
   &__badges {
@@ -265,6 +320,7 @@
 
     margin: 0;
     padding: 0;
+    width: 100%;
     background: color.$body;
 
     @media screen and (min-width: breakpoint.$medium) {
@@ -363,13 +419,6 @@
     width: 100vw;
     max-width: 90rem;
     margin: 0 auto;
-
-    &__section {
-      &--usage,
-      &--content {
-        font-size: 1.25rem;
-      }
-    }
   }
 
   @media screen and (min-width: breakpoint.$large) {
