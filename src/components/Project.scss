@@ -157,6 +157,26 @@
       }
     }
 
+    h2 {
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 2.75rem;
+    }
+
+    h4 {
+      font-size: 2.5rem;
+    }
+
+    h5 {
+      font-size: 2rem;
+    }
+
+    h6 {
+      font-size: 1.5rem;
+    }
+
     &--details {
       grid-area: details;
       display: flex;
@@ -281,7 +301,7 @@
       "content details"
       "usage details";
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 0fr;
+    grid-template-rows: auto 0fr;
     position: relative;
     width: 100vw;
     max-width: 90rem;
