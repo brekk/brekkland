@@ -11,6 +11,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Cal Sans", sans-serif;
+
+  // background: color.$fg;
+  color: color.$bg;
 }
 
 .grid {
@@ -153,13 +156,18 @@ $navHeight: max(22vh, 24rem);
   initial-value: white;
 }
 
+// based on https://codepen.io/t_afif/pen/oNdKYge
+
+@keyframes static {
+  100% {
+    background-position:
+      50% 0,
+      60% 50%;
+  }
+}
+
 .Nav {
   @extend %flexCol;
-
-  --blHeaderTriangle: #{color.$bg};
-  --blHeaderTriangle2: #{color.$bg};
-  --blHeaderSquare: #{color.$fg};
-  --blHeaderSize: max(5vw, 5vh);
 
   position: relative;
 
@@ -181,12 +189,15 @@ $navHeight: max(22vh, 24rem);
   --_g: transparent 90deg, var(--c1) 0;
 
   background:
-    conic-gradient(from 90deg at max(2px, 0.1vw) max(2px, 0.1vw), var(--_g)),
-    conic-gradient(from 90deg at max(1px, 0.05vw) max(1px, 0.05vw), var(--_g)),
-    var(--c2);
-  background-size:
-    var(--s) var(--s),
-    calc(var(--s) / 6) calc(var(--s) / 6);
+    repeating-radial-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 50%
+      0/150rem 150rem,
+    repeating-conic-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 60%
+      60%/150rem 150rem;
+  background-blend-mode: difference;
+
+  // filter: blur(1px);
+  // animation: static 20s infinite alternate ease-in;
+  // animation-play-state: paused;
 
   /*
   background-size: var(--s) var(--s), calc(var(--s)/5) calc(var(--s)/5);

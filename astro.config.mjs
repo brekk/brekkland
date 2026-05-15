@@ -1,7 +1,6 @@
 import react from "@astrojs/react"
 import fontPicker from "astro-font-picker"
-
-import { defineConfig } from "astro/config"
+import { defineConfig, fontProviders } from "astro/config"
 
 // https://astro.build/config
 // export default defineConfig({
@@ -42,6 +41,52 @@ const DEPLOYMENT_PLATFORM = process.env.DEPLOYMENT_PLATFORM || "netlify"
 
 export default defineConfig({
   site: "https://brekk.land",
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "Irregardless",
+      cssVariable: "--font-irregardless",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/Irregardless-BoldItalic.woff2"],
+            weight: "bold",
+            style: "italic",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "ObviouslyCompressed",
+      cssVariable: "--font-obviously-compressed",
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/Obviously-CompressedSemiboldItalic.woff2",
+            ],
+            weight: "bold",
+            style: "italic",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "ObviouslyNarrow",
+      cssVariable: "--font-obviously-narrow",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/Obviously-NarrowBold.woff2"],
+            weight: "bold",
+            style: "normal",
+          },
+        ],
+      },
+    },
+  ],
   deployment: {
     platform: DEPLOYMENT_PLATFORM,
   },

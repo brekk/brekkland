@@ -4,7 +4,7 @@
 
 .Project {
   display: grid;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: "Fira Code";
 
   // grid-template: "content" 1fr "details" 8fr "usage" 21fr / 1fr;
@@ -14,7 +14,8 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  background-color: red;
+
+  // background-color: red;
 
   &__header {
     @extend %flexCol;
@@ -24,8 +25,12 @@
   }
 
   &__title {
-    font-family: Silkscreen;
+    font-family: var(--font-obviously-compressed);
     margin: 0;
+    font-size: 6rem;
+    line-height: 6rem;
+    padding: 0;
+    text-transform: uppercase;
   }
 
   &__heading-link {
@@ -121,8 +126,13 @@
       h4,
       h5,
       h6 {
+        // font-family: "BBH Bartle";
+        // font-family: Irregardless;
+        font-family: var(--font-obviously-narrow);
+
+        // font-size: 1rem;
+        text-transform: uppercase;
         margin: 0;
-        font-family: Silkscreen;
 
         a {
           @extend %flexRow;
@@ -211,7 +221,8 @@
   }
 
   &__label {
-    font-family: "BBH Bartle", sans-serif;
+    font-family: var(--font-obviously-narrow);
+    text-transform: uppercase;
     max-width: 100%;
     margin-bottom: 0.5rem;
   }
@@ -251,16 +262,21 @@
     }
   }
 
-  @media screen and (min-width: breakpoint.$tiny) {
-    background: yellow;
-  }
-
+  // @media screen and (min-width: breakpoint.$tiny) {
+  //   background: yellow;
+  // }
+  //
   @media screen and (min-width: breakpoint.$small) {
-    background: green;
+    // background: green;
+    grid-template-areas:
+      "content details"
+      "usage usage";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0fr;
   }
 
   @media screen and (min-width: breakpoint.$medium) {
-    outline: 1px solid red;
+    // outline: 1px solid red;
     grid-template-areas:
       "content details"
       "usage details";
@@ -270,10 +286,23 @@
     width: 100vw;
     max-width: 90rem;
     margin: 0 auto;
+
+    &__section {
+      &--usage,
+      &--content {
+        font-size: 1.25rem;
+      }
+    }
   }
 
   @media screen and (min-width: breakpoint.$large) {
-    // font-size: 1.5rem;
     max-width: 112rem;
+
+    &__section {
+      &--usage,
+      &--content {
+        font-size: 1.5rem;
+      }
+    }
   }
 }

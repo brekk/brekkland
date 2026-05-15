@@ -1,5 +1,6 @@
 ---
 import Land from "@/components/Brekkland.astro"
+import { Font } from "astro:assets"
 ---
 
 <!doctype html>
@@ -14,9 +15,12 @@ import Land from "@/components/Brekkland.astro"
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <Font cssVariable="--font-irregardless" />
+    <Font cssVariable="--font-obviously-compressed" />
+    <Font cssVariable="--font-obviously-narrow" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Silkscreen&family=BBH+Bartle&family=Fira+Code"
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=BBH+Bartle&family=Fira+Code"
     />
     <title>Brekkland</title>
   </head>
