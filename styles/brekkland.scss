@@ -16,25 +16,6 @@ body {
   color: color.$bg;
 }
 
-.grid {
-  background-image:
-    top left
-      repeating-linear-gradient(
-        to left,
-        rgb(cyan, 0.2) 0,
-        rgb(cyan, 0.2) 1px,
-        transparent 1px,
-        transparent 1rem
-      ),
-    repeating-linear-gradient(
-      to bottom,
-      rgb(cyan, 0.2) 0,
-      rgb(cyan, 0.2) 1px,
-      transparent 1px,
-      transparent 1rem
-    );
-}
-
 @keyframes MoveScaleUpInitial {
   to {
     transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
@@ -76,86 +57,6 @@ $navHeight: max(22vh, 24rem);
   }
 }
 
-@mixin cssGrid(
-  $a: color.$stripe-one,
-  $b: color.$stripe-two,
-  $gridSize: 1.2rem,
-  $gridLineSize: 1px,
-  $rotA: 0deg,
-  $rotB: 90deg
-) {
-  background-image:
-    repeating-linear-gradient(
-      $rotA,
-      $a 0 calc($gridSize - $gridLineSize),
-      $b calc($gridSize - $gridLineSize) $gridSize
-    ),
-    repeating-linear-gradient(
-      $rotB,
-      $a 0 calc($gridSize - $gridLineSize),
-      $b calc($gridSize - $gridLineSize) $gridSize
-    );
-}
-
-@mixin trisquare(
-  $tri1: color.$c1,
-  $tri2: color.$c2,
-  $square: color.$c3,
-  $size: max(7vw, 7vh)
-) {
-  background-image:
-    conic-gradient(from 15deg at 86.6%, $square 25%, $tri2 0 150deg, #0000 0),
-    conic-gradient(
-      from -75deg at 50% 13.39%,
-      $tri1 60deg,
-      $square 0 150deg,
-      $tri2 0 210deg,
-      #0000 0
-    ),
-    conic-gradient(
-      from 15deg at 36.6% 63.4%,
-      $tri1 60deg,
-      $square 0 150deg,
-      $tri1 0 210deg,
-      $tri2 0 75%,
-      $square 0
-    );
-  background-size: $size $size;
-}
-
-@keyframes brekkLikeBrekkfast {
-  0%,
-  100% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2};
-    --blHeaderSquare: #{color.$blHeaderSquare};
-  }
-
-  50% {
-    --blHeaderTriangle: #{color.$blHeaderTriangle_b};
-    --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
-    --blHeaderSquare: #{color.$blHeaderSquare_b};
-  }
-}
-
-@property --blHeaderTriangle {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: black;
-}
-
-@property --blHeaderTriangle2 {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: black;
-}
-
-@property --blHeaderSquare {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: white;
-}
-
 // based on https://codepen.io/t_afif/pen/oNdKYge
 
 @keyframes static {
@@ -182,54 +83,12 @@ $navHeight: max(22vh, 24rem);
   // padding: 1rem 1rem 0;
   font-family: "BBH Bartle", sans-serif;
   font-size: 1rem;
-
-  --s: 8vw;
-  --c2: black;
-  --c1: white;
-  --_g: transparent 90deg, var(--c1) 0;
-
   background:
     repeating-radial-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 50%
       0/150rem 150rem,
     repeating-conic-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 60%
       60%/150rem 150rem;
   background-blend-mode: difference;
-
-  // filter: blur(1px);
-  // animation: static 20s infinite alternate ease-in;
-  // animation-play-state: paused;
-
-  /*
-  background-size: var(--s) var(--s), calc(var(--s)/5) calc(var(--s)/5);
-  background-image:
-    conic-gradient(
-      from 15deg at 86.6%,
-      var(--blHeaderSquare) 25%,
-      var(--blHeaderTriangle2) 0 150deg,
-      #0000 0
-    ),
-    conic-gradient(
-      from -75deg at 50% 13.39%,
-      var(--blHeaderTriangle) 60deg,
-      var(--blHeaderSquare) 0 150deg,
-      var(--blHeaderTriangle2) 0 210deg,
-      #0000 0
-    ),
-    conic-gradient(
-      from 15deg at 36.6% 63.4%,
-      var(--blHeaderTriangle) 60deg,
-      var(--blHeaderSquare) 0 150deg,
-      var(--blHeaderTriangle) 0 210deg,
-      var(--blHeaderTriangle2) 0 75%,
-      var(--blHeaderSquare) 0
-    );
-
-  background-size: var(--blHeaderSize) var(--blHeaderSize);
-  */
-  // animation-play-state: paused;
-  &:hover {
-    // animation-play-state: running;
-  }
 
   // @include cssGrid(
   //   $b: color.$fg,
@@ -257,7 +116,7 @@ $navHeight: max(22vh, 24rem);
     margin-top: 1rem;
     width: 100%;
     max-width: 28rem;
-    fill: black;
+    fill: color.$bg;
 
     @media screen and (prefers-reduced-motion: no-preference) {
       transition:
@@ -280,7 +139,7 @@ $navHeight: max(22vh, 24rem);
       fill: transparent;
 
       &--swapped {
-        fill: black;
+        fill: color.$bg;
       }
 
       @media screen and (prefers-reduced-motion: no-preference) {
@@ -352,11 +211,6 @@ $navHeight: max(22vh, 24rem);
     @media screen and (prefers-reduced-motion: no-preference) {
       transition: transform 0.4s ease-in-out;
     }
-  }
-
-  &__speech-bubble {
-    fill: color.$fg;
-    max-width: 5rem;
   }
 
   &__link {
@@ -460,23 +314,7 @@ $navHeight: max(22vh, 24rem);
   @media screen and (prefers-reduced-motion: no-preference) {
     transition:
       background 1s ease-out,
-      background-size 1s ease-out,
-      --blheadertriangle 0.15s ease-in,
-      --blheadertriangle2 0.3s ease-in,
-      --blheadersquare 0.6s ease-in;
-  }
-
-  @media screen and (min-width: breakpoint.$medium) {
-    /*
-    &:hover {
-      --blHeaderTriangle: #{color.$blHeaderTriangle_b};
-      --blHeaderTriangle2: #{color.$blHeaderTriangle2_b};
-      --blHeaderSquare: #{color.$blHeaderSquare_b};
-      @media screen and (prefers-reduced-motion: no-preference) {
-        background-size: 7vw 7vw;
-      }
-    }
-    */
+      background-size 1s ease-out;
   }
 }
 

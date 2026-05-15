@@ -22,15 +22,30 @@
 
     align-items: flex-start;
     position: relative;
+    width: 100%;
   }
 
-  &__title {
+  &__title,
+  &__second-title {
     font-family: var(--font-obviously-compressed);
     margin: 0;
     font-size: 6rem;
     line-height: 6rem;
-    padding: 0;
     text-transform: uppercase;
+    padding: 0.5rem;
+
+    // text-align: center;
+    width: calc(100% - 1rem);
+  }
+
+  &__second-title {
+    height: 0.1rem;
+    transform: scaleX(0.0000001);
+    opacity: 0;
+    transition:
+      height 0.3s ease-out,
+      transform 0.3s ease-out,
+      opacity 0.15s ease-out;
   }
 
   &__heading-link {
@@ -119,6 +134,7 @@
 
       // order: 1;
       display: flex;
+      position: relative;
 
       h1,
       h2,
@@ -133,24 +149,46 @@
         // font-size: 1rem;
         text-transform: uppercase;
         margin: 0;
+        overflow: hidden;
 
         a {
           @extend %flexRow;
 
           color: color.$bg;
-          justify-content: flex-start;
+          justify-content: space-between;
+          align-items: center;
           text-decoration: none;
+          order: 1;
+          position: relative;
 
-          &::after {
+          &::before {
             @extend %flexCol;
 
-            margin-left: 0.5rem;
-            content: "#";
+            top: -2rem;
+            right: 0.5rem;
+            width: 1.25em;
+            height: 1.25em;
+            position: absolute;
+            content: "";
+            background-image: url("/svg/anchor.svg");
+            background-size: 0.75em;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 100%;
+            font-size: 0.75em;
+            transition:
+              background 0.3s ease-out,
+              top 0.2s ease-out,
+              opacity 0.3s ease-out;
+            opacity: 0;
+            order: 2;
           }
 
           &:hover {
-            &::after {
-              color: color.$highlight;
+            &::before {
+              opacity: 1;
+              top: 0.45em;
+              background-color: color.$fg;
             }
           }
         }
@@ -162,19 +200,19 @@
     }
 
     h3 {
-      font-size: 2.75rem;
+      font-size: 2.8rem;
     }
 
     h4 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
     }
 
     h5 {
-      font-size: 2rem;
+      font-size: 2.4rem;
     }
 
     h6 {
-      font-size: 1.5rem;
+      font-size: 2.2rem;
     }
 
     &--details {
