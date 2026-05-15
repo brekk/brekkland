@@ -42,38 +42,40 @@ interface HeadingType {
   </section>
   <section class={bem("section", "details")}>
     <strong class={bem("second-title")}>{title}</strong>
-    <div class={bem("row", "badges")}>
-      <Badge m={[hasBinary ? "tool" : "library"]}>
-        {hasBinary ? "Tool" : "Library"}
-      </Badge>
-    </div>
-    <div class={bem("row", "version")}>
-      <strong class={bem("label", "version")}>Version</strong>
-      {version}
-    </div>
-
-    <div class={bem("row", "tags")}>
-      <strong class={bem("label", "tags")}>Tags</strong>
-      <div class={bem("tag-wrapper")}>
-        {tags.map((t: string) => <Tag value={t} />)}
+    <div class={bem("rows")}>
+      <div class={bem("row", "badges")}>
+        <Badge m={[hasBinary ? "tool" : "library"]}>
+          {hasBinary ? "Tool" : "Library"}
+        </Badge>
       </div>
-    </div>
-    <div class={bem("row", "explorer")}>
-      <strong class={bem("label", "headings")}>Explore</strong>
-      <ol class={bem("headings-list")}>
-        {
-          headings.map((h: HeadingType) => {
-            const sizeCl = `size-${h.depth}`
-            return (
-              <li class={bem("heading-list-item", [sizeCl])}>
-                <a class={bem("heading-link", [sizeCl])} href={`#${h.slug}`}>
-                  {h.text}
-                </a>
-              </li>
-            )
-          })
-        }
-      </ol>
+      <div class={bem("row", "version")}>
+        <strong class={bem("label", "version")}>Version</strong>
+        {version}
+      </div>
+
+      <div class={bem("row", "tags")}>
+        <strong class={bem("label", "tags")}>Tags</strong>
+        <div class={bem("tag-wrapper")}>
+          {tags.map((t: string) => <Tag value={t} />)}
+        </div>
+      </div>
+      <div class={bem("row", "explorer")}>
+        <strong class={bem("label", "headings")}>Explore</strong>
+        <ol class={bem("headings-list")}>
+          {
+            headings.map((h: HeadingType) => {
+              const sizeCl = `size-${h.depth}`
+              return (
+                <li class={bem("heading-list-item", [sizeCl])}>
+                  <a class={bem("heading-link", [sizeCl])} href={`#${h.slug}`}>
+                    {h.text}
+                  </a>
+                </li>
+              )
+            })
+          }
+        </ol>
+      </div>
     </div>
   </section>
   <section class={bem("section", "usage")}>
