@@ -1,6 +1,7 @@
 ---
 import "@/components/Project.scss"
 import ArrowUp from "#/public/svg/arrow.svg"
+import GithubLogo from "#/public/svg/github-black.svg"
 import Badge from "@/components/Badge.astro"
 import blem from "#/utilities/blem"
 const bem = blem("Project")
@@ -29,6 +30,7 @@ interface HeadingType {
   slug: string
   text: string
 }
+const domainRepo = "github.com"
 ---
 
 <main class={bem("")}>
@@ -48,6 +50,17 @@ interface HeadingType {
         <Badge m={[hasBinary ? "tool" : "library"]}>
           {hasBinary ? "Tool" : "Library"}
         </Badge>
+      </div>
+      <div class={bem("row", "repo")}>
+        <strong class={bem("label", "repo")}>Source</strong>
+        <a
+          class={bem("repo-link")}
+          href={"//" + domainRepo + repo}
+          aria-label="Go to code repository"
+        >
+          <GithubLogo class={bem("icon", "github")} />
+          <span class={bem("repo-text")}>{repo}</span>
+        </a>
       </div>
       <div class={bem("row", "version")}>
         <strong class={bem("label", "version")}>Version</strong>
