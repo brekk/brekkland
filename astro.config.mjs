@@ -44,6 +44,20 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.local(),
+      name: "Fira Code",
+      cssVariable: "--font-fira-code",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/FiraCode-VF.woff2"],
+            weight: "regular",
+            style: "normal",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
       name: "Irregardless",
       cssVariable: "--font-irregardless",
       options: {
@@ -125,12 +139,7 @@ export default defineConfig({
       resources: ["'self'", "https://giscus.app"],
     },
     frameDirective: {
-      resources: [
-        "'self'",
-        "https://www.youtube.com",
-        "https://giscus.app",
-        "https://platform.twitter.com",
-      ],
+      resources: ["'self'", "https://www.youtube.com", "https://giscus.app"],
     },
   },
   devToolbar: {
