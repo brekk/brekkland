@@ -1,5 +1,6 @@
 ---
 import "@/components/Project.scss"
+import Tags from "@/components/Tags.astro"
 import ArrowUp from "#/public/svg/arrow.svg"
 import MagicDate from "@/components/Date.tsx"
 import GithubLogo from "#/public/svg/github-black.svg"
@@ -59,7 +60,7 @@ const domainRepo = "github.com"
         <div class={bem("label", "repo")}>Source</div>
         <a
           class={bem("repo-link")}
-          href={"//" + domainRepo + repo}
+          href={"//" + domainRepo + "/" + repo}
           aria-label="Go to code repository"
         >
           <GithubLogo class={bem("icon", "github")} />
@@ -80,9 +81,7 @@ const domainRepo = "github.com"
       </div>
       <div class={bem("row", "tags")}>
         <div class={bem("label", "tags")}>Tags</div>
-        <div class={bem("tag-wrapper")}>
-          {tags.map((t: string) => <Tag value={t} />)}
-        </div>
+        <Tags tags={tags} />
       </div>
       <div class={bem("row", "explorer")}>
         <div class={bem("label", "headings")}>

@@ -1,0 +1,11 @@
+@use "../../styles/_flex";
+
+.Tags {
+  @extend %flexRow;
+
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}

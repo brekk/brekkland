@@ -1,0 +1,14 @@
+---
+import "@/components/Tags.scss"
+import Tag from "@/components/Tag.astro"
+import blem from "#/utilities/blem"
+const bem = blem("Tags")
+interface Props {
+  tags: string[]
+}
+const { tags } = Astro.props
+---
+
+<div class={bem("")}>
+  {tags.map((t: string) => <Tag value={t} />)}
+</div>
