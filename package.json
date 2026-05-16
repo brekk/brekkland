@@ -20,6 +20,7 @@
     "@astrojs/react": "5.0.3",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
+    "@js-temporal/polyfill": "^0.5.1",
     "@lucide/astro": "1.8.0",
     "@nanostores/react": "1.1.0",
     "@swup/astro": "^1.8.0",

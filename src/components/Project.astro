@@ -1,6 +1,7 @@
 ---
 import "@/components/Project.scss"
 import ArrowUp from "#/public/svg/arrow.svg"
+import MagicDate from "@/components/Date.tsx"
 import GithubLogo from "#/public/svg/github-black.svg"
 import Badge from "@/components/Badge.astro"
 import blem from "#/utilities/blem"
@@ -18,6 +19,8 @@ const {
   image,
   dependencies = [],
   related = [],
+  published,
+  updated,
   tags = [],
 } = data
 const {
@@ -45,6 +48,7 @@ const domainRepo = "github.com"
   </section>
   <section class={bem("section", "details")}>
     <strong class={bem("second-title")}>{title}</strong>
+
     <div class={bem("rows")}>
       <div class={bem("row", "badges")}>
         <Badge m={[hasBinary ? "tool" : "library"]}>
@@ -52,7 +56,7 @@ const domainRepo = "github.com"
         </Badge>
       </div>
       <div class={bem("row", "repo")}>
-        <strong class={bem("label", "repo")}>Source</strong>
+        <div class={bem("label", "repo")}>Source</div>
         <a
           class={bem("repo-link")}
           href={"//" + domainRepo + repo}
@@ -63,18 +67,34 @@ const domainRepo = "github.com"
         </a>
       </div>
       <div class={bem("row", "version")}>
-        <strong class={bem("label", "version")}>Version</strong>
+        <div class={bem("label", "version")}>Version</div>
         {version}
       </div>
-
+      <div class={bem("row", ["date", "published"])}>
+        <div class={bem("label", ["date", "published"])}>Published</div>
+        <MagicDate isoString={published} />
+      </div>
+      <div class={bem("row", ["date", "updated"])}>
+        <div class={bem("label", ["date", "updated"])}>Last Updated</div>
+        <MagicDate isoString={updated} />
+      </div>
       <div class={bem("row", "tags")}>
-        <strong class={bem("label", "tags")}>Tags</strong>
+        <div class={bem("label", "tags")}>Tags</div>
         <div class={bem("tag-wrapper")}>
           {tags.map((t: string) => <Tag value={t} />)}
         </div>
       </div>
       <div class={bem("row", "explorer")}>
-        <strong class={bem("label", "headings")}>Explore</strong>
+        <div class={bem("label", "headings")}>
+          Jump to
+          <a
+            class={bem("scroll-to-top")}
+            href="#body"
+            aria-label="Scroll document to top"
+            ><ArrowUp class={bem("svg", "arrow")} /></a
+          >
+        </div>
+
         <ol class={bem("headings-list")}>
           {
             headings.map((h: HeadingType) => {
@@ -90,12 +110,6 @@ const domainRepo = "github.com"
           }
         </ol>
       </div>
-      <a
-        class={bem("scroll-to-top")}
-        href="#body"
-        aria-label="Scroll document to top"
-        ><ArrowUp class={bem("svg", "arrow")} /></a
-      >
     </div>
   </section>
   <section class={bem("section", "usage")}>
