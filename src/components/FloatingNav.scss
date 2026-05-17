@@ -1,0 +1,22 @@
+@use "../../styles/_color" as color;
+@use "../../styles/_media" as breakpoint;
+@use "../../styles/_flex";
+
+.FloatingNav {
+  @extend %flexRow;
+
+  height: 2rem;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 color.$bg;
+  width: calc(100% - 1rem);
+  padding: 0.25rem 0.5rem;
+  position: sticky;
+
+  // important to make sticky work in grid
+  align-self: start;
+  top: 0;
+
+  // svg {
+  // fill: color.$fg;
+  // }
+}

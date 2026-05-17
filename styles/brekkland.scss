@@ -20,11 +20,7 @@ body {
   h4,
   h5,
   h6 {
-    // font-family: "BBH Bartle";
-    // font-family: Irregardless;
     font-family: var(--font-obviously-narrow);
-
-    // font-size: 1rem;
     text-transform: uppercase;
     margin: 0;
   }
@@ -55,5 +51,16 @@ body {
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
+  }
+}
+
+.Brekkland {
+  @extend %flexCol;
+
+  position: relative;
+
+  &__header {
+    display: flex;
+    width: 100%;
   }
 }

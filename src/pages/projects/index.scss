@@ -27,8 +27,8 @@
   &__project-listing {
     list-style: none;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem;
     margin: 0;
@@ -67,6 +67,11 @@
     position: relative;
   }
 
+  &__project-title {
+    text-decoration: none;
+    color: color.$fg;
+  }
+
   &__info {
     @extend %flexCol;
 
@@ -84,7 +89,10 @@
         color.$fg 0 0.0001%,
         color.$bg 0 0.002%
       );
-      color: color.$body;
+
+      .Projects__project-title {
+        color: color.$body;
+      }
     }
 
     &--unpublished {

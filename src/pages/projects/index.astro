@@ -23,7 +23,7 @@ import MagicDate from "@/components/Date"
           return (
           <li class={bem("project-card", status)}>
             <div class={bem("info", status)}>
-                <strong class={bem("project-title")}>{title ?? id}</strong>
+              <a href={link} class={bem("project-title")}>{title ?? id}</a>
               </div>
               <div class={bem("details")}>
                 <!--<Tags tags={tags} />-->

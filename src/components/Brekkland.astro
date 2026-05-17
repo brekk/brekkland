@@ -1,6 +1,7 @@
 ---
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
+import FloatingNav from "@/components/FloatingNav.astro"
 
 const bem = blem("Brekkland")
 import "#/styles/brekkland.scss"
@@ -12,5 +13,6 @@ import Guides from "@/components/Guides.astro"
   <header class={bem("header")}>
     <Nav />
   </header>
+  <FloatingNav />
   <slot />
 </div>
