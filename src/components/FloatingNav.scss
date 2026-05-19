@@ -15,6 +15,8 @@
   // important to make sticky work in grid
   align-self: start;
   top: 0;
+  background: color.$body;
+  z-index: 400;
 
   // svg {
   // fill: color.$fg;
