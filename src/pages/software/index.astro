@@ -1,7 +1,7 @@
 ---
 import Brekkland from "@/layouts/Brekkland.astro"
 import Tags from "@/components/Tags.astro"
-import "@/pages/projects/index.scss"
+import "@/pages/software/index.scss"
 import { getCollection } from "astro:content"
 const projects = await getCollection("projects")
 import blem from "#/utilities/blem"
@@ -18,7 +18,7 @@ import MagicDate from "@/components/Date"
     <ul class={bem("project-listing")}>
       {
       projects.map(({ id, data: { tags = [], updated, title, hasBinary, hypothetical } }) => {
-      const link = `/projects/${id}`
+      const link = `/software/${id}`
       const status = [hasBinary ? "tool" : "library", hypothetical ? "unpublished" : "published"]
           return (
           <li class={bem("project-card", status)}>

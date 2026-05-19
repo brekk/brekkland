@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 const { project } = Astro.props
 if (!project) {
-  return Astro.redirect("/projects", 404)
+  return Astro.redirect("/software", 404)
 }
 const { Content } = await render(project)
 ---
