@@ -1,6 +1,6 @@
-@use "../../styles/_color" as color;
-@use "../../styles/_media" as breakpoint;
-@use "../../styles/_flex";
+@use "../styles/_color" as color;
+@use "../styles/_media" as breakpoint;
+@use "../styles/_flex";
 
 .Project {
   display: grid;

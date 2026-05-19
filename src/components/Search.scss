@@ -1,8 +1,8 @@
-@use "../../styles/_flex";
-@use "../../styles/_color" as color;
-@use "../../styles/media" as breakpoint;
-@use "../../styles/button";
-@use "../../styles/layer" as layer;
+@use "../styles/_flex";
+@use "../styles/_color" as color;
+@use "../styles/media" as breakpoint;
+@use "../styles/button";
+@use "../styles/layer" as layer;
 
 .Search {
   @extend %flexRow;

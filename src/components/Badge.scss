@@ -1,5 +1,5 @@
-@use "../../styles/_flex";
-@use "../../styles/_color" as color;
+@use "../styles/_flex";
+@use "../styles/_color" as color;
 
 .Badge {
   @extend %flexRow;
@@ -8,10 +8,4 @@
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   width: calc(100% - 1rem);
-
-  &__icon {
-  }
-
-  &__text {
-  }
 }
