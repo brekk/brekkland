@@ -6,6 +6,12 @@
   @extend %flexCol;
 
   width: 100%;
+
+  // technically a bug, we ought to have a solution
+  // that doesn't use this
+  // or the hacky direct setter in `Project.astro`
+  // but we can fix it later
+  min-height: 100vh;
   position: relative;
   justify-content: flex-start;
 

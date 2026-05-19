@@ -37,7 +37,7 @@ interface HeadingType {
 const domainRepo = "github.com"
 ---
 
-<main class={bem("")}>
+<main class={bem("")} id="project">
   <div class={bem("wrapper")}>
     <section class={bem("section", "content")}>
       <header class={bem("header")}>
@@ -122,3 +122,18 @@ const domainRepo = "github.com"
     </section>
   </div>
 </main>
+
+<script>
+  const project = document.getElementById("project")
+  const slots = document.getElementsByClassName("Project__slot")
+  const full = window.outerHeight
+  if (project && slots.length > 0) {
+    const slot = slots[0]
+    // const height = project.getBoundingClientRect()?.height
+
+    const boxHeight = slot?.getBoundingClientRect()?.height
+    const minHeight = full >= boxHeight ? full : boxHeight
+    // @ts-ignore
+    project.style.minHeight = minHeight + "px"
+  }
+</script>
