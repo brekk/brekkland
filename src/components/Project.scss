@@ -3,20 +3,12 @@
 @use "../styles/_flex";
 
 .Project {
-  display: grid;
-  font-size: 1rem;
-  font-family: var(--font-fira-code);
+  @extend %flexCol;
 
-  // grid-template: "content" 1fr "details" 8fr "usage" 21fr / 1fr;
-  grid-template-areas: "content" "details" "usage";
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
-  position: relative;
   width: 100%;
-  max-width: 100%;
-  container: project / size;
-
-  // background-color: red;
+  height: 100%;
+  min-height: 100vh;
+  justify-content: flex-start;
 
   &__header {
     @extend %flexCol;
@@ -97,7 +89,7 @@
 
   &__title,
   &__second-title {
-    font-family: var(--font-obviously-compressed);
+    font-family: var(--font-obviously-narrow);
     margin: 0;
     font-size: 6rem;
     line-height: 6rem;
@@ -489,39 +481,54 @@
     }
   }
 
-  // @media screen and (min-width: breakpoint.$tiny) {
-  //   background: yellow;
-  // }
-  //
-  @media screen and (min-width: breakpoint.$small) {
-    // background: green;
-    grid-template-areas:
-      "content details"
-      "usage usage";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0fr;
-  }
-
-  @media screen and (min-width: breakpoint.$medium) {
-    // outline: 1px solid red;
-    grid-template-areas:
-      "content details"
-      "usage details";
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto 0fr;
+  &__wrapper {
+    display: grid;
+    font-size: 1rem;
+    font-family: var(--font-fira-code);
+    grid-template-areas: "content" "details" "usage";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
     position: relative;
-    width: 100vw;
-    max-width: 90rem;
-    margin: 0 auto;
-  }
+    width: 100%;
+    max-width: 100%;
+    container: project / size;
 
-  @media screen and (min-width: breakpoint.$large) {
-    max-width: 112rem;
+    // background-color: red;
 
-    &__section {
-      &--usage,
-      &--content {
-        font-size: 1.5rem;
+    // @media screen and (min-width: breakpoint.$tiny) {
+    //   background: yellow;
+    // }
+    //
+    @media screen and (min-width: breakpoint.$small) {
+      // background: green;
+      grid-template-areas:
+        "content details"
+        "usage usage";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 0fr;
+    }
+
+    @media screen and (min-width: breakpoint.$medium) {
+      // outline: 1px solid red;
+      grid-template-areas:
+        "content details"
+        "usage details";
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: auto 0fr;
+      position: relative;
+      width: 100vw;
+      max-width: 90rem;
+      margin: 0 auto;
+    }
+
+    @media screen and (min-width: breakpoint.$large) {
+      max-width: 112rem;
+
+      &__section {
+        &--usage,
+        &--content {
+          font-size: 1.5rem;
+        }
       }
     }
   }

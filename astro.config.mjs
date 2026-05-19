@@ -44,7 +44,7 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.local(),
-      name: "Fira Code",
+      name: "FiraCode",
       cssVariable: "--font-fira-code",
       options: {
         variants: [
@@ -52,20 +52,6 @@ export default defineConfig({
             src: ["./src/assets/fonts/FiraCode-VF.woff2"],
             weight: "regular",
             style: "normal",
-          },
-        ],
-      },
-    },
-    {
-      provider: fontProviders.local(),
-      name: "Irregardless",
-      cssVariable: "--font-irregardless",
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/Irregardless-BoldItalic.woff2"],
-            weight: "bold",
-            style: "italic",
           },
         ],
       },

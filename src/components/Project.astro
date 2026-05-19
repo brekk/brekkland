@@ -38,82 +38,87 @@ const domainRepo = "github.com"
 ---
 
 <main class={bem("")}>
-  <section class={bem("section", "content")}>
-    <header class={bem("header")}>
-      <h1 class={bem("title")}>{title}</h1>
+  <div class={bem("wrapper")}>
+    <section class={bem("section", "content")}>
+      <header class={bem("header")}>
+        <h1 class={bem("title")}>{title}</h1>
 
-      <p class={bem("description")}>
-        {description}
-      </p>
-    </header>
-  </section>
-  <section class={bem("section", "details")}>
-    <strong class={bem("second-title")}>{title}</strong>
+        <p class={bem("description")}>
+          {description}
+        </p>
+      </header>
+    </section>
+    <section class={bem("section", "details")}>
+      <strong class={bem("second-title")}>{title}</strong>
 
-    <div class={bem("rows")}>
-      <div class={bem("row", "badges")}>
-        <Badge m={[hasBinary ? "tool" : "library"]}>
-          {hasBinary ? "Tool" : "Library"}
-        </Badge>
-      </div>
-      <div class={bem("row", "repo")}>
-        <div class={bem("label", "repo")}>Source</div>
-        <a
-          class={bem("repo-link")}
-          href={"//" + domainRepo + "/" + repo}
-          aria-label="Go to code repository"
-        >
-          <GithubLogo class={bem("icon", "github")} />
-          <span class={bem("repo-text")}>{repo}</span>
-        </a>
-      </div>
-      <div class={bem("row", "version")}>
-        <div class={bem("label", "version")}>Version</div>
-        {version}
-      </div>
-      <div class={bem("row", ["date", "published"])}>
-        <div class={bem("label", ["date", "published"])}>Published</div>
-        <MagicDate isoString={published} />
-      </div>
-      <div class={bem("row", ["date", "updated"])}>
-        <div class={bem("label", ["date", "updated"])}>Last Updated</div>
-        <MagicDate isoString={updated} />
-      </div>
-      <div class={bem("row", "tags")}>
-        <div class={bem("label", "tags")}>Tags</div>
-        <Tags tags={tags} />
-      </div>
-      <div class={bem("row", "explorer")}>
-        <div class={bem("label", "headings")}>
-          Jump to
-          <a
-            class={bem("scroll-to-top")}
-            href="#body"
-            aria-label="Scroll document to top"
-            ><ArrowUp class={bem("svg", "arrow")} /></a
-          >
+      <div class={bem("rows")}>
+        <div class={bem("row", "badges")}>
+          <Badge m={[hasBinary ? "tool" : "library"]}>
+            {hasBinary ? "Tool" : "Library"}
+          </Badge>
         </div>
+        <div class={bem("row", "repo")}>
+          <div class={bem("label", "repo")}>Source</div>
+          <a
+            class={bem("repo-link")}
+            href={"//" + domainRepo + "/" + repo}
+            aria-label="Go to code repository"
+          >
+            <GithubLogo class={bem("icon", "github")} />
+            <span class={bem("repo-text")}>{repo}</span>
+          </a>
+        </div>
+        <div class={bem("row", "version")}>
+          <div class={bem("label", "version")}>Version</div>
+          {version}
+        </div>
+        <div class={bem("row", ["date", "published"])}>
+          <div class={bem("label", ["date", "published"])}>Published</div>
+          <MagicDate isoString={published} />
+        </div>
+        <div class={bem("row", ["date", "updated"])}>
+          <div class={bem("label", ["date", "updated"])}>Last Updated</div>
+          <MagicDate isoString={updated} />
+        </div>
+        <div class={bem("row", "tags")}>
+          <div class={bem("label", "tags")}>Tags</div>
+          <Tags tags={tags} />
+        </div>
+        <div class={bem("row", "explorer")}>
+          <div class={bem("label", "headings")}>
+            Jump to
+            <a
+              class={bem("scroll-to-top")}
+              href="#body"
+              aria-label="Scroll document to top"
+              ><ArrowUp class={bem("svg", "arrow")} /></a
+            >
+          </div>
 
-        <ol class={bem("headings-list")}>
-          {
-            headings.map((h: HeadingType) => {
-              const sizeCl = `size-${h.depth}`
-              return (
-                <li class={bem("heading-list-item", [sizeCl])}>
-                  <a class={bem("heading-link", [sizeCl])} href={`#${h.slug}`}>
-                    {h.text}
-                  </a>
-                </li>
-              )
-            })
-          }
-        </ol>
+          <ol class={bem("headings-list")}>
+            {
+              headings.map((h: HeadingType) => {
+                const sizeCl = `size-${h.depth}`
+                return (
+                  <li class={bem("heading-list-item", [sizeCl])}>
+                    <a
+                      class={bem("heading-link", [sizeCl])}
+                      href={`#${h.slug}`}
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                )
+              })
+            }
+          </ol>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class={bem("section", "usage")}>
-    <div class={bem("slot")}>
-      <slot />
-    </div>
-  </section>
+    </section>
+    <section class={bem("section", "usage")}>
+      <div class={bem("slot")}>
+        <slot />
+      </div>
+    </section>
+  </div>
 </main>
