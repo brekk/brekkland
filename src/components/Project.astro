@@ -129,9 +129,7 @@ const domainRepo = "github.com"
   const full = window.outerHeight
   if (project && slots.length > 0) {
     const slot = slots[0]
-    // const height = project.getBoundingClientRect()?.height
-
-    const boxHeight = slot?.getBoundingClientRect()?.height
+    const boxHeight = slot.getBoundingClientRect()?.height
     const minHeight = full >= boxHeight ? full : boxHeight
     // @ts-ignore
     project.style.minHeight = minHeight + "px"

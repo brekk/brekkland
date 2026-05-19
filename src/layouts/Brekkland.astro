@@ -1,6 +1,11 @@
 ---
 import Land from "@/components/Brekkland.astro"
 import { Font } from "astro:assets"
+import type { Breadcrumb } from "#/types/brekkland.ts"
+interface Props {
+  breadcrumbs?: Breadcrumb[]
+}
+const { breadcrumbs = [] } = Astro.props
 ---
 
 <!doctype html>
@@ -23,7 +28,7 @@ import { Font } from "astro:assets"
     <title>Brekkland</title>
   </head>
   <body id="body">
-    <Land>
+    <Land breadcrumbs={breadcrumbs}>
       <slot />
     </Land>
   </body>

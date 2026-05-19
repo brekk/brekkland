@@ -4,9 +4,24 @@ import Search from "@/components/Search.tsx"
 import "@/components/FloatingNav.scss"
 import blem from "#/utilities/blem"
 const bem = blem("FloatingNav")
+import type { Breadcrumb } from "#/types/brekkland.ts"
+interface Props {
+  breadcrumbs?: Breadcrumb[]
+}
+const { breadcrumbs = [] } = Astro.props
 ---
 
 <div class={bem("")}>
-  <div class={bem("breadcrumbs")}>Here</div>
+  {
+    breadcrumbs ? (
+      <div class={bem("breadcrumbs")}>
+        {breadcrumbs.map(({ name, path }) => (
+          <a class={bem("breadcrumb")} href={path}>
+            {name}
+          </a>
+        ))}
+      </div>
+    ) : null
+  }
   <Search client:load />
 </div>

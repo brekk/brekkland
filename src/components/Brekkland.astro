@@ -6,6 +6,11 @@ import FloatingNav from "@/components/FloatingNav.astro"
 const bem = blem("Brekkland")
 import "@/styles/brekkland.scss"
 import Guides from "@/components/Guides.astro"
+import type { Breadcrumb } from "#/types/brekkland.ts"
+interface Props {
+  breadcrumbs?: Breadcrumb[]
+}
+const { breadcrumbs = [] } = Astro.props
 ---
 
 <div id="brekkland" class={bem("")}>
@@ -13,6 +18,6 @@ import Guides from "@/components/Guides.astro"
   <header class={bem("header")}>
     <Nav />
   </header>
-  <FloatingNav />
+  <FloatingNav breadcrumbs={breadcrumbs} />
   <slot />
 </div>
