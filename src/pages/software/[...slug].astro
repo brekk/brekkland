@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from "astro:content"
 import Brekkland from "@/layouts/Brekkland.astro"
 import Project from "@/components/Project.astro"
+import DesignConstants from "#/design/constants"
 
 interface Props {
   project?: CollectionEntry<"projects">
@@ -15,12 +16,14 @@ export async function getStaticPaths() {
 }
 const { project } = Astro.props
 if (!project) {
-  return Astro.redirect("/software", 404)
+  return Astro.redirect(DesignConstants.path.SOFTWARE, 404)
 }
 const { Content } = await render(project)
 ---
 
-<Brekkland breadcrumbs={[{ name: "software", path: "/software" }]}>
+<Brekkland
+  breadcrumbs={[{ name: "software", path: DesignConstants.path.SOFTWARE }]}
+>
   <Project {...project}>
     <Content />
   </Project>

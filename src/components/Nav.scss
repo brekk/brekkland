@@ -71,12 +71,14 @@
 
   position: relative;
 
+  // top: 0;
+
   // max-width: 40rem;
   width: 100%;
   overflow: hidden;
-  z-index: layer.$user;
 
-  --accent: ;
+  // z-index: layer.$user;
+  z-index: 4001;
 
   // height: $navHeight;
   // padding: 1rem 1rem 0;
@@ -95,65 +97,6 @@
   //   $rotA: 30deg,
   //   $rotB: 100deg
   // );
-
-  &__logo-box {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    max-width: 28rem;
-    min-height: 4rem;
-    padding-bottom: 1rem;
-
-    @media screen and (min-width: breakpoint.$medium) {
-      padding-bottom: 0;
-    }
-  }
-
-  &__logo {
-    position: absolute;
-    margin-top: 1rem;
-    width: 100%;
-    max-width: 28rem;
-    fill: color.$bg;
-
-    @media screen and (prefers-reduced-motion: no-preference) {
-      transition:
-        transform 0.3s ease-out,
-        fill 0.1s ease-out;
-    }
-
-    &--swapped {
-      transform: translateY(-1rem);
-      fill: transparent;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        transition:
-          transform 0.3s ease-out,
-          fill 0.1s ease-out;
-      }
-    }
-
-    @media screen and (min-width: breakpoint.$small) {
-      fill: transparent;
-
-      &--swapped {
-        fill: color.$bg;
-      }
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        transform: translateY(1rem);
-
-        &--swapped {
-          transform: translateY(0);
-        }
-      }
-    }
-
-    @media screen and (min-width: breakpoint.$medium) {
-      margin-top: 0;
-    }
-  }
 
   &__locations {
     @extend %flexRow;

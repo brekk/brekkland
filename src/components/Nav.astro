@@ -1,23 +1,15 @@
 ---
 import "@/components/Nav.scss"
 import blem from "#/utilities/blem"
-import Logo from "@/assets/brekkland.svg"
-import LogoSwapped from "@/assets/brekkland-swapped.svg"
+import LogoBox from "@/components/LogoBox.astro"
+import DesignConstants from "#/design/constants"
 const bem = blem("Nav")
-const locations = Object.entries({
-  UI: "/ui",
-  Software: "/software",
-  Art: "/art",
-  Type: "/type",
-})
+const locations = Object.entries(DesignConstants.locations.nav)
 ---
 
 <nav class={bem("")}>
   <div class={bem("menu")}>
-    <div class={bem("logo-box")}>
-      <Logo class={bem("logo")} />
-      <LogoSwapped class={bem("logo", ["swapped"])} />
-    </div>
+    <LogoBox />
     <div class={bem("locations")}>
       <ul class={bem("menu-list")}>
         {

@@ -1,0 +1,15 @@
+---
+import blem from "#/utilities/blem"
+import "@/components/LogoBox.scss"
+import Logo from "@/assets/brekkland.svg"
+import LogoSwapped from "@/assets/brekkland-swapped.svg"
+const bem = blem("LogoBox")
+const { className = "", mods = [] } = Astro.props
+---
+
+<div class={className + " " + bem("", mods)}>
+  <div class={bem("wrapper")}>
+    <Logo class={bem("logo")} />
+    <LogoSwapped class={bem("logo", ["swapped"])} />
+  </div>
+</div>

@@ -1,4 +1,5 @@
 ---
+import LogoBox from "@/components/LogoBox.astro"
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 import FloatingNav from "@/components/FloatingNav.astro"
@@ -14,6 +15,7 @@ const { breadcrumbs = [] } = Astro.props
 ---
 
 <div id="brekkland" class={bem("")}>
+  <LogoBox mods={["floating"]} />
   <!--<Guides />-->
   <header class={bem("header")}>
     <Nav />

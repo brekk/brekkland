@@ -7,18 +7,38 @@
 
   height: 2rem;
   justify-content: space-between;
-  box-shadow: 0 1px 0 color.$bg;
-  width: calc(100% - 1rem);
-  padding: 0.25rem 0.5rem;
+  align-items: center;
+
+  // box-shadow: 0 1px 0 color.$bg;
+  width: calc(100% - 2rem);
+  padding: 0.25rem 1rem;
   position: sticky;
+
+  // background-blend-mode: overlay;
+  // mix-blend-mode: screen;
+  // backdrop-filter: blur(10px) invert(100%);
+
+  background-color: color.$body;
 
   // important to make sticky work in grid
   align-self: start;
   top: 0;
-  background: color.$body;
+
+  // top: 14.75rem;
   z-index: 400;
+  opacity: 0.5;
+  background: lime;
 
   // svg {
   // fill: color.$fg;
   // }
+  &__breadcrumb {
+    font-family: var(--font-obviously-narrow);
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    text-decoration: none;
+    background-color: transparent;
+    color: color.$bg;
+    padding: 0.25rem 0.5rem;
+  }
 }

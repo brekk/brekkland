@@ -1,0 +1,108 @@
+@use "../styles/_flex";
+@use "../styles/_color" as color;
+@use "../styles/_media" as breakpoint;
+@use "../styles/_button";
+@use "../styles/_layer" as layer;
+
+.LogoBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  min-height: 4rem;
+  padding-bottom: 1rem;
+
+  @media screen and (min-width: breakpoint.$medium) {
+    padding-bottom: 0;
+  }
+
+  &__logo {
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 28rem;
+    fill: color.$bg;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 0.3s ease-out,
+        fill 0.1s ease-out;
+    }
+
+    &--swapped {
+      transform: translateY(-1rem);
+      fill: transparent;
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition:
+          transform 0.3s ease-out,
+          fill 0.1s ease-out;
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$small) {
+      fill: transparent;
+
+      &--swapped {
+        fill: color.$bg;
+      }
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transform: translateY(1rem);
+
+        &--swapped {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    @media screen and (min-width: breakpoint.$medium) {
+      margin-top: 0;
+    }
+  }
+}
+
+.LogoBox {
+  &--floating {
+    min-height: 0;
+    transform: scaleY(0.00001);
+
+    // line-height: 0;
+    z-index: 4000;
+    position: sticky;
+    top: 4rem;
+
+    &__wrapper {
+      position: relative;
+    }
+
+    .LogoBox__logo {
+      top: 0.5rem;
+      max-height: 2rem;
+
+      @media screen and (min-width: breakpoint.$medium) {
+        top: 1rem;
+      }
+    }
+  }
+
+  &--active {
+    transform: scaleY(1);
+    min-height: 2rem;
+    top: -0.75rem;
+  }
+}
+
+body {
+  &::before {
+    content: "";
+    width: 1px;
+    height: 100vh;
+    left: 50%;
+    position: fixed;
+    top: 0;
+    z-index: 5000;
+    background-color: lime;
+  }
+}
