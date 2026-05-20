@@ -1,18 +1,18 @@
 @property --color-fg {
   syntax: "<color>";
-  inherits: false;
+  inherits: true;
   initial-value: #ecf832;
 }
 
 @property --color-bg {
   syntax: "<color>";
-  inherits: false;
+  inherits: true;
   initial-value: #000;
 }
 
 @property --color-body {
   syntax: "<color>";
-  inherits: false;
+  inherits: true;
   initial-value: #fff;
 }
 
@@ -21,4 +21,13 @@
   inherits: false;
   initial-value: #0f0;
 }
+
+:root {
+  --color-fg: #ecf832;
+  --color-bg: #000;
+  --color-body: #fff;
+  --color-guide: #0f0;
+}
+
+
 

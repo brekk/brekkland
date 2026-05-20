@@ -74,9 +74,9 @@
   // max-width: 40rem;
   width: 100%;
   overflow: hidden;
+  z-index: layer.$user;
 
-  // z-index: layer.$user;
-  z-index: 4001;
+  // z-index: 4001;
 
   // height: $navHeight;
   // padding: 1rem 1rem 0;
@@ -149,6 +149,10 @@
 
     position: relative;
     list-style: none;
+
+    &--ui {
+      --color-fg: #ef1143;
+    }
   }
 
   &__link-icon {
