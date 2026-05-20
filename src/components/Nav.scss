@@ -93,7 +93,9 @@
         var(--color-fg) 0 0.0002%
       )
       60% 60%/150rem 150rem;
-  background-blend-mode: difference;
+
+  // background-blend-mode: difference;
+  background-blend-mode: overlay;
 
   // @include cssGrid(
   //   $b: var(--color-fg),

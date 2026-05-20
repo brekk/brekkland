@@ -108,6 +108,7 @@
   &__second-title {
     height: 0.01rem;
     pointer-events: none;
+    padding: 0 0.5rem;
 
     // transform: scaleX(0.0000001);
     opacity: 0;
@@ -121,12 +122,15 @@
 
     // important to make sticky work in grid
     align-self: start;
-    margin-top: 14rem;
-    top: 13rem;
 
     @media screen and (min-width: breakpoint.$medium) {
       pointer-events: all;
       opacity: 1;
+      margin-top: 14rem;
+      top: 13rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
       transition:
         height 0.3s ease-out,
         transform 0.3s ease-out,
