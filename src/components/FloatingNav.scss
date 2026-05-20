@@ -5,7 +5,7 @@
 .FloatingNav {
   @extend %flexRow;
 
-  height: 2rem;
+  height: 3rem;
   justify-content: space-between;
   align-items: center;
 
@@ -13,11 +13,6 @@
   width: calc(100% - 2rem);
   padding: 0.25rem 1rem;
   position: sticky;
-
-  // background-blend-mode: overlay;
-  // mix-blend-mode: screen;
-  // backdrop-filter: blur(10px) invert(100%);
-
   background-color: color.$body;
 
   // important to make sticky work in grid
@@ -26,13 +21,16 @@
 
   // top: 14.75rem;
   z-index: 400;
-  opacity: 0.5;
-  background: lime;
+
+  // opacity: 0.5;
+  // background: lime;
 
   // svg {
   // fill: color.$fg;
   // }
   &__breadcrumb {
+    @extend %flexCol;
+
     font-family: var(--font-obviously-narrow);
     text-transform: uppercase;
     font-size: 1.25rem;
@@ -40,5 +38,34 @@
     background-color: transparent;
     color: color.$bg;
     padding: 0.25rem 0.5rem;
+    transform: scaleY(0.0000001) translateY(-1rem);
+    pointer-events: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background 0.2s ease-out,
+        color 0.2s ease-out,
+        transform 0.2s ease-out;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background 0.2s ease-out,
+      color 0.2s ease-out;
+  }
+}
+
+.FloatingNav.active {
+  background-color: color.$fg;
+
+  .FloatingNav__breadcrumb {
+    color: color.$bg;
+    transform: scaleY(1) translateY(0);
+    pointer-events: all;
+  }
+
+  .Search__search-icon {
+    fill: color.$bg;
   }
 }

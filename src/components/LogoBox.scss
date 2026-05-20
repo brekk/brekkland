@@ -56,10 +56,6 @@
         }
       }
     }
-
-    @media screen and (min-width: breakpoint.$medium) {
-      margin-top: 0;
-    }
   }
 }
 
@@ -71,7 +67,7 @@
     // line-height: 0;
     z-index: 4000;
     position: sticky;
-    top: 4rem;
+    top: -4rem;
 
     &__wrapper {
       position: relative;
@@ -85,15 +81,27 @@
         top: 1rem;
       }
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 0.2s ease-out,
+        top 0.2s ease-out;
+    }
   }
 
-  &--active {
+  &.active {
     transform: scaleY(1);
     min-height: 2rem;
     top: -0.75rem;
+
+    @media screen and (min-width: breakpoint.$medium) {
+      top: -1.5rem;
+    }
   }
 }
 
+/*
+// the golden rule
 body {
   &::before {
     content: "";
@@ -103,6 +111,7 @@ body {
     position: fixed;
     top: 0;
     z-index: 5000;
-    background-color: lime;
+    background-color: gold;
   }
 }
+*/
