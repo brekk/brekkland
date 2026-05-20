@@ -535,12 +535,12 @@
       grid-template-rows: auto 0fr;
       position: relative;
       width: 100vw;
-      max-width: 90rem;
+      max-width: var(--width-b-medium-page-content-max, 90rem);
       margin: 0 auto;
     }
 
     @media screen and (min-width: breakpoint.$large) {
-      max-width: 112rem;
+      max-width: var(--width-b-large-page-content-max, 112rem);
 
       &__section {
         &--usage,

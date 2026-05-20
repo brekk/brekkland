@@ -1,0 +1,16 @@
+@property --width-b-medium-page-content-max {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 90rem;
+}
+
+@property --width-b-large-page-content-max {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 112rem;
+}
+
+:root {
+  --width-b-medium-page-content-max: 90rem;
+  --width-b-large-page-content-max: 110rem;
+}
