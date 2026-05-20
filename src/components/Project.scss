@@ -1,4 +1,3 @@
-@use "../styles/_color" as color;
 @use "../styles/_media" as breakpoint;
 @use "../styles/_flex";
 
@@ -48,7 +47,7 @@
 
     // top: -3rem;
     text-decoration: none;
-    color: color.$bg;
+    color: var(--color-bg);
     transition:
       color 0 ease-out,
       background 0 ease-out,
@@ -65,7 +64,7 @@
     // transform: scale(2);
 
     &:hover {
-      background-color: color.$fg;
+      background-color: var(--color-fg);
 
       .Project__svg--arrow {
         @media screen and (prefers-reduced-motion: no-preference) {
@@ -146,7 +145,7 @@
     // background: red;
 
     background: transparent;
-    color: color.$bg;
+    color: var(--color-bg);
     border-radius: 0.25rem;
     transition:
       background 0.15s ease-out,
@@ -156,7 +155,7 @@
       content: "";
       height: 0.25rem;
       width: 0.75rem;
-      background-color: color.$bg;
+      background-color: var(--color-bg);
       transition:
         background 0.3s ease-in,
         width 0.15s cubic-bezier(0.93, -0.39, 0.46, 1.23),
@@ -218,11 +217,11 @@
     }
 
     &:hover {
-      background: color.$fg;
-      color: color.$bg;
+      background: var(--color-fg);
+      color: var(--color-bg);
 
       &::before {
-        background-color: color.$bg;
+        background-color: var(--color-bg);
         border-radius: 100%;
         width: 0.35rem;
         height: 0.35rem;
@@ -272,7 +271,7 @@
         a {
           @extend %flexRow;
 
-          color: color.$bg;
+          color: var(--color-bg);
           justify-content: space-between;
           align-items: center;
           text-decoration: none;
@@ -306,7 +305,7 @@
             &::before {
               opacity: 1;
               top: 0.45em;
-              background-color: color.$fg;
+              background-color: var(--color-fg);
               transition:
                 background 0.4s 0.3s ease-out,
                 top 0.4s 0.2s ease-out,
@@ -332,8 +331,8 @@
 
       @media screen and (min-width: breakpoint.$medium) {
         // box-shadow:
-        //   -1px 0 0 color.$bg,
-        //   1px 0 0 color.$bg;
+        //   -1px 0 0 var(--color-bg),
+        //   1px 0 0 var(--color-bg);
         min-height: calc(100vh - 2rem);
         min-width: 20rem;
       }
@@ -344,7 +343,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: color.$body;
+    background-color: var(--color-body);
     z-index: 40;
 
     @extend %flexCol;
@@ -377,7 +376,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    background: color.$body;
+    background: var(--color-body);
     z-index: 40;
 
     @media screen and (min-width: breakpoint.$medium) {
@@ -396,8 +395,8 @@
 
     text-decoration: none;
 
-    // background-color: color.$fg;
-    color: color.$bg;
+    // background-color: var(--color-fg);
+    color: var(--color-bg);
     padding: 0.25rem;
     border-radius: 0.25rem;
     gap: 0.5rem;
@@ -406,7 +405,7 @@
       color 0.2s ease-out;
 
     &:hover {
-      background-color: color.$fg;
+      background-color: var(--color-fg);
     }
   }
 
@@ -438,7 +437,7 @@
   &__label {
     @extend %flexRow;
 
-    // background: color.$fg;
+    // background: var(--color-fg);
     width: 100%;
     font-family: var(--font-obviously-narrow);
 
@@ -462,14 +461,14 @@
     }
 
     code {
-      background: color.$bg;
-      color: color.$fg;
+      background: var(--color-bg);
+      color: var(--color-fg);
       padding: 0.125rem 0.25rem;
     }
 
     pre {
       padding: 1rem;
-      background: color.$bg !important;
+      background: var(--color-bg !important);
 
       // width: calc(100vw - 4rem);
       max-width: calc(100vw - 4rem);
@@ -479,7 +478,7 @@
 
         align-items: flex-start;
         background: transparent;
-        color: color.$fg;
+        color: var(--color-fg);
 
         span.line {
           @extend %flexRow;

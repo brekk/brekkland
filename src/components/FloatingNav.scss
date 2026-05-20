@@ -9,11 +9,11 @@
   justify-content: space-between;
   align-items: center;
 
-  // box-shadow: 0 1px 0 color.$bg;
+  // box-shadow: 0 1px 0 var(--color-bg);
   width: calc(100% - 2rem);
   padding: 0.25rem 1rem;
   position: sticky;
-  background-color: color.$body;
+  background-color: var(--color-body);
 
   // important to make sticky work in grid
   align-self: start;
@@ -26,7 +26,7 @@
   // background: lime;
 
   // svg {
-  // fill: color.$fg;
+  // fill: var(--color-fg);
   // }
   &__breadcrumb {
     @extend %flexCol;
@@ -36,7 +36,7 @@
     font-size: 1.25rem;
     text-decoration: none;
     background-color: transparent;
-    color: color.$bg;
+    color: var(--color-bg);
     padding: 0.25rem 0.5rem;
     transform: scaleY(0.0000001) translateY(-1rem);
     pointer-events: none;
@@ -57,15 +57,15 @@
 }
 
 .FloatingNav.active {
-  background-color: color.$fg;
+  background-color: var(--color-fg);
 
   .FloatingNav__breadcrumb {
-    color: color.$bg;
+    color: var(--color-bg);
     transform: scaleY(1) translateY(0);
     pointer-events: all;
   }
 
   .Search__search-icon {
-    fill: color.$bg;
+    fill: var(--color-bg);
   }
 }

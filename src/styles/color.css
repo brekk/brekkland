@@ -1,0 +1,24 @@
+@property --color-fg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ecf832;
+}
+
+@property --color-bg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #000;
+}
+
+@property --color-body {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+}
+
+@property --color-guide {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0f0;
+}
+

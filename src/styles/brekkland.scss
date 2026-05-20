@@ -1,7 +1,5 @@
 @use "flex";
-@use "color" as color;
 @use "media" as breakpoint;
-@use "button";
 @use "layer" as layer;
 
 html,
@@ -11,8 +9,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-fira-code), sans-serif;
-  background: color.$body;
-  color: color.$bg;
+  background: var(--color-body);
+  color: var(--color-bg);
   position: relative;
 
   // height: 100%;

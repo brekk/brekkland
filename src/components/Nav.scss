@@ -1,7 +1,6 @@
 @use "../styles/_flex";
 @use "../styles/_color" as color;
 @use "../styles/_media" as breakpoint;
-@use "../styles/_button";
 @use "../styles/_layer" as layer;
 
 %button {
@@ -84,14 +83,20 @@
   font-family: var(--font-obviously-narrow), sans-serif;
   text-transform: uppercase;
   background:
-    repeating-radial-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 50%
-      0/150rem 150rem,
-    repeating-conic-gradient(color.$bg 0 0.0001%, color.$fg 0 0.0002%) 60%
-      60%/150rem 150rem;
+    repeating-radial-gradient(
+        var(--color-bg) 0 0.0001%,
+        var(--color-fg) 0 0.0002%
+      )
+      50% 0/150rem 150rem,
+    repeating-conic-gradient(
+        var(--color-bg) 0 0.0001%,
+        var(--color-fg) 0 0.0002%
+      )
+      60% 60%/150rem 150rem;
   background-blend-mode: difference;
 
   // @include cssGrid(
-  //   $b: color.$fg,
+  //   $b: var(--color-fg),
   //   $gridSize: 1.8vw,
   //   $rotA: 30deg,
   //   $rotB: 100deg
@@ -157,7 +162,7 @@
   &__link {
     @extend %button;
 
-    color: color.$bg;
+    color: var(--color-bg);
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -173,7 +178,7 @@
     }
 
     &::before {
-      background: color.$fg;
+      background: var(--color-fg);
       width: 120%;
       padding-bottom: 120%;
       top: -110%;
@@ -235,7 +240,7 @@
     gap: 0.5rem;
     width: calc(100% - 2rem);
     padding: 0 1rem 1rem;
-    background-color: color.$fg;
+    background-color: var(--color-fg);
     z-index: layer.$user;
 
     @media screen and (prefers-reduced-motion: no-preference) {

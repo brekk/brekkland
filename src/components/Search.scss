@@ -1,7 +1,6 @@
 @use "../styles/_flex";
 @use "../styles/_color" as color;
 @use "../styles/media" as breakpoint;
-@use "../styles/button";
 @use "../styles/layer" as layer;
 
 .Search {
@@ -107,11 +106,12 @@
       outline: 1px solid black;
     }
 
-    background-color: color.$body;
-    box-shadow:
-      inset 0 0 1px color.$highlight,
-      0 0 1px color.$highlight,
-      0 0 5px color.$highlight;
+    background-color: var(--color-body);
+
+    // box-shadow:
+    //   inset 0 0 1px var(--color-highlight),
+    //   0 0 1px var(--color-highlight),
+    //   0 0 5px var(--color-highlight);
   }
 
   @media screen and (prefers-reduced-motion: no-preference) {

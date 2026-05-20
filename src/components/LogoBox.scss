@@ -1,7 +1,6 @@
 @use "../styles/_flex";
 @use "../styles/_color" as color;
 @use "../styles/_media" as breakpoint;
-@use "../styles/_button";
 @use "../styles/_layer" as layer;
 
 .LogoBox {
@@ -22,7 +21,7 @@
     margin-top: 1rem;
     width: 100%;
     max-width: 28rem;
-    fill: color.$bg;
+    fill: var(--color-bg);
 
     @media screen and (prefers-reduced-motion: no-preference) {
       transition:
@@ -45,7 +44,7 @@
       fill: transparent;
 
       &--swapped {
-        fill: color.$bg;
+        fill: var(--color-bg);
       }
 
       @media screen and (prefers-reduced-motion: no-preference) {

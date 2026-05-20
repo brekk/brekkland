@@ -33,7 +33,7 @@ const { breadcrumbs = [] } = Astro.props
   console.log("nav", nav)
   console.log("el", el)
   const active = "active"
-  const watchtower = (main: IntersectionObserverEntry) => (e: Event) => {
+  const watchtower = () => {
     const rect = el.getBoundingClientRect()
     if (rect.y < 1) {
       el.classList.add(active)
@@ -48,11 +48,10 @@ const { breadcrumbs = [] } = Astro.props
       { root: bod, rootMargin: "0px", threshold: 0 },
       ([main]) => {
         console.log("pewpew", main)
-        const watching = watchtower(main)
         if (main.isIntersecting) {
-          document.addEventListener("scroll", watching)
+          document.addEventListener("scroll", watchtower)
         } else {
-          document.removeEventListener("scroll", watching)
+          document.removeEventListener("scroll", watchtower)
         }
       },
     )

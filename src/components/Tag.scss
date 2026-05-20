@@ -10,8 +10,8 @@
     height 0.15s ease-in,
     border-radius 0.3s ease-out,
     box-shadow 0.3s ease-in;
-  background-color: color.$bg;
-  color: color.$fg;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -19,13 +19,13 @@
   box-shadow: 0 0 0 transparent;
 
   &:hover {
-    color: color.$bg;
-    background-color: color.$fg;
+    color: var(--color-bg);
+    background-color: var(--color-fg);
     box-shadow:
-      -1px 0 0 color.$bg,
-      1px 0 0 color.$bg,
-      0 -1px 0 color.$bg,
-      0 1px 0 color.$bg;
+      -1px 0 0 var(--color-bg),
+      1px 0 0 var(--color-bg),
+      0 -1px 0 var(--color-bg),
+      0 1px 0 var(--color-bg);
   }
 
   &__text {

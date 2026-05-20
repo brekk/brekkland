@@ -1,5 +1,6 @@
 ---
 import Land from "@/components/Brekkland.astro"
+import "@/styles/color.css"
 import { Font } from "astro:assets"
 import type { Breadcrumb } from "#/types/brekkland.ts"
 interface Props {
@@ -12,12 +13,13 @@ const { breadcrumbs = [] } = Astro.props
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <Font cssVariable="--font-obviously-compressed" />
     <Font cssVariable="--font-obviously-narrow" />
     <Font cssVariable="--font-fira-code" />

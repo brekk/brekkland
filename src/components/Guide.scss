@@ -17,7 +17,7 @@
   display: flex;
   width: 2px;
   background: transparent;
-  box-shadow: -1px 0 0 transparentize(color.$guide, 0.6);
+  box-shadow: -1px 0 0 transparentize(var(--color-guide), 0.6);
   transition: box-shadow 0.3s ease-in;
   cursor: crosshair;
 
@@ -28,13 +28,13 @@
     padding: 0.25rem;
     font-family: var(--font-fira-code);
     content: attr(data-label) ":" attr(data-size);
-    background-color: color.$guide;
+    background-color: var(--color-guide);
     opacity: 0;
     transition: opacity 0.3s ease-in;
   }
 
   &:hover {
-    box-shadow: -1px 0 0 color.$guide;
+    box-shadow: -1px 0 0 var(--color-guide);
 
     &::before {
       opacity: 1;
