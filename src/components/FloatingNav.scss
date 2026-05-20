@@ -6,7 +6,7 @@
   @extend %flexRow;
 
   height: 3rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 1px 0 var(--color-bg);
   width: calc(100% - 2rem);
@@ -20,6 +20,22 @@
 
   // top: 14.75rem;
   z-index: 400;
+
+  &__content {
+    @extend %flexRow;
+
+    width: 100%;
+    max-width: var(--width-b-medium-page-content-max, 90rem);
+    justify-content: space-between;
+
+    @media screen and (min-width: breakpoint.$large) {
+      max-width: var(--width-b-large-page-content-max, 112rem);
+    }
+  }
+
+  &__subcontent {
+    @extend %flexRow;
+  }
 
   // opacity: 0.5;
   // background: lime;

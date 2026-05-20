@@ -97,13 +97,6 @@
   // background-blend-mode: difference;
   background-blend-mode: overlay;
 
-  // @include cssGrid(
-  //   $b: var(--color-fg),
-  //   $gridSize: 1.8vw,
-  //   $rotA: 30deg,
-  //   $rotB: 100deg
-  // );
-
   &__locations {
     @extend %flexRow;
   }
