@@ -10,10 +10,24 @@ export const toLocal = curryN(2, (tz: string, isoString: string) => {
   return zdt.toString()
 })
 
-export const toLocalFromDate = curryN(2, (timeZone: string, d: Date) => {
-  return Temporal.Instant.from(d.toISOString())
-    .toZonedDateTimeISO(timeZone)
-    .toLocaleString()
+export const toLocalFromDateWithLangAndOpts = curryN(
+  4,
+  (
+    locale: string,
+    opts: Record<string, unknown>,
+    timeZone: string,
+    d: Date,
+  ) => {
+    return Temporal.Instant.from(d.toISOString())
+      .toZonedDateTimeISO(timeZone)
+      .toLocaleString(locale, opts)
+  },
+)
+export const toLocalFromDateWithOpts = toLocalFromDateWithLangAndOpts("en-US")
+export const toLocalFromDate = toLocalFromDateWithOpts({
+  year: "numeric",
+  month: "long",
+  calendar: "gregory",
 })
 
 export const hereDate = toLocalFromDate(
