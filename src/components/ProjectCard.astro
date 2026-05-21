@@ -19,38 +19,44 @@ const {
     hypothetical,
     published,
     repo,
+    version,
     description,
   },
 } = Astro.props
 const link = `/software/${id}`
 const status = [
+  id,
   hasBinary ? "tool" : "library",
   hypothetical ? "unpublished" : "published",
 ]
 ---
 
-<li class={bem("", status)}>
-  <a href={link} class={bem("link-wrapper", status)}>
-    <div class={bem("key", status)}>
-      <strong class={bem("title")}>{title ?? id}</strong>
-      <span class={bem("description")}>{description}</span>
-    </div>
-    <div class={bem("details")}>
-      <Row show={!!repo} mods={["repo"]}>
-        <GithubLogo />
-      </Row>
-    </div>
-    <div class={bem("meta")}>
-      <Row show={!!updated} mods={["date", "updated"]} textLabel="Updated">
-        {updated ? <MagicDate isoString={updated} /> : null}
-      </Row>
-      <Row
-        show={!!published}
-        mods={["date", "published"]}
-        textLabel="Published"
-      >
-        <MagicDate isoString={published} />
-      </Row>
-    </div>
-  </a>
-</li>
+<>
+  <li class={bem("", status)}>
+    <a href={link} class={bem("link-wrapper", status)}>
+      <div class={bem("key", status)}>
+        <strong class={bem("title")}>{title ?? id}</strong>
+        <span class={bem("version")}>{version}</span>
+        <span class={bem("description")}>{description}</span>
+      </div>
+      <div class={bem("details")}>
+        <Row show={!!updated} mods={["date", "updated"]} textLabel="Updated">
+          {updated ? <MagicDate isoString={updated} /> : null}
+        </Row>
+        <Row
+          show={!!published}
+          mods={["date", "published"]}
+          textLabel="Published"
+        >
+          <MagicDate isoString={published} />
+        </Row>
+      </div>
+      <div class={bem("meta")}></div>
+    </a>
+  </li>
+  <li class={bem("sugar", status)}>
+    <a class={bem("link", "repo")} href={"//github.com/" + repo}>
+      <GithubLogo />
+    </a>
+  </li>
+</>

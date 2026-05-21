@@ -13,9 +13,9 @@
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      background 0.5s 0.3s ease-out,
-      color 0.5s 0.3s ease-in,
-      box-shadow 0.5s 0.2s ease-out;
+      background 0.3s ease-out,
+      color 0.3s ease-in,
+      box-shadow 0.2s ease-out;
   }
 }
 
@@ -32,29 +32,23 @@
   }
 
   &__row {
-    @extend %flexRow;
+    @extend %flexCol;
 
-    justify-content: flex-start;
+    align-items: flex-start;
     gap: 0.5rem;
     list-style: none;
     margin: 0.25rem;
 
-    &--repo {
-      padding: 0;
-      margin: 0;
-      height: 2rem;
-      align-self: flex-end;
-
-      @media screen and (min-width: breakpoint.$small) {
-        place-self: flex-start flex-end;
-      }
+    @media screen and (min-width: breakpoint.$small) {
+      flex-direction: row;
+      justify-content: flex-start;
     }
   }
 
   &__link-wrapper {
     display: grid;
     grid-template-areas: "key details" "meta meta";
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: 2fr 1fr;
     text-decoration: none;
     color: var(--color-bg);
@@ -97,21 +91,6 @@
       1px 0 0 var(--color-bg),
       0 -1px 0 var(--color-bg);
     margin: 0;
-
-    svg {
-      max-width: 2rem;
-    }
-
-    @media screen and (min-width: breakpoint.$small) {
-      flex-direction: row;
-      justify-content: flex-end;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      svg {
-        transition: fill 0.6s 0.1s linear;
-      }
-    }
   }
 
   &__meta {
@@ -127,6 +106,47 @@
     @media screen and (min-width: breakpoint.$small) {
       flex-direction: row;
       justify-content: flex-start;
+    }
+  }
+}
+
+.ProjectCard {
+  &__sugar {
+    @extend %flexRow;
+
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    svg {
+      max-width: 2rem;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: fill 0.6s 0.1s linear;
+      }
+    }
+
+    .ProjectCard__link--repo {
+      @extend %flexRow;
+
+      text-align: right;
+      height: 2rem;
+      width: 2rem;
+
+      svg {
+        max-height: 2rem;
+        max-width: 2rem;
+      }
+
+      &:hover {
+        svg {
+          fill: var(--color-fg);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: color 0.6s 0.1s linear;
+      }
     }
   }
 }
