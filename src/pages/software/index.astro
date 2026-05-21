@@ -1,41 +1,25 @@
 ---
+import GithubLogo from "#/public/svg/github-black.svg"
 import Brekkland from "@/layouts/Brekkland.astro"
 import Tags from "@/components/Tags.astro"
-import "@/pages/software/index.scss"
+import "@/components/Projects.scss"
 import { getCollection } from "astro:content"
 const projects = await getCollection("projects")
 import blem from "#/utilities/blem"
 const bem = blem("Projects")
 import MagicDate from "@/components/Date"
+import ProjectCard from "@/components/ProjectCard.astro"
 ---
 
 <Brekkland>
-<main class={bem("")}>
-  <section class={bem("filter")}>
-    <h1 class={bem("title")}>Projects</h1>
-  </section>
-  <section class={bem("content")}>
-    <ul class={bem("project-listing")}>
-      {
-      projects.map(({ id, data: { tags = [], updated, title, hasBinary, hypothetical } }) => {
-      const link = `/software/${id}`
-      const status = [hasBinary ? "tool" : "library", hypothetical ? "unpublished" : "published"]
-          return (
-          <li class={bem("project-card", status)}>
-            <div class={bem("info", status)}>
-              <a href={link} class={bem("project-title")}>{title ?? id}</a>
-              </div>
-              <div class={bem("details")}>
-                <!--<Tags tags={tags} />-->
-                {updated ? <span class={bem("date", "last-updated")}>
-                  <MagicDate isoString={updated} />
-                </span> : null }
-              </div>
-            </li>
-          )
-        })
-      }
-    </ul>
-  </section>
+  <main class={bem("")}>
+    <section class={bem("filter")}>
+      <h1 class={bem("title")}>Projects</h1>
+    </section>
+    <section class={bem("content")}>
+      <ul class={bem("project-listing")}>
+        {projects.map((p) => <ProjectCard {...p} />)}
+      </ul>
+    </section>
   </main>
 </Brekkland>

@@ -1,36 +1,56 @@
 ---
+import GithubLogo from "#/public/svg/github-black.svg"
+import "@/components/ProjectCard.scss"
 import Brekkland from "@/layouts/Brekkland.astro"
 import Tags from "@/components/Tags.astro"
-import "@/pages/projects/index.scss"
 import { getCollection } from "astro:content"
 const projects = await getCollection("projects")
 import blem from "#/utilities/blem"
-const bem = blem("Projects")
+const bem = blem("ProjectCard")
 import MagicDate from "@/components/Date"
+import Row from "@/components/ProjectCardRow.astro"
 const {
   id,
-  data: { tags = [], updated, title, hasBinary, hypothetical },
+  data: {
+    tags = [],
+    updated,
+    title,
+    hasBinary,
+    hypothetical,
+    published,
+    repo,
+    description,
+  },
 } = Astro.props
-
-const link = `/projects/${id}`
+const link = `/software/${id}`
 const status = [
   hasBinary ? "tool" : "library",
   hypothetical ? "unpublished" : "published",
 ]
 ---
 
-<li class={bem("project-card", status)}>
-  <div class={bem("info", status)}>
-    <a href={link} class={bem("project-title")}>{title ?? id}</a>
-  </div>
-  <div class={bem("details")}>
-    <!--<Tags tags={tags} />-->
-    {
-      updated ? (
-        <span class={bem("date", "last-updated")}>
-          <MagicDate isoString={updated} />
-        </span>
-      ) : null
-    }
-  </div>
+<li class={bem("", status)}>
+  <a href={link} class={bem("link-wrapper", status)}>
+    <div class={bem("key", status)}>
+      <strong class={bem("title")}>{title ?? id}</strong>
+      <span class={bem("description")}>{description}</span>
+    </div>
+    <div class={bem("details")}>
+      <Row show={!!repo} mods={["repo"]}>
+        <GithubLogo />
+      </Row>
+    </div>
+    <div class={bem("meta")}>
+      <Row show={!!updated} mods={["date", "updated"]} textLabel="Updated">
+        {updated ? <MagicDate isoString={updated} /> : null}
+      </Row>
+      <Row
+        show={!!published}
+        mods={["date", "published"]}
+        textLabel="Published"
+      >
+        <MagicDate isoString={published} />
+      </Row>
+    </div>
+  </a>
 </li>

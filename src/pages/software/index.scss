@@ -1,7 +1,0 @@
-@use "../../styles/_flex";
-@use "../../styles/_color";
-@use "../../styles/_media" as breakpoint;
-
-.Projects {
-  @extend %flexCol;
-}

@@ -1,0 +1,17 @@
+---
+import blem from "#/utilities/blem"
+const bem = blem("ProjectCard")
+const { textLabel, show, mods } = Astro.props
+---
+
+{
+  show ? (
+    <div class={bem("row", mods)}>
+      {textLabel ? <strong class={bem("row-label")}>{textLabel}</strong> : null}
+      <slot name="label" />
+      <div class={bem("row-content")}>
+        <slot />
+      </div>
+    </div>
+  ) : null
+}
