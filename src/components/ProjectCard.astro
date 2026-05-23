@@ -21,8 +21,10 @@ const {
     repo,
     version,
     description,
+    size = 0,
   },
 } = Astro.props
+console.log("<><>", hasBinary, "@>@>@", size)
 const link = `/software/${id}`
 const status = [
   id,
@@ -51,7 +53,11 @@ const status = [
           <MagicDate isoString={published} />
         </Row>
       </div>
-      <div class={bem("meta")}></div>
+      <div class={bem("meta")}>
+        <Row show={!hasBinary && size > 0} mods={["library"]} textLabel="Size">
+          {size}KB
+        </Row>
+      </div>
     </a>
   </li>
   <li class={bem("sugar", status)}>

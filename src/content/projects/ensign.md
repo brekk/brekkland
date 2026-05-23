@@ -14,6 +14,7 @@ tags:
   - cli
 aliases: []
 id: ensign
+size: 83
 hasBinary: false
 hypothetical: false
 ---

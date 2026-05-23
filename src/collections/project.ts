@@ -11,6 +11,7 @@ export default defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
+      size: z.coerce.number().optional(),
       repo: z.string(),
       title: z.string(),
       description: z.string(),
