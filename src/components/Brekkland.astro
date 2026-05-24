@@ -3,6 +3,7 @@ import LogoBox from "@/components/LogoBox.astro"
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 import FloatingNav from "@/components/FloatingNav.astro"
+import SearchOverlay from "@/components/SearchOverlay.tsx"
 
 const bem = blem("Brekkland")
 import "@/styles/brekkland.scss"
@@ -15,6 +16,7 @@ const { breadcrumbs = [] } = Astro.props
 ---
 
 <div id="brekkland" class={bem("")}>
+  <SearchOverlay client:load />
   <LogoBox mods={["floating"]} />
   <!--<Guides />-->
   <header class={bem("header")}>

@@ -1,0 +1,56 @@
+@use "../styles/_flex";
+
+.SearchOverlay {
+  @extend %flexCol;
+
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  background-color: transparent;
+  top: 0;
+  z-index: 10000;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+
+  &--searching {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__wrapper {
+    @extend %flexCol;
+
+    justify-content: flex-start;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 10001;
+    background-color: transparent;
+    backdrop-filter: contrast(100%);
+  }
+
+  &__search-label {
+    font-family: var(--font-obviously-compressed);
+    font-size: 10rem;
+    line-height: 10rem;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__global-search {
+    padding: 0.25rem;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    font-size: 2rem;
+    font-family: var(--font-fira-code);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 0.23s ease-in;
+  }
+}

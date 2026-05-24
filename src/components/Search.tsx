@@ -16,14 +16,20 @@ import { exact, icon } from "@/components/Icons"
 import Magnifier from "@/components/SearchLogo"
 import { search, isSearching } from "@/stores/search.ts"
 
-
 const BASE = "Search"
 const bem = blem(BASE)
 
 const Search = () => {
   const $isSearching = useStore(isSearching)
   return (
-    <button className={bem("")} onClick={(e) => isSearching.set(true)}>
+    <button
+      className={bem("")}
+      onClick={(e) => {
+        e.preventDefault()
+        e.stopPropagation
+        isSearching.set(true)
+      }}
+    >
       <Magnifier className={bem("search-icon")} />
     </button>
   )

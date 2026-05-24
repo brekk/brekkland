@@ -1,6 +1,5 @@
 ---
 import Search from "@/components/Search.tsx"
-import SearchOverlay from "@/components/SearchOverlay.tsx"
 
 import "@/components/FloatingNav.scss"
 import blem from "#/utilities/blem"
@@ -31,5 +30,4 @@ const { breadcrumbs = [] } = Astro.props
       <Search client:load />
     </div>
   </div>
-  <SearchOverlay client:load />
 </div>
