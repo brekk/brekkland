@@ -1,16 +1,18 @@
 
 import blem from "#/utilities/blem"
 import "@/components/LogoBox.scss"
-import Logo from "@/assets/brekkland.svg"
-import LogoSwapped from "@/assets/brekkland-swapped.svg"
+import { Brekkland, Swapped } from "@/svg-components/Brekkland.tsx"
 const bem = blem("LogoBox")
+interface Props {
+  className?: string,
+  mods?: string[]
+}
 
-
-const LogoBox = ({ className, mods = [] }) => (
+const LogoBox = ({ className = '', mods = [] }: Props) => (
   <div className={className + " " + bem("", mods)}>
     <div className={bem("wrapper")}>
-      <Logo className={bem("logo")} />
-      <LogoSwapped className={bem("logo", ["swapped"])} />
+      <Brekkland className={bem("logo")} />
+      <Swapped className={bem("logo", ["swapped"])} />
     </div>
   </div>)
 

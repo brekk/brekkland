@@ -1,5 +1,5 @@
 import blem from "#/utilities/blem"
-import LogoBox from "@/components/LogoBox.astro"
+import LogoBox from "@/components/LogoBox.tsx"
 const bem = blem("SearchOverlay")
 import { search, isSearching } from "@/stores/search.ts"
 import { useStore } from "@nanostores/react"
@@ -18,7 +18,7 @@ const SearchOverlay = () => {
       }}
     >
       <div className={bem("wrapper")}>
-        <LogoBox mods={["floating"]} />
+        <LogoBox />
         <label className={bem("search-label")} htmlFor="global-search">
           Search
         </label>
