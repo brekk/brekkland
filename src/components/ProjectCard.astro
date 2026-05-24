@@ -41,7 +41,7 @@ const status = [
       <div class={bem("key", status)}>
         <strong class={bem("title")}>{title ?? id}</strong>
         <span class={bem("version")}>{version}</span>
-        <span class={bem("description")}>{description}</span>
+        <p class={bem("description")}>{description}</p>
       </div>
       <div class={bem("details")}>
         <Row show={!!updated} mods={["date", "updated"]} textLabel="Updated">
@@ -60,13 +60,14 @@ const status = [
           <BookType slot="label" />
           {size}KB
         </Row>
-        <Row show={hasBinary} mods={["hasBinary"]}>
+        <Row show={hasBinary} mods={["bin"]}>
           <SquareChevronRight slot="label" />{bin}</Row
         >
       </div>
     </a>
     <li class={bem("sugar", status)}>
       <a class={bem("link", "repo")} href={"//github.com/" + repo}>
+        <strong class={bem("sugar-label")}>Source</strong>
         <GithubLogo />
       </a>
     </li>

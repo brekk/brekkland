@@ -18,7 +18,6 @@ const SearchOverlay = () => {
       }}
     >
       <div className={bem("wrapper")}>
-        <LogoBox />
         <label className={bem("search-label")} htmlFor="global-search">
           Search
         </label>
@@ -28,7 +27,10 @@ const SearchOverlay = () => {
           placeholder="Search Brekk.land"
           id="global-search"
           defaultValue={$search}
-          onChange={(e) => search.set(e.target.value)}
+          onClick={(e) => e.stopPropagation()}
+          onChange={(e) => {
+            search.set(e.target.value)
+          }}
         />
       </div>
     </div>
