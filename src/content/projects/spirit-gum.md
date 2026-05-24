@@ -1,20 +1,23 @@
 ---
+size: 101
 repo: brekk/spirit-gum
 title: spirit-gum
 description: fugacious files in madlib
 version: v0.2.1
 isPublished: true
-hasBinary: false
 published: 01/01/2020
 updated: 01/01/2020
 tags:
   - file-transformer
   - tool
   - library
-hypothetical: false
 related:
   - pilcrow
   - clown-car
+aliases: []
+hasBinary: false
+hypothetical: false
+id: spirit-gum
 ---
 
 `spirit-gum` is a magical file processor. It allows you to take:

@@ -3,6 +3,7 @@ import GithubLogo from "#/public/svg/github-black.svg"
 import "@/components/ProjectCard.scss"
 import Brekkland from "@/layouts/Brekkland.astro"
 import Tags from "@/components/Tags.astro"
+import { SquareChevronRight, BookType } from "@lucide/astro"
 import { getCollection } from "astro:content"
 const projects = await getCollection("projects")
 import blem from "#/utilities/blem"
@@ -15,6 +16,7 @@ const {
     tags = [],
     updated,
     title,
+    bin = "",
     hasBinary,
     hypothetical,
     published,
@@ -54,15 +56,19 @@ const status = [
         </Row>
       </div>
       <div class={bem("meta")}>
-        <Row show={!hasBinary && size > 0} mods={["library"]} textLabel="Size">
+        <Row show={size > 0} mods={["library"]}>
+          <BookType slot="label" />
           {size}KB
         </Row>
+        <Row show={hasBinary} mods={["hasBinary"]}>
+          <SquareChevronRight slot="label" />{bin}</Row
+        >
       </div>
     </a>
-  </li>
-  <li class={bem("sugar", status)}>
-    <a class={bem("link", "repo")} href={"//github.com/" + repo}>
-      <GithubLogo />
-    </a>
+    <li class={bem("sugar", status)}>
+      <a class={bem("link", "repo")} href={"//github.com/" + repo}>
+        <GithubLogo />
+      </a>
+    </li>
   </li>
 </>

@@ -1,4 +1,5 @@
 ---
+bin: madlit
 repo: brekk/mad-literate
 title: mad-literate
 description: Literate programming in Madlib

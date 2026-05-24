@@ -1,9 +1,9 @@
 ---
+bin: pickaxe
 repo: brekk/pickaxe
 title: pickaxe
 description: Parse obsidian-style markdown in Madlib
 version: v0.0.0
-isPublished: false
 hasBinary: true
 related:
   - rage
@@ -12,7 +12,11 @@ updated: 01/01/2020
 tags:
   - cli
   - tool
+size: 12
+aliases: []
+id: pickaxe
 hypothetical: false
+isPublished: false
 ---
 
 

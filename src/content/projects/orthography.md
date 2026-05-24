@@ -1,4 +1,5 @@
 ---
+size: 24
 repo: brekk/orthograph
 description: string transformations
 title: orthograph
