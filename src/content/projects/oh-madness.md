@@ -1,4 +1,6 @@
 ---
+dependencies:
+  - Gambit
 size: 160
 repo: brekk/oh-madness
 title: oh-madness
@@ -10,9 +12,9 @@ tags:
   - games
   - playing-cards
 aliases: []
+id: oh-madness
 hasBinary: false
 hypothetical: false
-id: oh-madness
 isPublished: false
 ---
 

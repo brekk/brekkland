@@ -1,4 +1,9 @@
 ---
+dependencies:
+  - pilcrow
+  - orthography
+  - Study
+  - PartyBus
 repo: brekk/ensign
 title: ensign
 description: Argument parsing in Madlib

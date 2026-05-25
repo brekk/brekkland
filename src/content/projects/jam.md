@@ -3,8 +3,6 @@ repo: brekk/jam
 title: jam
 description: mounted files for storage-backed apps
 version: v0.0.0
-isPublished: false
-hasBinary: false
 published: 01/01/2020
 updated: 01/01/2020
 tags:
@@ -12,6 +10,10 @@ tags:
   - file
   - storage
 hypothetical: true
+aliases: []
+hasBinary: false
+id: jam
+isPublished: false
 ---
 
 Lazy-load a file-backed content store on application start

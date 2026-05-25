@@ -1,4 +1,10 @@
 ---
+dependencies:
+  - spirit-gum
+  - mad-at-json
+  - ensign
+  - Study
+  - PartyBus
 bin: madlit
 repo: brekk/mad-literate
 title: mad-literate

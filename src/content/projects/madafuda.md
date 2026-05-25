@@ -1,4 +1,6 @@
 ---
+dependencies:
+  - Study
 repo: brekk/madafuda
 title: madafuda
 description: Hanafuda gameplay written in Madlib
@@ -10,9 +12,9 @@ tags:
   - playing-cards
 size: 33
 aliases: []
+id: madafuda
 hasBinary: false
 hypothetical: false
-id: madafuda
 isPublished: false
 ---
 

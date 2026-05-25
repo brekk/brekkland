@@ -1,4 +1,7 @@
 ---
+dependencies:
+  - Study
+  - PartyBus
 repo: brekk/mad-at-json
 description: a working madlib.json spec
 title: mad-at-json

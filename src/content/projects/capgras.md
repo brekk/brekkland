@@ -1,4 +1,6 @@
 ---
+dependencies:
+  - Clinic
 bin: capgras
 repo: brekk/capgras
 title: capgras

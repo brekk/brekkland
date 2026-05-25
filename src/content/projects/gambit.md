@@ -1,4 +1,7 @@
 ---
+dependencies:
+  - Clinic
+  - MadDocCli
 repo: brekk/gambit
 title: gambit
 description: French-suited playing cards as a library

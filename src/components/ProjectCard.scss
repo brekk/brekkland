@@ -23,6 +23,7 @@
   width: 100%;
   list-style: none;
   position: relative;
+  margin-bottom: 0;
 
   &__title {
     font-family: var(--font-obviously-narrow);
@@ -203,8 +204,8 @@
         justify-content: flex-end;
         gap: 0.5rem;
         background-color: transparent;
-        padding: 0.5rem 0.25rem;
         text-decoration: none;
+        margin-top: 1px;
         color: var(--color-bg);
         transition:
           color 0 linear,
