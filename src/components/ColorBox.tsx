@@ -8,25 +8,40 @@ import { useStore } from "@nanostores/react"
 import type { PreinitializedWritableAtom } from "nanostores"
 interface Props {
   color: string
-  store: PreinitializedWritableAtom<string>
 }
 
-export const ColorBox = ({ color, store }: Props) => {
-  const $color = useStore(store)
-  return (
-    <div className={bem("")}>
-      <label htmlFor={`color-${color}`}>{color}</label>
-      <input
-        type="color"
-        id={`color-${color}`}
-        onChange={(e) => {
-          e.stopPropagation()
-          store.set(e.target.value)
-        }}
-      />
-      <input type="text" value={$color} readOnly />
-    </div>
-  )
+export const colorBoxWithStore =
+  <T = string,>(store: PreinitializedWritableAtom<T>, short: string, color: string) => {
+    const $color = useStore(store)
+    return (
+      <div className={bem("")}>
+        <label htmlFor={`color-${color}`}>{color}</label>
+        <input
+          type="color"
+          id={`color-${color}`}
+          defaultValue={$color as string}
+          onChange={(e) => {
+            // e.stopPropagation()
+            const val = e.target.value
+            store.set(val as T)
+            document.getElementById("body")?.style.setProperty(`--color-${short}`, val)
+          }}
+        />
+        <input type="text" value={$color as string} readOnly />
+      </div>
+    )
+  }
+
+interface ColorOnly {
+  color: string
 }
 
-export default ColorBox
+export const ColorBoxBg = () =>
+  colorBoxWithStore(colorBg, "bg", "Background")
+
+
+export const ColorBoxFg = () =>
+  colorBoxWithStore(colorFg, "fg", "Foreground")
+
+export const ColorBoxBody = () =>
+  colorBoxWithStore(colorBody, "body", "Body")

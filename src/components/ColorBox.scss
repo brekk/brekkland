@@ -1,8 +1,11 @@
 .ColorBox {
   display: flex;
   margin: 2rem;
-  position: sticky;
-  bottom: 2rem;
+  background: red;
+  position: relative;
+
+  // position: sticky;
+  // bottom: 2rem;
   background-color: white;
   padding: 1rem;
 }

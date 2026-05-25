@@ -1,6 +1,5 @@
 ---
-import ColorBox from "@/components/ColorBox.tsx"
-import { colorFg, colorBg, colorBody, palette } from "@/stores/colors"
+import { ColorBoxFg } from "@/components/ColorBox.tsx"
 import LogoBox from "@/components/LogoBox.astro"
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
@@ -18,17 +17,16 @@ const { breadcrumbs = [] } = Astro.props
 ---
 
 <div id="brekkland" class={bem("")}>
-  <SearchOverlay client:load />
+  <SearchOverlay client:only="react" />
   <LogoBox mods={["floating"]} />
   <!--<Guides />-->
   <header class={bem("header")}>
     <Nav />
-
-    <ColorBox color="Foreground" store={colorFg} client:load />
   </header>
   <FloatingNav breadcrumbs={breadcrumbs} />
 
   <slot />
+  <ColorBoxFg client:only="react" />
 </div>
 
 <script>
@@ -37,8 +35,6 @@ const { breadcrumbs = [] } = Astro.props
   const [el] = document.getElementsByClassName("FloatingNav")
   const [logoBox] = document.getElementsByClassName("LogoBox--floating")
   const [nav] = document.getElementsByClassName("Nav")
-  console.log("nav", nav)
-  console.log("el", el)
   const active = "active"
   const watchtower = () => {
     const rect = el.getBoundingClientRect()
@@ -54,7 +50,6 @@ const { breadcrumbs = [] } = Astro.props
     const go = watchWithOptions(
       { root: bod, rootMargin: "0px", threshold: 0 },
       ([main]) => {
-        console.log("pewpew", main)
         if (main.isIntersecting) {
           document.addEventListener("scroll", watchtower)
         } else {
