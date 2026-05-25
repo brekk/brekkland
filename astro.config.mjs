@@ -16,18 +16,18 @@ import {
   remarkImageCaptions,
 } from "./src/utils/internallinks.ts"
 import remarkCallouts from "./src/utils/remark-callouts.ts"
-import remarkImageGrids from "./src/utils/remark-image-grids.ts"
-import remarkMermaid from "./src/utils/remark-mermaid.ts"
+// import remarkImageGrids from "./src/utils/remark-image-grids.ts"
+// import remarkMermaid from "./src/utils/remark-mermaid.ts"
 import { remarkObsidianEmbeds } from "./src/utils/remark-obsidian-embeds.ts"
 import remarkBases from "./src/utils/remark-bases.ts"
 import remarkInlineTags from "./src/utils/remark-inline-tags.ts"
 import { remarkObsidianComments } from "./src/utils/remark-obsidian-comments.ts"
 import remarkObsidianImageSize from "./src/utils/remark-obsidian-image-size.ts"
-import remarkMath from "remark-math"
-import remarkReadingTime from "remark-reading-time"
+// import remarkMath from "remark-math"
+// import remarkReadingTime from "remark-reading-time"
 import remarkToc from "remark-toc"
 import remarkBreaks from "remark-breaks"
-import rehypeKatex from "rehype-katex"
+// import rehypeKatex from "rehype-katex"
 import rehypeMark from "./src/utils/rehype-mark.ts"
 import rehypeImageAttributes from "./src/utils/rehype-image-attributes.ts"
 import { rehypeNormalizeAnchors } from "./src/utils/rehype-normalize-anchors.ts"
@@ -190,12 +190,12 @@ export default defineConfig({
       // Bases directive (table-only v1)
       remarkBases,
       remarkImageCaptions,
-      remarkMath,
+      // remarkMath,
       remarkCallouts,
       remarkBreaks,
-      remarkImageGrids,
-      remarkMermaid,
-      [remarkReadingTime, {}],
+      // remarkImageGrids,
+      // remarkMermaid,
+      // [remarkReadingTime, {}],
       [
         remarkToc,
         {
@@ -207,7 +207,7 @@ export default defineConfig({
       ],
     ],
     rehypePlugins: [
-      rehypeKatex,
+      // rehypeKatex,
       rehypeMark,
       rehypeImageAttributes,
       [

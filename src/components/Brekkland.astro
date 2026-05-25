@@ -1,4 +1,6 @@
 ---
+import ColorBox from "@/components/ColorBox.tsx"
+import { colorFg, colorBg, colorBody, palette } from "@/stores/colors"
 import LogoBox from "@/components/LogoBox.astro"
 import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
@@ -21,8 +23,11 @@ const { breadcrumbs = [] } = Astro.props
   <!--<Guides />-->
   <header class={bem("header")}>
     <Nav />
+
+    <ColorBox color="Foreground" store={colorFg} client:load />
   </header>
   <FloatingNav breadcrumbs={breadcrumbs} />
+
   <slot />
 </div>
 
