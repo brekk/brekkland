@@ -157,6 +157,22 @@
 
     // so that we can keep our & target consistent
     .ProjectCard {
+      &__link-wrapper {
+        @extend %flexRow;
+
+        gap: 0.5rem;
+        transition: transform 0 ease-out;
+        transform: translateX(-1rem);
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition:
+            transform 0.15s ease-out,
+            background 0.15s ease-in;
+        }
+      }
+
       &__link--repo {
         @extend %flexRow;
 
@@ -178,7 +194,10 @@
         }
 
         &:hover {
-          background-color: var(--color-fg);
+          .ProjectCard__link-wrapper {
+            transform: translateX(0);
+            background-color: var(--color-fg);
+          }
         }
 
         @media (prefers-reduced-motion: no-preference) {

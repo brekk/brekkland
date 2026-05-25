@@ -39,7 +39,7 @@ const status = [
   <li class={bem("", status)}>
     <a href={link} class={bem("link-wrapper", status)}>
       <div class={bem("key", status)}>
-        <strong class={bem("title")}>{title ?? id}</strong>
+        <h2 class={bem("title")}>{title ?? id}</h2>
         <span class={bem("version")}>{version}</span>
         <p class={bem("description")}>{description}</p>
       </div>
@@ -67,8 +67,10 @@ const status = [
     </a>
     <li class={bem("sugar", status)}>
       <a class={bem("link", "repo")} href={"//github.com/" + repo}>
-        <strong class={bem("sugar-label")}>Source</strong>
-        <GithubLogo />
+        <div class={bem("link-wrapper")}>
+          <strong class={bem("sugar-label")}>Source</strong>
+          <GithubLogo />
+        </div>
       </a>
     </li>
   </li>
