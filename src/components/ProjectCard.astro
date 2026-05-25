@@ -16,6 +16,7 @@ const {
     tags = [],
     updated,
     title,
+    dependencies = [],
     bin = "",
     hasBinary,
     hypothetical,
@@ -63,6 +64,9 @@ const status = [
         <Row show={hasBinary} mods={["bin"]}>
           <SquareChevronRight slot="label" />{bin}</Row
         >
+        <div class={bem("badge", "dependencies")}>
+          {dependencies.length}
+        </div>
       </div>
     </a>
     <li class={bem("sugar", status)}>

@@ -4,6 +4,7 @@
 @use "../styles/_layer" as layer;
 
 .LogoBox {
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   position: relative;
