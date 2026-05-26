@@ -26,7 +26,6 @@ const { breadcrumbs = [] } = Astro.props
   <FloatingNav breadcrumbs={breadcrumbs} />
 
   <slot />
-  <ColorBoxFg client:only="react" />
 </div>
 
 <script>
