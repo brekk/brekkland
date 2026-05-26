@@ -18,16 +18,23 @@
   }
 
   &__swatch {
-    min-width: 100%;
+    // min-width: 100%;
 
-    --r: 10px;
+    // clip-path: polygon(50% 0%, 100% 0, 0 100%);
 
-    clip-path: polygon(50% 100%, 100% 0, 0 0);
+    // width: 4rem;
+    cursor: pointer;
+    aspect-ratio: cos(30deg);
+    clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
 
     // hex
     // aspect-ratio: 1 / cos(30deg);
     // clip-path: content-box polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
 
     // clip-path: content-box polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  &__popover {
+    transform: translateY(calc(-10vh + -1rem)) translateX(calc(-10vw - 0.5rem));
   }
 }

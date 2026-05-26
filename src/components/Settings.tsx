@@ -20,7 +20,9 @@ export const Settings = () => {
         <SlidersVertical />
       </button>
       <div className={bem("pane", activeClass)} onClick={() => /*$setVisible(false)}>*/ { }}>
+        <SlidersVertical className={bem("context-indicator")} />
         <div className={bem("wrapper", activeClass)}>
+
           <ColorBoxFg />
           <ColorBoxBg />
           <ColorBoxBody />

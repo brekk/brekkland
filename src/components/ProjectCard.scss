@@ -172,6 +172,7 @@
 
     svg {
       max-width: 2rem;
+      fill: var(--color-bg);
 
       @media (prefers-reduced-motion: no-preference) {
         transition: fill 0.6s 0.1s linear;

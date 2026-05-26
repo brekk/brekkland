@@ -9,18 +9,39 @@
     @extend %flexCol;
 
     justify-content: flex-start;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
+    width: 15rem;
+    height: 4rem;
     position: fixed;
     background-color: transparent;
-    left: 0;
-    top: 17rem;
+    left: calc(50% - 10rem);
+    bottom: 0.5rem;
     z-index: 10000;
     opacity: 0;
+    border-radius: 2rem;
 
     // backdrop-filter: blur(10px);
     pointer-events: none;
+    background:
+      repeating-radial-gradient(
+          var(--color-bg) 0 0.0001%,
+          var(--color-fg) 0 0.0002%
+        )
+        50% 0/150rem 150rem,
+      repeating-conic-gradient(
+          var(--color-bg) 0 0.0001%,
+          var(--color-fg) 0 0.0002%
+        )
+        60% 60%/150rem 150rem;
+    background-blend-mode: overlay;
+    box-shadow:
+      0.125rem 0 0 var(--color-body),
+      -0.125rem 0 0 var(--color-body),
+      0 -0.125rem 0 0 var(--color-body),
+      0 0.125rem 0 0 var(--color-body),
+      0.25rem 0 0 var(--color-bg),
+      -0.25rem 0 0 var(--color-bg),
+      0 -0.25rem 0 0 var(--color-bg),
+      0 0.25rem 0 0 var(--color-bg);
 
     &--active {
       opacity: 1;
@@ -37,10 +58,17 @@
 
     align-items: flex-start;
     position: absolute;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
+    min-height: 8rem;
     z-index: 10001;
     background-color: transparent;
+  }
+
+  &__context-indicator {
+    position: absolute;
+    stroke: var(--color-bg) !important;
+    left: -3rem;
+    top: 1rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
