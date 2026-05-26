@@ -8,4 +8,16 @@
   // bottom: 2rem;
   background-color: white;
   padding: 1rem;
+
+  &__picker {
+    display: flex;
+    min-height: 5vw;
+    min-width: 5vw;
+    width: 5vw;
+    height: 5vw;
+  }
+
+  &__swatch {
+    min-width: 100%;
+  }
 }

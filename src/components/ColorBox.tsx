@@ -1,45 +1,60 @@
 import "@/components/ColorBox.scss"
+import type { PreinitializedWritableAtom } from "nanostores"
+import React, { useCallback, useRef, useState } from "react"
+import { HexColorPicker } from "react-colorful"
+
+import { useClickAway } from "@uidotdev/usehooks"
 import type { ChangeEvent } from "react"
 import blem from "#/utilities/blem.ts"
-const bem = blem("ColorBox")
 
 import { colorFg, colorBg, colorBody, palette } from "@/stores/colors"
 import { useStore } from "@nanostores/react"
+const bem = blem("ColorBox")
 
-import type { PreinitializedWritableAtom } from "nanostores"
-
-export const colorBoxWithStore =
-  <T = string,>(store: PreinitializedWritableAtom<T>, short: string, color: string) => {
+export const makePicker =
+  (short: string, store: PreinitializedWritableAtom<string>, label: string) =>
+  () => {
     const $color = useStore(store)
+    const [$isOpen, $setIsOpen] = useState(false)
 
-    const onChange = (e: ChangeEvent<HTMLInputElement, HTMLInputElement>) => {
-      // e.stopPropagation()
-      const val = e.target.value
-      store.set(val as T)
-      document.getElementById("body")?.style.setProperty(`--color-${short}`, val)
+    const ref = useClickAway(() => {
+      $setIsOpen(false)
+    })
+    const onChange = (newColor: string) => {
+      store.set(newColor)
+      document
+        .getElementById("body")
+        ?.style.setProperty(`--color-${short}`, newColor)
     }
-    const label = `color-${color}`
+
     return (
-      <div className={bem("")}>
-        <label htmlFor={label}>{color}</label>
-        <input
-          type="color"
-          id={label}
-          defaultValue={$color as string}
-          onChange={onChange}
+      <div className={bem("picker")}>
+        <div
+          className={bem("swatch")}
+          style={{ backgroundColor: $color }}
+          onClick={() => $setIsOpen(true)}
         />
-        <input type="text" defaultValue={$color as string} onChange={onChange} />
+
+        {$isOpen && (
+          <div className={bem("popover")} ref={ref as any}>
+            <HexColorPicker color={$color} onChange={onChange} />
+          </div>
+        )}
       </div>
     )
   }
 
+export const ColorBoxBg = () => {
+  const C = makePicker("bg", colorBg, "Background")
+  return <C />
+}
 
-export const ColorBoxBg = () =>
-  colorBoxWithStore(colorBg, "bg", "Background")
+export const ColorBoxFg = () => {
+  const C = makePicker("fg", colorFg, "Foreground")
+  return <C />
+}
 
-
-export const ColorBoxFg = () =>
-  colorBoxWithStore(colorFg, "fg", "Foreground")
-
-export const ColorBoxBody = () =>
-  colorBoxWithStore(colorBody, "body", "Body")
+export const ColorBoxBody = () => {
+  const C = makePicker("body", colorBody, "Body")
+  return <C />
+}

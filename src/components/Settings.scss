@@ -1,0 +1,46 @@
+@use "../styles/_flex";
+
+.Settings {
+  @extend %flexRow;
+
+  position: relative;
+
+  &__pane {
+    @extend %flexCol;
+
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    position: fixed;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+
+    &--active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity 0.23s ease-in;
+    }
+  }
+
+  &__wrapper {
+    @extend %flexRow;
+
+    align-items: flex-start;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 10001;
+    background-color: transparent;
+    backdrop-filter: contrast(100%);
+  }
+}
