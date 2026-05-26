@@ -15,10 +15,11 @@
     position: fixed;
     background-color: transparent;
     left: 0;
-    top: 0;
+    top: 17rem;
     z-index: 10000;
     opacity: 0;
-    backdrop-filter: blur(10px);
+
+    // backdrop-filter: blur(10px);
     pointer-events: none;
 
     &--active {
@@ -41,6 +42,5 @@
     height: 100%;
     z-index: 10001;
     background-color: transparent;
-    backdrop-filter: contrast(100%);
   }
 }
