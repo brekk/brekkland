@@ -14,7 +14,7 @@ export const Settings = () => {
         className={bem("button", [...activeClass, "settings"])}
         onClick={(e) => {
           e.preventDefault()
-          $setVisible(true)
+          $setVisible(!$visible)
         }}
       >
         <SlidersVertical />
