@@ -35,6 +35,10 @@
 
   &__subcontent {
     @extend %flexRow;
+
+    .Search__search-icon {
+      fill: var(--color-bg);
+    }
   }
 
   // opacity: 0.5;

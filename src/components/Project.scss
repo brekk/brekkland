@@ -258,6 +258,11 @@
       display: flex;
       position: relative;
 
+      a.wikilink {
+        color: var(--color-bg);
+        text-decoration: underline double var(--color-fg);
+      }
+
       h1,
       h2,
       h3,
@@ -471,7 +476,7 @@
 
     code {
       background: var(--color-bg);
-      color: var(--color-fg);
+      color: var(--color-fg) !important;
       padding: 0.125rem 0.25rem;
     }
 
@@ -492,8 +497,13 @@
         span.line {
           @extend %flexRow;
 
+          color: var(--color-fg) !important;
           align-items: flex-start;
           line-height: 1.75rem;
+
+          & > span {
+            color: var(--color-fg) !important;
+          }
         }
       }
     }
