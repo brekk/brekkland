@@ -15,6 +15,7 @@ export async function getStaticPaths() {
   }))
 }
 const { project } = Astro.props
+console.log("PROJECT", project)
 if (!project) {
   return Astro.redirect(DesignConstants.path.SOFTWARE, 404)
 }

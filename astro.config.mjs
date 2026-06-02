@@ -40,7 +40,8 @@ import { fileURLToPath } from "node:url"
 const DEPLOYMENT_PLATFORM = process.env.DEPLOYMENT_PLATFORM || "netlify"
 
 export default defineConfig({
-  site: "https://brekk.land",
+  site: "https://brekk.github.io",
+  base: "/brekkland",
   fonts: [
     {
       provider: fontProviders.local(),
@@ -97,18 +98,10 @@ export default defineConfig({
         "'unsafe-inline'",
         "https://unpkg.com",
         "https://cdnjs.cloudflare.com",
-        "https://cdn.jsdelivr.net",
-        "https://giscus.app",
-        "https://platform.twitter.com",
       ],
     },
     styleDirective: {
-      resources: [
-        "'self'",
-        "'unsafe-inline'",
-        "https://fonts.googleapis.com",
-        "https://cdnjs.cloudflare.com",
-      ],
+      resources: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
     },
     fontDirective: {
       resources: [
@@ -125,7 +118,7 @@ export default defineConfig({
       resources: ["'self'", "https://giscus.app"],
     },
     frameDirective: {
-      resources: ["'self'", "https://www.youtube.com", "https://giscus.app"],
+      resources: ["'self'", "https://www.youtube.com"],
     },
   },
   devToolbar: {
@@ -153,7 +146,7 @@ export default defineConfig({
     ],
   },
   integrations: [
-    fontPicker(),
+    // fontPicker(),
     react(),
     sitemap(),
     mdx(),

@@ -7,7 +7,6 @@ import GithubLogo from "#/public/svg/github-black.svg"
 import Badge from "@/components/Badge.astro"
 import blem from "#/utilities/blem"
 const bem = blem("Project")
-console.log("poprops", Astro.props)
 const { rendered, data } = Astro.props
 const {
   title,
@@ -83,6 +82,23 @@ const domainRepo = "github.com"
         <div class={bem("row", "tags")}>
           <div class={bem("label", "tags")}>Tags</div>
           <Tags tags={tags} />
+        </div>
+        <div class={bem("row", "dependencies")}>
+          <div class={bem("label", ["dependencies"])}>Dependencies</div>
+          <ul class={bem("dependency-list")}>
+            {
+              dependencies.map((d: string) => (
+                <li class={bem("dependency")}>
+                  <a
+                    class={bem("dependency-link")}
+                    href={`/software/${d.toLowerCase()}`}
+                  >
+                    {d}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
         </div>
         <div class={bem("row", "explorer")}>
           <div class={bem("label", "headings")}>
