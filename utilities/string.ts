@@ -44,3 +44,17 @@ export const slug = (x: string): string =>
     replace(/-+/g, "-"),
     replace(/^-+|-+$/g, ""),
   )(x)
+
+export const bisect = curryN(2, (x: number, str: string): [string, string] => [
+  slice(0, x, str),
+  slice(x + 1, length(str), str),
+])
+
+export const chop = curryN(2, (i: number, x: string): string =>
+  x.slice(i, x.length),
+)
+
+export const trimLocal = (x: string): string =>
+  when<string, string>(startsWith("./"), chop(2))(x)
+
+export const collapse = replace($, "")

@@ -10,11 +10,12 @@ import { defineConfig, fontProviders } from "astro/config"
 import { defineConfig } from "astro/config"
 import sitemap from "@astrojs/sitemap"
 import mdx from "@astrojs/mdx"
+import { imageCaption as remarkImageCaptions } from "@/config/remark-images"
 import {
   remarkInternalLinks,
   remarkFolderImages,
-  remarkImageCaptions,
-} from "./src/utils/internallinks.ts"
+} from "./config/internal-links.ts"
+// } from "./src/utils/internallinks.ts"
 import remarkCallouts from "./src/utils/remark-callouts.ts"
 // import remarkImageGrids from "./src/utils/remark-image-grids.ts"
 // import remarkMermaid from "./src/utils/remark-mermaid.ts"
@@ -115,7 +116,7 @@ export default defineConfig({
       resources: ["'self'", "data:", "https:"],
     },
     connectDirective: {
-      resources: ["'self'", "https://giscus.app"],
+      resources: ["'self'"],
     },
     frameDirective: {
       resources: ["'self'", "https://www.youtube.com"],
