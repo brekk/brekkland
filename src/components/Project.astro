@@ -91,7 +91,7 @@ const domainRepo = "github.com"
                 <li class={bem("dependency")}>
                   <a
                     class={bem("dependency-link")}
-                    href={`/software/${d.toLowerCase()}`}
+                    href={`${import.meta.env.BASE_URL}/software/${d.toLowerCase()}`}
                   >
                     {d}
                   </a>

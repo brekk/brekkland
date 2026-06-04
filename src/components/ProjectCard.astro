@@ -28,7 +28,7 @@ const {
   },
 } = Astro.props
 console.log("<><>", hasBinary, "@>@>@", size)
-const link = `/software/${id}`
+const link = `${import.meta.env.BASE_URL}/software/${id}`
 const status = [
   id,
   hasBinary ? "tool" : "library",
