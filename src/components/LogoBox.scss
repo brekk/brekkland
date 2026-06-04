@@ -23,7 +23,7 @@
     margin-top: 1rem;
     width: 100%;
     max-width: 28rem;
-    fill: var(--color-bg);
+    fill: var(--color-fg);
 
     @media screen and (prefers-reduced-motion: no-preference) {
       transition:
@@ -46,7 +46,7 @@
       fill: transparent;
 
       &--swapped {
-        fill: var(--color-bg);
+        fill: var(--color-fg);
       }
 
       @media screen and (prefers-reduced-motion: no-preference) {

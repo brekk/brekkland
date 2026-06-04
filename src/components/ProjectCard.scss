@@ -43,8 +43,8 @@
     right: 0.5rem;
     padding: 0.25rem 0.5rem;
     border-radius: 100%;
-    background-color: var(--color-bg);
-    color: var(--color-body);
+    background-color: var(--color-fg);
+    color: var(--color-bg);
 
     @media (prefers-reduced-motion: no-preference) {
       transition:
@@ -79,35 +79,35 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 2fr 1fr;
     text-decoration: none;
-    color: var(--color-bg);
+    color: var(--color-fg);
 
     &:hover {
       .ProjectCard__details,
       .ProjectCard__key {
-        background-color: var(--color-fg);
-        color: var(--color-bg);
+        background-color: var(--color-accent);
+        color: var(--color-fg);
 
         svg {
-          fill: var(--color-bg) !important;
+          fill: var(--color-fg) !important;
         }
       }
 
       .ProjectCard__details {
         box-shadow:
-          0 1px 0 var(--color-bg),
-          0 -1px 0 var(--color-bg),
-          1px 0 0 var(--color-bg),
-          -1px 0 0 var(--color-bg);
+          0 1px 0 var(--color-fg),
+          0 -1px 0 var(--color-fg),
+          1px 0 0 var(--color-fg),
+          -1px 0 0 var(--color-fg);
       }
 
       .ProjectCard__meta {
-        background-color: var(--color-bg);
-        color: var(--color-body);
+        background-color: var(--color-fg);
+        color: var(--color-bg);
       }
 
       .ProjectCard__badge--dependencies {
-        background-color: var(--color-body);
-        color: var(--color-bg);
+        background-color: var(--color-bg);
+        color: var(--color-fg);
       }
     }
 
@@ -124,8 +124,8 @@
 
     // background-color: red;
     box-shadow:
-      -1px 0 0 var(--color-bg),
-      0 -1px 0 var(--color-bg);
+      -1px 0 0 var(--color-fg),
+      0 -1px 0 var(--color-fg);
   }
 
   &__details {
@@ -133,9 +133,9 @@
 
     grid-area: details;
     box-shadow:
-      0 1px 0 var(--color-bg),
-      1px 0 0 var(--color-bg),
-      0 -1px 0 var(--color-bg);
+      0 1px 0 var(--color-fg),
+      1px 0 0 var(--color-fg),
+      0 -1px 0 var(--color-fg);
     margin: 0;
   }
 
@@ -145,17 +145,17 @@
     flex-direction: row;
     align-items: center;
     grid-area: meta;
-    background-color: var(--color-body);
+    background-color: var(--color-bg);
     box-shadow:
-      1px 0 0 var(--color-bg),
-      -1px 0 0 var(--color-bg),
-      0 1px 0 var(--color-bg);
+      1px 0 0 var(--color-fg),
+      -1px 0 0 var(--color-fg),
+      0 1px 0 var(--color-fg);
 
     @media screen and (min-width: breakpoint.$small) {
       justify-content: flex-start;
       box-shadow:
-        -1px 0 0 var(--color-bg),
-        0 1px 0 var(--color-bg);
+        -1px 0 0 var(--color-fg),
+        0 1px 0 var(--color-fg);
     }
   }
 }
@@ -172,7 +172,7 @@
 
     svg {
       max-width: 2rem;
-      fill: var(--color-bg);
+      fill: var(--color-fg);
 
       @media (prefers-reduced-motion: no-preference) {
         transition: fill 0.6s 0.1s linear;
@@ -207,7 +207,7 @@
         background-color: transparent;
         text-decoration: none;
         margin-top: 1px;
-        color: var(--color-bg);
+        color: var(--color-fg);
         transition:
           color 0 linear,
           background 0 ease-out;
@@ -220,7 +220,7 @@
         &:hover {
           .ProjectCard__link-wrapper {
             transform: translateX(0);
-            background-color: var(--color-fg);
+            background-color: var(--color-accent);
           }
         }
 

@@ -4,14 +4,8 @@
 .Tag {
   @extend %flexRow;
 
-  transition:
-    background 0.3s ease-in,
-    width 0.15s ease-in,
-    height 0.15s ease-in,
-    border-radius 0.3s ease-out,
-    box-shadow 0.3s ease-in;
-  background-color: var(--color-bg);
-  color: var(--color-fg);
+  background-color: var(--color-fg);
+  color: var(--color-accent);
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -19,16 +13,25 @@
   box-shadow: 0 0 0 transparent;
 
   &:hover {
-    color: var(--color-bg);
-    background-color: var(--color-fg);
+    color: var(--color-fg);
+    background-color: var(--color-accent);
     box-shadow:
-      -1px 0 0 var(--color-bg),
-      1px 0 0 var(--color-bg),
-      0 -1px 0 var(--color-bg),
-      0 1px 0 var(--color-bg);
+      -1px 0 0 var(--color-fg),
+      1px 0 0 var(--color-fg),
+      0 -1px 0 var(--color-fg),
+      0 1px 0 var(--color-fg);
   }
 
   &__text {
     @extend %flexRow;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background 0.3s ease-out,
+      width 0.15s ease-in,
+      height 0.15s ease-in,
+      border-radius 0.3s ease-out,
+      box-shadow 0.3s ease-out;
   }
 }
