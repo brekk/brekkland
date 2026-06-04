@@ -25,7 +25,7 @@ import {
   ifElse,
   cond,
 } from "ramda"
-import { collapse, slug, trimLocal, chop, bisect } from "#/utilities/string"
+import { collapse, slug, trimLocal, chop, bisect } from "../utilities/string"
 const EXTENSIONS = [
   ".mp3",
   ".wav",

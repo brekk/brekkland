@@ -1,9 +1,12 @@
-export const path = {
+import { map } from "ramda"
+
+export const path = map((v: string) => import.meta.env.BASE_URL + v, {
   UI: "/ui",
   SOFTWARE: "/software",
   ART: "/art",
   TYPE: "/type",
-}
+})
+console.log("PATHEMATICS", path)
 
 export const locations = {
   nav: {

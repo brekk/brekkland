@@ -10,11 +10,9 @@ import { defineConfig, fontProviders } from "astro/config"
 import { defineConfig } from "astro/config"
 import sitemap from "@astrojs/sitemap"
 import mdx from "@astrojs/mdx"
-import { imageCaption as remarkImageCaptions } from "@/config/remark-images"
-import {
-  remarkInternalLinks,
-  remarkFolderImages,
-} from "./config/internal-links.ts"
+import { imageCaption as remarkImageCaptions } from "./config/remark-images.ts"
+import { remarkFolderImages } from "./config/remark-folder-images"
+import { remarkInternalLinks } from "./config/internal-links.ts"
 // } from "./src/utils/internallinks.ts"
 import remarkCallouts from "./src/utils/remark-callouts.ts"
 // import remarkImageGrids from "./src/utils/remark-image-grids.ts"

@@ -1,4 +1,4 @@
-import { slug, chop, collapse, bisect } from "#/utilities/string.ts"
+import { slug, chop, collapse, bisect } from "../utilities/string.ts"
 import {
   __ as $,
   prepend,
