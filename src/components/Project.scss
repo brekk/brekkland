@@ -65,7 +65,7 @@
     // transform: scale(2);
 
     &:hover {
-      background-color: var(--color-accent);
+      background-color: var(--color-fg);
 
       .Project__svg--arrow {
         @media screen and (prefers-reduced-motion: no-preference) {
@@ -222,7 +222,7 @@
     }
 
     &:hover {
-      background: var(--color-accent);
+      background: var(--color-fg);
       color: var(--color-bg);
 
       &::before {
@@ -260,7 +260,7 @@
 
       a.wikilink {
         color: var(--color-bg);
-        text-decoration: underline double var(--color-accent);
+        text-decoration: underline double var(--color-fg);
       }
 
       h1,
@@ -315,7 +315,7 @@
             &::before {
               opacity: 1;
               top: 0.45em;
-              background-color: var(--color-accent);
+              background-color: var(--color-fg);
               transition:
                 background 0.4s 0.3s ease-out,
                 top 0.4s 0.2s ease-out,
@@ -405,7 +405,7 @@
 
     text-decoration: none;
 
-    // background-color: var(--color-accent);
+    // background-color: var(--color-fg);
     color: var(--color-bg);
     padding: 0.25rem;
     border-radius: 0.25rem;
@@ -415,7 +415,7 @@
       color 0.2s ease-out;
 
     &:hover {
-      background-color: var(--color-accent);
+      background-color: var(--color-fg);
     }
   }
 
@@ -439,38 +439,6 @@
     }
   }
 
-  &__dependency-list {
-    @extend %flexCol;
-
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 0 0 0 1rem;
-    margin: 0;
-  }
-
-  &__dependency {
-  }
-
-  &__dependency-link {
-    text-decoration: none;
-    font-size: 0.875rem;
-    color: var(--color-bg);
-    background-color: var(--color-accent);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-
-    &:hover {
-      background-color: var(--color-bg);
-      color: var(--color-body);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition:
-        color 0.3 ease-out,
-        background 0.3s ease-out;
-    }
-  }
-
   &__icon--github {
     max-width: 1.5rem;
     height: auto;
@@ -483,7 +451,7 @@
   &__label {
     @extend %flexRow;
 
-    // background: var(--color-accent);
+    // background: var(--color-fg);
     width: 100%;
     font-family: var(--font-obviously-narrow);
 
@@ -508,7 +476,7 @@
 
     code {
       background: var(--color-bg);
-      color: var(--color-accent) !important;
+      color: var(--color-fg) !important;
       padding: 0.125rem 0.25rem;
     }
 
@@ -524,17 +492,17 @@
 
         align-items: flex-start;
         background: transparent;
-        color: var(--color-accent) !important;
+        color: var(--color-fg) !important;
 
         span.line {
           @extend %flexRow;
 
-          color: var(--color-accent) !important;
+          color: var(--color-fg) !important;
           align-items: flex-start;
           line-height: 1.75rem;
 
           & > span {
-            color: var(--color-accent) !important;
+            color: var(--color-fg) !important;
           }
         }
       }

@@ -33,12 +33,12 @@
     background:
       repeating-radial-gradient(
           var(--color-bg) 0 0.0001%,
-          var(--color-accent) 0 0.0002%
+          var(--color-fg) 0 0.0002%
         )
         50% 0/150rem 150rem,
       repeating-conic-gradient(
           var(--color-bg) 0 0.0001%,
-          var(--color-accent) 0 0.0002%
+          var(--color-fg) 0 0.0002%
         )
         60% 60%/150rem 150rem;
     background-blend-mode: overlay;

@@ -4,8 +4,14 @@
 .Tag {
   @extend %flexRow;
 
+  transition:
+    background 0.3s ease-in,
+    width 0.15s ease-in,
+    height 0.15s ease-in,
+    border-radius 0.3s ease-out,
+    box-shadow 0.3s ease-in;
   background-color: var(--color-bg);
-  color: var(--color-accent);
+  color: var(--color-fg);
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -14,7 +20,7 @@
 
   &:hover {
     color: var(--color-bg);
-    background-color: var(--color-accent);
+    background-color: var(--color-fg);
     box-shadow:
       -1px 0 0 var(--color-bg),
       1px 0 0 var(--color-bg),
@@ -24,14 +30,5 @@
 
   &__text {
     @extend %flexRow;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      background 0.3s ease-out,
-      width 0.15s ease-in,
-      height 0.15s ease-in,
-      border-radius 0.3s ease-out,
-      box-shadow 0.3s ease-out;
   }
 }

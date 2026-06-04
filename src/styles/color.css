@@ -1,4 +1,4 @@
-@property --color-accent {
+@property --color-fg {
   syntax: "<color>";
   inherits: true;
   initial-value: #ecf832;
@@ -23,7 +23,7 @@
 }
 
 :root {
-  --color-accent: #ecf832;
+  --color-fg: #ecf832;
   --color-bg: #000;
   --color-body: #fff;
   --color-guide: #0f0;
