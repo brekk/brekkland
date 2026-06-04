@@ -1,6 +1,6 @@
 import "@/components/Settings.scss"
 import { SlidersVertical } from "lucide-react"
-import { ColorBoxFg, ColorBoxBg, ColorBoxBody } from "@/components/ColorBox.tsx"
+import { ColorBoxFg, ColorBoxBg, ColorBoxAccent } from "@/components/ColorBox.tsx"
 import blem from "#/utilities/blem.ts"
 import { useState } from "react"
 
@@ -25,7 +25,7 @@ export const Settings = () => {
 
           <ColorBoxFg />
           <ColorBoxBg />
-          <ColorBoxBody />
+          <ColorBoxAccent />
         </div>
       </div>
     </div >

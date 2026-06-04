@@ -45,7 +45,7 @@
   // background: lime;
 
   // svg {
-  // fill: var(--color-fg);
+  // fill: var(--color-accent);
   // }
   &__breadcrumb {
     @extend %flexCol;
@@ -76,7 +76,7 @@
 }
 
 .FloatingNav.active {
-  background-color: var(--color-fg);
+  background-color: var(--color-accent);
 
   .FloatingNav__breadcrumb {
     color: var(--color-bg);

@@ -84,7 +84,7 @@
     &:hover {
       .ProjectCard__details,
       .ProjectCard__key {
-        background-color: var(--color-fg);
+        background-color: var(--color-accent);
         color: var(--color-bg);
 
         svg {
@@ -220,7 +220,7 @@
         &:hover {
           .ProjectCard__link-wrapper {
             transform: translateX(0);
-            background-color: var(--color-fg);
+            background-color: var(--color-accent);
           }
         }
 

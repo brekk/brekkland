@@ -7,7 +7,7 @@ import { useClickAway } from "@uidotdev/usehooks"
 import type { ChangeEvent } from "react"
 import blem from "#/utilities/blem.ts"
 
-import { colorFg, colorBg, colorBody, palette } from "@/stores/colors"
+import { $bg, $fg, $accent, $palette } from "@/stores/colors"
 import { useStore } from "@nanostores/react"
 const bem = blem("ColorBox")
 
@@ -48,16 +48,16 @@ export const makePicker =
     }
 
 export const ColorBoxBg = () => {
-  const C = makePicker("bg", colorBg, "Background")
+  const C = makePicker("bg", $bg, "Background")
   return <C />
 }
 
 export const ColorBoxFg = () => {
-  const C = makePicker("fg", colorFg, "Foreground")
+  const C = makePicker("fg", $fg, "Foreground")
   return <C />
 }
 
-export const ColorBoxBody = () => {
-  const C = makePicker("body", colorBody, "Body")
+export const ColorBoxAccent = () => {
+  const C = makePicker("body", $accent, "Accent")
   return <C />
 }

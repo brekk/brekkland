@@ -5,6 +5,7 @@ import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 import FloatingNav from "@/components/FloatingNav.astro"
 import SearchOverlay from "@/components/SearchOverlay.tsx"
+import { colorFg, colorBg, colorAccent, palette } from "@/stores/colors"
 
 const bem = blem("Brekkland")
 import "@/styles/brekkland.scss"
@@ -28,7 +29,14 @@ const { breadcrumbs = [] } = Astro.props
 </div>
 
 <script>
+  import {
+    getPalette,
+    DEFAULT_PALETTE,
+    DEFAULT_PALETTE_RECORD,
+  } from "#/utilities/color"
   import { watchWithOptions } from "#/utilities/scroll"
+  import { $fg, $bg, $accent, $palette, $modified } from "@/stores/colors"
+  import { effect } from "nanostores"
   const bod = document.getElementById("body")
   const [el] = document.getElementsByClassName("FloatingNav")
   const [logoBox] = document.getElementsByClassName("LogoBox--floating")
@@ -56,5 +64,22 @@ const { breadcrumbs = [] } = Astro.props
       },
     )
     go.observe(nav)
+  }
+  window.onload = () => {
+    const DEFAULT_CONFIG = {
+      colors: DEFAULT_PALETTE_RECORD,
+      palette: DEFAULT_PALETTE,
+      modified: false,
+    }
+    const config =
+      JSON.parse(window.localStorage.getItem("brekkland") ?? "{}") ??
+      DEFAULT_CONFIG
+
+    const endColorStore = effect(
+      [$fg, $bg, $accent, $modified, $palette],
+      (fg, bg, accent, modified, palette) => {
+        console.log("COLOR STORE", { fg, bg, accent, modified, palette })
+      },
+    )
   }
 </script>

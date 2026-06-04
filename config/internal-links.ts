@@ -1200,6 +1200,45 @@ function createExcerptAroundWikilink(
   return ""
 }
 
+interface ExcerptConfig {
+  position: number
+  length: {
+    link: number
+    content: number
+    minContent: number
+    maxExcerpt: number
+    context: number
+  }
+}
+
+const withinBuffer = curryN(
+  4,
+  (position: number, curr: number, buff: number, max: number) =>
+    curr - (position + buff) < max,
+)
+
+const CONTENT_BUFFER = 250
+
+const excerptAtPositionWithConfig = curryN(
+  2,
+  ({ position, length }: ExcerptConfig, content: string) => {
+    const isNearEnd = withinBuffer(
+      position,
+      length.content,
+      length.link,
+      length.context,
+    )
+    const contextBeforeLink = isNearEnd
+      ? Math.max(length.context * 2, CONTENT_BUFFER)
+      : length.context
+    let start = Math.max(0, position - contextBeforeLink)
+    let end = Math.min(
+      length.content,
+      position + length.link + (isNearEnd ? 0 : length.context),
+    )
+  },
+)
+
 // Helper function to extract excerpt at a specific position
 function extractExcerptAtPosition(
   content: string,
@@ -1685,10 +1724,6 @@ function extractExcerptAtPosition(
   return { excerpt, isAtStart, isAtEnd }
 }
 
-// ============================================================================
-// HTML PROCESSING
-// ============================================================================
-
 // Process HTML content to resolve wikilink display text with post titles
 export function processWikilinksInHTML(
   posts: Post[],
@@ -1714,11 +1749,3 @@ export function processContentAwareWikilinks(
   // This function is a placeholder for future enhancements
   return content
 }
-
-// ============================================================================
-// IMAGE PROCESSING
-// ============================================================================
-
-/**
- * Convert image path to WebP format (sync-images.js creates WebP versions)
- */
