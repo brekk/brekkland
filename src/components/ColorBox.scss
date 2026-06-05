@@ -1,3 +1,5 @@
+@use "../styles/_flex";
+
 .ColorBox {
   display: flex;
   margin: 2rem;
@@ -15,6 +17,7 @@
     min-width: 3.5rem;
     width: 3.5rem;
     height: 3.5rem;
+    position: relative;
   }
 
   &__swatch {
@@ -35,6 +38,12 @@
   }
 
   &__popover {
-    transform: translateY(calc(-10vh + -1rem)) translateX(calc(-10vw - 0.5rem));
+    // transform: translateY(calc(-10vh + -1rem)) translateX(calc(-10vw - 0.5rem));
+    @extend %flexCol;
+
+    position: fixed;
+    bottom: 4.125rem;
+    left: 0;
+    width: 100%;
   }
 }

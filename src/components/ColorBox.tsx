@@ -38,6 +38,7 @@ export const makePicker =
 
         {$isOpen && (
           <div className={bem("popover")} ref={ref as any}>
+            <strong className={bem("label")}>{label}</strong>
             <HexColorPicker color={$color} onChange={onChange} />
           </div>
         )}
