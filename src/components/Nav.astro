@@ -1,5 +1,5 @@
 ---
-import Settings from "@/components/Settings"
+import { SettingsToggle } from "@/components/Settings"
 import "@/components/Nav.scss"
 import blem from "#/utilities/blem"
 import LogoBox from "@/components/LogoBox.astro"
@@ -29,7 +29,7 @@ const locations = Object.entries(DesignConstants.locations.nav)
           })
         }
       </ul>
-      <Settings client:only="react" />
+      <SettingsToggle client:only="react" />
     </div>
   </div>
 </nav>
