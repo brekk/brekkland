@@ -225,11 +225,16 @@
       background: var(--color-accent);
       color: var(--color-fg);
 
-      &::before {
+      &::before,
+      &::after {
         background-color: var(--color-fg);
         border-radius: 100%;
         width: 0.35rem;
         height: 0.35rem;
+      }
+
+      &::after {
+        background-color: var(--color-accent);
       }
     }
   }
@@ -287,7 +292,9 @@
           text-decoration: none;
           order: 1;
           position: relative;
+          z-index: 30;
 
+          &::after,
           &::before {
             @extend %flexCol;
 
@@ -297,25 +304,42 @@
             height: 1.25em;
             position: absolute;
             content: "";
-            background-image: url("/svg/anchor.svg");
+
+            // TODO: figure out a way to shim import.meta.env.BASE_URL here
             background-size: 0.75em;
             background-position: center center;
+            background-color: var(--color-fg);
             background-repeat: no-repeat;
             border-radius: 100%;
             font-size: 0.75em;
-            transition:
-              background 0.3s ease-in,
-              top 0.4s ease-in,
-              opacity 0.3s ease-in;
             opacity: 0;
             order: 2;
+            z-index: 31;
+
+            @media (prefers-reduced-motion: no-preference) {
+              transition:
+                background 0.3s ease-in,
+                top 0.4s ease-in,
+                opacity 0.3s ease-in;
+            }
+          }
+
+          &::before {
+            mask-image: url("/brekkland/svg/anchor.svg");
+            background-color: var(--color-fg) !important;
+            z-index: 32;
+            margin: 0.25rem;
+            width: 1em;
+            height: 1em;
           }
 
           &:hover {
-            &::before {
+            &::before,
+            &::after {
               opacity: 1;
               top: 0.45em;
               background-color: var(--color-accent);
+              color: var(--color-bg);
               transition:
                 background 0.4s 0.3s ease-out,
                 top 0.4s 0.2s ease-out,

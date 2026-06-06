@@ -67,21 +67,19 @@ const { breadcrumbs = [] } = Astro.props
     )
     go.observe(nav)
   }
-  window.onload = () => {
-    const DEFAULT_CONFIG = {
-      colors: DEFAULT_PALETTE_RECORD,
-      palette: DEFAULT_PALETTE,
-      modified: false,
-    }
-    const config =
-      JSON.parse(window.localStorage.getItem("brekkland") ?? "{}") ??
-      DEFAULT_CONFIG
-
-    const endColorStore = effect(
-      [$fg, $bg, $accent, $modified, $palette],
-      (fg, bg, accent, modified, palette) => {
-        console.log("COLOR STORE", { fg, bg, accent, modified, palette })
-      },
-    )
+  const DEFAULT_CONFIG = {
+    colors: DEFAULT_PALETTE_RECORD,
+    palette: DEFAULT_PALETTE,
+    modified: false,
   }
+  const config =
+    JSON.parse(window.localStorage.getItem("brekkland") ?? "{}") ??
+    DEFAULT_CONFIG
+
+  const endColorStore = effect(
+    [$fg, $bg, $accent, $modified, $palette],
+    (fg, bg, accent, modified, palette) => {
+      console.log("COLOR STORE", { fg, bg, accent, modified, palette })
+    },
+  )
 </script>
