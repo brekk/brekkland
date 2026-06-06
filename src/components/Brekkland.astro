@@ -79,7 +79,7 @@ const { breadcrumbs = [] } = Astro.props
   const endColorStore = effect(
     [$fg, $bg, $accent, $modified, $palette],
     (fg, bg, accent, modified, palette) => {
-      console.log("COLOR STORE", { fg, bg, accent, modified, palette })
+      console.log("COLOR STORE", [fg, accent, bg])
     },
   )
 </script>
