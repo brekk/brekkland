@@ -1,21 +1,24 @@
 @use "../styles/_flex";
 
 .GradientBox {
-  display: flex;
-  margin: 2rem;
-  position: relative;
+  @extend %flexCol;
+
   background-color: var(--color-accent);
 
   // border-radius: 100%;
-  padding: 1rem;
   color: var(--color-fg);
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  position: absolute;
+  left: calc(50% - 1.45rem);
 
   // min-width: 100%;
 
   // clip-path: polygon(50% 0%, 100% 0, 0 100%);
 
   // width: 4rem;
-  cursor: pointer;
+  cursor: e-resize;
   aspect-ratio: cos(30deg);
   clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
 

@@ -35,9 +35,7 @@ export const DumbSettingsPane = ({ activeClass, toggle }: SubProps) => (
     <div className={bem("context-indicator")} onClick={toggle}>
       <SlidersVertical />
     </div>
-    <div className={bem("gradient")}>
-      <GradientBox />
-    </div>
+    <GradientBox />
     <div className={bem("wrapper", activeClass)}>
       <ColorBoxFg />
       <ColorBoxBg />
