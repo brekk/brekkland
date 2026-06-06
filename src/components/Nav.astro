@@ -8,7 +8,7 @@ const bem = blem("Nav")
 const locations = Object.entries(DesignConstants.locations.nav)
 ---
 
-<nav class={bem("")}>
+<nav id="nav" class={bem("")}>
   <div class={bem("menu")}>
     <LogoBox />
     <div class={bem("locations")}>
@@ -33,3 +33,16 @@ const locations = Object.entries(DesignConstants.locations.nav)
     </div>
   </div>
 </nav>
+
+<script>
+  import { $settingsGradient } from "@/stores/settings"
+  $settingsGradient.subscribe((curr, prev) => {
+    const nav = document.getElementById("nav")
+    if (nav) {
+      if (prev) {
+        nav.classList.remove(prev)
+      }
+      nav.classList.add(curr)
+    }
+  })
+</script>

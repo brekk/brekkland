@@ -1,0 +1,40 @@
+@use "../styles/_flex";
+
+.GradientBox {
+  display: flex;
+  margin: 2rem;
+  position: relative;
+  background-color: var(--color-accent);
+
+  // border-radius: 100%;
+  padding: 1rem;
+  color: var(--color-fg);
+
+  // min-width: 100%;
+
+  // clip-path: polygon(50% 0%, 100% 0, 0 100%);
+
+  // width: 4rem;
+  cursor: pointer;
+  aspect-ratio: cos(30deg);
+  clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
+
+  &:hover {
+    background-color: var(--color-fg);
+
+    svg {
+      stroke: var(--color-accent);
+    }
+  }
+
+  // hex
+  // aspect-ratio: 1 / cos(30deg);
+  // clip-path: content-box polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+
+  // clip-path: content-box polygon(50% 0, 100% 100%, 0 100%);
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background 0.3s ease-in,
+      color 0.2s ease-in;
+  }
+}

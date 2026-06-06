@@ -1,10 +1,12 @@
 import "@/components/Settings.scss"
+import "@/styles/gradients.css"
 import { SlidersVertical } from "lucide-react"
 import {
   ColorBoxFg,
   ColorBoxBg,
   ColorBoxAccent,
 } from "@/components/ColorBox.tsx"
+import GradientBox from "@/components/GradientBox.tsx"
 import blem from "#/utilities/blem.ts"
 import { useState } from "react"
 import { $settingsVisible } from "@/stores/settings"
@@ -29,8 +31,13 @@ const useSettingsStore = () => {
 }
 
 export const DumbSettingsPane = ({ activeClass, toggle }: SubProps) => (
-  <div className={bem("pane", activeClass)}>
-    <SlidersVertical className={bem("context-indicator")} onClick={toggle} />
+  <div className={"gradient-static " + bem("pane", activeClass)}>
+    <div className={bem("context-indicator")} onClick={toggle}>
+      <SlidersVertical />
+    </div>
+    <div className={bem("gradient")}>
+      <GradientBox />
+    </div>
     <div className={bem("wrapper", activeClass)}>
       <ColorBoxFg />
       <ColorBoxBg />
@@ -50,16 +57,12 @@ const DumbSettingsToggle = ({ toggle, activeClass }: SubProps) => (
 
 export const SettingsToggle = () => {
   const $settings = useSettingsStore()
-  return (
-    <DumbSettingsToggle {...$settings} />
-  )
+  return <DumbSettingsToggle {...$settings} />
 }
 
 export const SettingsPane = () => {
   const $settings = useSettingsStore()
-  return (
-    <DumbSettingsPane {...$settings} />
-  )
+  return <DumbSettingsPane {...$settings} />
 }
 
 export const Settings = () => {

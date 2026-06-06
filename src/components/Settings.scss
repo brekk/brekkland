@@ -8,9 +8,29 @@
   &__button {
     background: transparent;
     border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    aspect-ratio: cos(30deg);
+    clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
 
     svg {
       stroke: var(--color-fg) !important;
+    }
+
+    &:hover {
+      background-color: var(--color-bg);
+
+      svg {
+        stroke: var(--color-accent);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background 0.3s ease-out;
+
+      svg {
+        transition: stroke 0.3s ease-out;
+      }
     }
   }
 
@@ -30,18 +50,6 @@
 
     // backdrop-filter: blur(10px);
     pointer-events: none;
-    background:
-      repeating-radial-gradient(
-          var(--color-fg) 0 0.0001%,
-          var(--color-accent) 0 0.0002%
-        )
-        50% 0/150rem 150rem,
-      repeating-conic-gradient(
-          var(--color-fg) 0 0.0001%,
-          var(--color-accent) 0 0.0002%
-        )
-        60% 60%/150rem 150rem;
-    background-blend-mode: overlay;
     box-shadow:
       0.125rem 0 0 var(--color-bg),
       -0.125rem 0 0 var(--color-bg),
@@ -72,12 +80,33 @@
   }
 
   &__context-indicator {
-    stroke: var(--color-fg) !important;
-    background: var(--color-accent) !important;
+    @extend %flexCol;
+
+    svg {
+      stroke: var(--color-fg);
+    }
+
+    background: var(--color-accent);
     border-radius: 100%;
     padding: 0.5rem;
     width: 2rem;
     height: 2rem;
     place-self: center flex-start;
+
+    &:hover {
+      svg {
+        stroke: var(--color-bg);
+      }
+
+      background: var(--color-fg);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background 0.3s ease-in;
+
+      svg {
+        transition: stroke 0.2s ease-in;
+      }
+    }
   }
 }

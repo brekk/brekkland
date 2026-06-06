@@ -82,20 +82,7 @@
   // padding: 1rem 1rem 0;
   font-family: var(--font-obviously-narrow), sans-serif;
   text-transform: uppercase;
-  background:
-    repeating-radial-gradient(
-        var(--color-fg) 0 0.0001%,
-        var(--color-accent) 0 0.0002%
-      )
-      50% 0/150rem 150rem,
-    repeating-conic-gradient(
-        var(--color-fg) 0 0.0001%,
-        var(--color-accent) 0 0.0002%
-      )
-      60% 60%/150rem 150rem;
-
-  // background-blend-mode: difference;
-  background-blend-mode: overlay;
+  background: var(--color-accent);
 
   &__locations {
     @extend %flexRow;
@@ -112,10 +99,6 @@
       width: 100%;
       height: auto;
     }
-
-    // mix-blend-mode: difference;
-    // mix-blend-mode: hard-light;
-    // mix-blend-mode: luminosity;
   }
 
   &__menu-list {
@@ -253,9 +236,11 @@
     }
   }
 
+  /*
   @media screen and (prefers-reduced-motion: no-preference) {
     transition:
       background 1s ease-out,
       background-size 1s ease-out;
   }
+  */
 }
