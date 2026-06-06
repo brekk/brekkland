@@ -1,0 +1,12 @@
+---
+import { blem } from "#/utilities/blem"
+const bem = blem("ProjectDetailRow")
+const { open = true, mods = [], className = "" } = Astro.props
+---
+
+<details class={`${bem("", mods)} ${className}`} open={open}>
+  <summary class={bem("summary")}>
+    <slot name="label" />
+  </summary>
+  <slot />
+</details>

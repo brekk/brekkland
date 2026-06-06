@@ -1,4 +1,5 @@
 ---
+import Row from "@/components/ProjectDetailRow.astro"
 import "@/components/Project.scss"
 import Tags from "@/components/Tags.astro"
 import ArrowUp from "#/public/svg/arrow.svg"
@@ -56,8 +57,8 @@ const domainRepo = "github.com"
             {hasBinary ? "Tool" : "Library"}
           </Badge>
         </div>
-        <div class={bem("row", "repo")}>
-          <div class={bem("label", "repo")}>Source</div>
+        <Row className={bem("row", "source")}>
+          <div slot="label" class={bem("label", "repo")}>Source</div>
           <a
             class={bem("repo-link")}
             href={"//" + domainRepo + "/" + repo}
@@ -66,25 +67,33 @@ const domainRepo = "github.com"
             <GithubLogo class={bem("icon", "github")} />
             <span class={bem("repo-text")}>{repo}</span>
           </a>
-        </div>
-        <div class={bem("row", "version")}>
-          <div class={bem("label", "version")}>Version</div>
+        </Row>
+        <Row className={bem("row", "version")}>
+          <div slot="label" class={bem("label", "version")}>Version</div>
           {version}
-        </div>
-        <div class={bem("row", ["date", "published"])}>
-          <div class={bem("label", ["date", "published"])}>Published</div>
+        </Row>
+        <Row className={bem("row", "published")}>
+          <div slot="label" class={bem("label", ["date", "published"])}>
+            Published
+          </div>
           <MagicDate isoString={published} />
-        </div>
-        <div class={bem("row", ["date", "updated"])}>
-          <div class={bem("label", ["date", "updated"])}>Last Updated</div>
+        </Row>
+
+        <Row className={bem("row", "updated")}>
+          <div slot="label" class={bem("label", ["date", "updated"])}>
+            Last Updated
+          </div>
           <MagicDate isoString={updated} />
-        </div>
-        <div class={bem("row", "tags")}>
+        </Row>
+        <Row className={bem("row", "tags")}>
           <div class={bem("label", "tags")}>Tags</div>
           <Tags tags={tags} />
-        </div>
-        <div class={bem("row", "dependencies")}>
-          <div class={bem("label", ["dependencies"])}>Dependencies</div>
+        </Row>
+
+        <Row className={bem("row", "explorer")}>
+          <div slot="label" class={bem("label", ["dependencies"])}>
+            Dependencies
+          </div>
           <ul class={bem("dependency-list")}>
             {
               dependencies.map((d: string) => (
@@ -99,7 +108,7 @@ const domainRepo = "github.com"
               ))
             }
           </ul>
-        </div>
+        </Row>
         <div class={bem("row", "explorer")}>
           <div class={bem("label", "headings")}>
             Jump to
