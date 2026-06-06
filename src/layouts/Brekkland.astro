@@ -38,16 +38,18 @@ const { breadcrumbs = [] } = Astro.props
   </body>
 </html>
 
-<!-- style>
-  body::before {
-    content: "";
-    width: 1px;
-    height: 100vh;
-    left: 50%;
-    position: fixed;
-    top: 0;
-    z-index: 5000;
-    background-color: gold;
-    opacity: 0.6;
-  }
-</style -->
+<script>
+  import { $bg, $fg, $accent } from "@/stores/colors"
+  import { effect } from "nanostores"
+  const stop = effect([$bg, $fg, $accent], (b, f, a) => {
+    const [html] = document.getElementsByTagName("html")
+    const body = document.getElementById("body")
+    html?.style.setProperty("--color-bg", b)
+    html?.style.setProperty("--color-fg", f)
+    html?.style.setProperty("--color-accent", a)
+    body?.style.setProperty("--color-bg", b)
+    body?.style.setProperty("--color-fg", f)
+    body?.style.setProperty("--color-accent", a)
+  })
+  stop()
+</script>

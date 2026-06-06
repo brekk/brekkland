@@ -4,7 +4,8 @@ type ColorTrio = [string, string, string]
 
 export const DEFAULT_PALETTE = "cypherpunk"
 export const PALETTE: Record<string, ColorTrio> = {
-  [DEFAULT_PALETTE]: ["#000", "#ecf832", "#fff"],
+  cypherpunk: ["#000", "#ecf832", "#fff"],
+  neonDevil: ["#ffc300", "#cf0015", "#2e2e35"],
 }
 
 export const paletteToObject = ([fg, accent, bg]: ColorTrio) => ({
