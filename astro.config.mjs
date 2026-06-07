@@ -150,10 +150,16 @@ export default defineConfig({
     sitemap(),
     mdx(),
     swup({
+      plugins: [], // Disable all plugins including scroll
+      skipPopStateHandling: (event) => {
+        // ALWAYS skip Swup handling for back/forward navigation
+        // Let the browser handle it naturally
+        return true
+      },
       theme: false,
-      animationClass: false,
+      // animationClass: false,
       containers: ["#body"],
-      smoothScrolling: false,
+      smoothScrolling: true,
       cache: process.env.NODE_ENV === "production", // off in dev so post edits show immediately
       preload: true,
       updateHead: true,
