@@ -96,7 +96,7 @@
     top: -0.75rem;
 
     @media screen and (min-width: breakpoint.$medium) {
-      top: -1.5rem;
+      top: calc(env(safe-area-inset-top) + -1.5rem);
     }
   }
 }
