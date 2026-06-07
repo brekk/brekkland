@@ -86,6 +86,11 @@
 
   &__locations {
     @extend %flexRow;
+
+    width: 100%;
+    justify-content: space-between;
+    max-width: 28rem;
+    margin: 0 auto;
   }
 
   &__background {
@@ -102,24 +107,15 @@
   }
 
   &__menu-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(1rem, auto);
+    @extend %flexRow;
+
+    flex-wrap: wrap;
+    align-items: space-between;
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 0.5rem;
-    font-size: 2rem;
-
-    @media screen and (min-width: breakpoint.$tiny) {
-      display: flex;
-      flex-direction: row;
-
-      // grid-template-columns: repeat(4, 1fr);
-      // grid-auto-rows: minmax(1rem, auto);
-      max-width: 28rem;
-      font-size: 1rem;
-    }
+    gap: 1.25rem;
+    font-size: 1rem;
   }
 
   &__menu-item {
@@ -145,10 +141,9 @@
     flex-direction: column;
     width: 100%;
     text-align: left;
-    gap: 0.25rem;
     text-decoration: none;
     overflow: hidden;
-    font-size: 2rem;
+    font-size: 1.875rem;
 
     &-text {
       display: block;

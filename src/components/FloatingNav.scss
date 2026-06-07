@@ -13,6 +13,7 @@
   padding: 0.25rem 1rem;
   position: sticky;
   background-color: var(--color-bg);
+  overflow: hidden;
 
   // important to make sticky work in grid
   align-self: start;
@@ -20,6 +21,12 @@
 
   // top: 14.75rem;
   z-index: 400;
+
+  &__logo {
+    place-self: center center;
+    height: 1rem;
+    width: auto;
+  }
 
   &__content {
     @extend %flexRow;

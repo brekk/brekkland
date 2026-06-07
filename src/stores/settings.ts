@@ -5,12 +5,14 @@ export type BrekklandGradient =
   | "gradient-tritrisquare"
   | "gradient-techgrid"
   | "gradient-static"
+  | "gradient-hex"
 
 export const GRADIENT_RECORD = [
   "gradient-trisquare",
   "gradient-tritrisquare",
   "gradient-techgrid",
   "gradient-static",
+  "gradient-hex",
 ]
 
 export const $settingsVisible = atom<boolean>(false)

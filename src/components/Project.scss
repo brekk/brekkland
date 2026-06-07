@@ -618,3 +618,14 @@
     }
   }
 }
+
+.ProjectDetailRow {
+  &__summary {
+    @extend %flexRow;
+
+    &::marker {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

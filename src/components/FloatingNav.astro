@@ -3,6 +3,7 @@ import Search from "@/components/Search.tsx"
 
 import "@/components/FloatingNav.scss"
 import blem from "#/utilities/blem"
+import LogoBox from "@/components/LogoBox"
 const bem = blem("FloatingNav")
 import type { Breadcrumb } from "#/types/brekkland.ts"
 interface Props {
@@ -26,6 +27,7 @@ const { breadcrumbs = [] } = Astro.props
         ) : null
       }
     </div>
+    <LogoBox mods={["nav"]} />
     <div class={bem("subcontent", "secondary")}>
       <Search client:load />
     </div>

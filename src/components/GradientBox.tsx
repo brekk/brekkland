@@ -6,7 +6,7 @@ import { HexColorPicker } from "react-colorful"
 import type { ChangeEvent } from "react"
 import blem from "#/utilities/blem.ts"
 import { GRADIENT_RECORD, $settingsGradient } from "@/stores/settings"
-import { TriangleDashed, Pyramid, Antenna, Cpu } from "lucide-react"
+import { Hexagon, TriangleDashed, Pyramid, Antenna, Cpu } from "lucide-react"
 
 import { useStore } from "@nanostores/react"
 const bem = blem("GradientBox")
@@ -16,6 +16,7 @@ const ICON_RECORD = [
   TriangleDashed,
   Cpu,
   Antenna,
+  Hexagon,
 ]
 
 const GradientBox = () => {

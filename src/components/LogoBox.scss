@@ -75,7 +75,7 @@
     }
 
     .LogoBox__logo {
-      top: 0.5rem;
+      top: 0.25rem;
       max-height: 2rem;
 
       @media screen and (min-width: breakpoint.$medium) {
@@ -96,7 +96,32 @@
     top: -0.75rem;
 
     @media screen and (min-width: breakpoint.$medium) {
-      top: calc(env(safe-area-inset-top) + -1.5rem);
+      top: calc(-1 * env(safe-area-inset-top) - 1rem);
+    }
+  }
+}
+
+.LogoBox {
+  &--nav {
+    &__wrapper {
+      position: relative;
+    }
+
+    .LogoBox__logo {
+      max-height: 1.75rem;
+      translate: 0 -16rem;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          translate 0.2s ease-out,
+          top 0.2s ease-out;
+      }
+    }
+
+    &.active {
+      .LogoBox__logo {
+        translate: 0 0;
+      }
     }
   }
 }

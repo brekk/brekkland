@@ -21,7 +21,7 @@ const { breadcrumbs = [] } = Astro.props
 <div id="brekkland" class={bem("")}>
   <SettingsPane client:only="react" />
   <SearchOverlay client:only="react" />
-  <LogoBox mods={["floating"]} />
+  <!--<LogoBox mods={["floating"]} />-->
   <!--<Guides />-->
   <header class={bem("header")}>
     <Nav />
@@ -41,7 +41,7 @@ const { breadcrumbs = [] } = Astro.props
   import { effect } from "nanostores"
   const bod = document.getElementById("body")
   const [el] = document.getElementsByClassName("FloatingNav")
-  const [logoBox] = document.getElementsByClassName("LogoBox--floating")
+  const [logoBox] = document.getElementsByClassName("LogoBox--nav")
   const [nav] = document.getElementsByClassName("Nav")
   const active = "active"
   const watchtower = () => {
