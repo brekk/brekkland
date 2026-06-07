@@ -55,12 +55,20 @@ const DumbSettingsToggle = ({ toggle, activeClass }: SubProps) => (
 
 export const SettingsToggle = () => {
   const $settings = useSettingsStore()
-  return <DumbSettingsToggle {...$settings} />
+  return (
+    <div className={bem("")}>
+      <DumbSettingsToggle {...$settings} />
+    </div>
+  )
 }
 
 export const SettingsPane = () => {
   const $settings = useSettingsStore()
-  return <DumbSettingsPane {...$settings} />
+  return (
+    <div className={bem("")}>
+      <DumbSettingsPane {...$settings} />
+    </div>
+  )
 }
 
 export const Settings = () => {
