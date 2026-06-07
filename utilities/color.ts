@@ -33,7 +33,7 @@ export const PALETTE: Record<string, ColorTrio> = {
   agriculture: ["#215226", "#f3b600", "#b6ebae"],
 }
 
-export const DEFAULT_PALETTE = "agriculture"
+export const DEFAULT_PALETTE = "sorbet"
 
 export const paletteToObject = ([fg, accent, bg]: ColorTrio) => ({
   fg,
