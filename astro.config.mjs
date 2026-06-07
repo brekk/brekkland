@@ -151,6 +151,7 @@ export default defineConfig({
     mdx(),
     swup({
       theme: false,
+      animationClass: false,
       containers: ["#body"],
       smoothScrolling: false,
       cache: process.env.NODE_ENV === "production", // off in dev so post edits show immediately
