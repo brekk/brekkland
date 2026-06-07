@@ -19,14 +19,14 @@ const { breadcrumbs = [] } = Astro.props
 ---
 
 <div id="brekkland" class={bem("")}>
-  <SettingsPane client:only="react" />
-  <SearchOverlay client:only="react" />
+  <SettingsPane transition:persist client:only="react" />
+  <SearchOverlay transition:persist client:only="react" />
   <!--<LogoBox mods={["floating"]} />-->
   <!--<Guides />-->
   <header class={bem("header")}>
-    <Nav />
+    <Nav transition:persist />
   </header>
-  <FloatingNav breadcrumbs={breadcrumbs} />
+  <FloatingNav transition:persist breadcrumbs={breadcrumbs} />
   <slot />
 </div>
 
