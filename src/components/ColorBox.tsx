@@ -63,11 +63,17 @@ export const makePicker =
           >
             {$comp2.aaa || $comp1.aaa || $comp2.aaaLarge || $comp1.aaaLarge ? (
               <Trophy
-                className={bem("aaa", [$comp1.aaaLarge ? "large" : "regular"])}
+                className={bem("aaa",
+                  [$comp1.aaaLarge ? "large" : "regular",
+                  $comp2.aaaLarge ? "large2" : "regular2"
+                  ])}
               />
             ) : $comp2.aa || $comp1.aa || $comp2.aaLarge || $comp1.aaLarge ? (
               <Medal
-                className={bem("aa", [$comp1.aaLarge ? "large" : "regular"])}
+                className={bem("aa", [$comp1.aaLarge ? "large" : "regular",
+
+                $comp2.aaLarge ? "large2" : "regular2"
+                ])}
               />
             ) : null}
           </div>
