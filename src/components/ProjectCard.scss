@@ -189,6 +189,8 @@
         transform: translateX(-1rem);
         padding: 0.5rem;
         border-radius: 0.25rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
 
         @media (prefers-reduced-motion: no-preference) {
           transition:

@@ -6,6 +6,7 @@ import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 import FloatingNav from "@/components/FloatingNav.astro"
 import SearchOverlay from "@/components/SearchOverlay.tsx"
+import { ClientRouter } from "astro:transitions"
 import { colorFg, colorBg, colorAccent, palette } from "@/stores/colors"
 
 const bem = blem("Brekkland")
@@ -28,6 +29,7 @@ const { breadcrumbs = [] } = Astro.props
   </header>
   <FloatingNav breadcrumbs={breadcrumbs} />
   <slot />
+  <ClientRouter />
 </div>
 
 <script>
@@ -69,6 +71,12 @@ const { breadcrumbs = [] } = Astro.props
     }
   }
   if (el && nav && bod && logoBox) {
+    const nBox = nav.getBoundingClientRect()
+    console.log("Nbox", nBox, window.scrollY)
+    if (window.scrollY > nBox.height + 5) {
+      nav.classList.add(active)
+    }
+
     const go = watchWithOptions(
       { root: bod, rootMargin: "0px", threshold: 0 },
       ([main]) => {

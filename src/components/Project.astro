@@ -150,13 +150,15 @@ const domainRepo = "github.com"
 
 <script>
   const project = document.getElementById("project")
+  const nav = document.getElementById("nav")
   const slots = document.getElementsByClassName("Project__slot")
   const full = window.outerHeight
   if (project && slots.length > 0) {
+    const navHeight = nav?.getBoundingClientRect()?.height ?? 400
     const slot = slots[0]
     const boxHeight = slot.getBoundingClientRect()?.height
     const minHeight = full >= boxHeight ? full : boxHeight
     // @ts-ignore
-    project.style.minHeight = minHeight + 400 + "px"
+    project.style.minHeight = minHeight + navHeight + "px"
   }
 </script>
