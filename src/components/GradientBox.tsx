@@ -5,8 +5,8 @@ import React, { useCallback, useRef, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 import type { ChangeEvent } from "react"
 import blem from "#/utilities/blem.ts"
-import { GRADIENT_RECORD, $settingsGradient } from "@/stores/settings"
-import { Hexagon, TriangleDashed, Pyramid, Antenna, Cpu } from "lucide-react"
+import { DEFAULT_GRADIENT, GRADIENT_RECORD, $settingsGradient } from "@/stores/settings"
+import { Hexagon, TableRowsSplit, TriangleDashed, Pyramid, Antenna, Cpu } from "lucide-react"
 
 import { useStore } from "@nanostores/react"
 const bem = blem("GradientBox")
@@ -17,10 +17,11 @@ const ICON_RECORD = [
   Cpu,
   Antenna,
   Hexagon,
+  TableRowsSplit
 ]
 
 const GradientBox = () => {
-  const [$i, $setI] = useState(0)
+  const [$i, $setI] = useState(GRADIENT_RECORD.indexOf(DEFAULT_GRADIENT))
   const $gradient = useStore($settingsGradient)
   const clicky = (e: React.MouseEvent<unknown>) => {
     e.preventDefault()

@@ -62,7 +62,7 @@
 }
 
 .gradient-techgrid {
-  --s: 0.5rem; /* control the size */
+  --s: 0.5rem;
   --c1: var(--color-accent);
   --c2: var(--color-fg);
   --_g: radial-gradient(calc(var(--s)/2), var(--c1) 97%, #0000);
@@ -110,4 +110,22 @@
     var(--g3) var(--s) 0,var(--g3) 0 calc(1.73*var(--s)) 
     var(--c2);
   background-size: calc(2*var(--s)) calc(3.46*var(--s));
+}
+
+.gradient-lattice {
+  --s: 4rem; 
+  --c1: var(--color-bg);
+  --c2: var(--color-fg);
+  --c3: var(--color-accent);
+  --_g: 0 120deg,#0000 0;
+
+  background:
+    conic-gradient(             at calc(250%/3) calc(100%/3),var(--c3) var(--_g)),
+    conic-gradient(from -120deg at calc( 50%/3) calc(100%/3),var(--c2) var(--_g)),
+    conic-gradient(from  120deg at calc(100%/3) calc(250%/3),var(--c1) var(--_g)),
+    conic-gradient(from  120deg at calc(200%/3) calc(250%/3),var(--c1) var(--_g)),
+    conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2)  60deg,var(--c1) var(--_g)),
+    conic-gradient(from   60deg at calc(200%/3) 50%,var(--c1)  60deg,var(--c3) var(--_g)),
+    conic-gradient(from  -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
+  background-size: calc(var(--s)*sqrt(3)) var(--s);
 }

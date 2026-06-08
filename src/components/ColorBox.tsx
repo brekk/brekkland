@@ -6,7 +6,7 @@ import type { Accessibility } from "#/colorable.d.ts"
 
 import { useClickAway } from "@uidotdev/usehooks"
 import type { ChangeEvent } from "react"
-import { Medal, Trophy } from "lucide-react"
+import { AA, AAA, AAALarge, AALarge } from "@/svg-components/Contrast.tsx"
 import blem from "#/utilities/blem.ts"
 
 import {
@@ -61,20 +61,14 @@ export const makePicker =
             style={{ backgroundColor: $color }}
             onClick={() => $setIsOpen(true)}
           >
-            {$comp2.aaa || $comp1.aaa || $comp2.aaaLarge || $comp1.aaaLarge ? (
-              <Trophy
-                className={bem("aaa",
-                  [$comp1.aaaLarge ? "large" : "regular",
-                  $comp2.aaaLarge ? "large2" : "regular2"
-                  ])}
-              />
-            ) : $comp2.aa || $comp1.aa || $comp2.aaLarge || $comp1.aaLarge ? (
-              <Medal
-                className={bem("aa", [$comp1.aaLarge ? "large" : "regular",
-
-                $comp2.aaLarge ? "large2" : "regular2"
-                ])}
-              />
+            {$comp2.aaa || $comp1.aaa ? (
+              <AAA />
+            ) : $comp2.aaaLarge || $comp1.aaaLarge ? (
+              <AAALarge />
+            ) : $comp2.aa || $comp1.aa ? (
+              <AA />
+            ) : $comp2.aaLarge || $comp1.aaLarge ? (
+              <AALarge />
             ) : null}
           </div>
 
