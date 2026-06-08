@@ -6,9 +6,10 @@ import LogoBox from "@/components/LogoBox.astro"
 import DesignConstants from "#/design/constants"
 const bem = blem("Nav")
 const locations = Object.entries(DesignConstants.locations.nav)
+import { DEFAULT_GRADIENT } from "@/stores/settings"
 ---
 
-<nav id="nav" class={`${bem("")} gradient-trisquare`}>
+<nav id="nav" class={`${bem("")} ${DEFAULT_GRADIENT}`}>
   <div class={bem("menu")}>
     <LogoBox />
     <div class={bem("locations")}>

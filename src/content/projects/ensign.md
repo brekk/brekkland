@@ -6,7 +6,7 @@ dependencies:
   - PartyBus
 repo: brekk/ensign
 title: ensign
-description: Argument parsing in Madlib
+description: Handle argument parsing for command-line interfaces in Madlib
 version: v0.1.0
 isPublished: true
 related:
@@ -32,11 +32,11 @@ Let's start with a hypothetical pizza order tool.
 
 Firstly, let's define the flags that we expect the users to be able to provide:
 
- - Name for the order
- - Sauce base for the pizza (Default: "red sauce")
- - Cheese for the pizza (Default: "mozzarella")
- - Topping(s)
- - Pizza size
+- Name for the order
+- Sauce base for the pizza (Default: "red sauce")
+- Cheese for the pizza (Default: "mozzarella")
+- Topping(s)
+- Pizza size
 
 ### Defining flags
 
@@ -121,6 +121,7 @@ alias PizzaOrder = {
   toppings :: List String,
 }
 ```
+
 As you can see, here we've defined these as `Maybe` values, so we can handle them being optional. However, if you want a less flexible / more strict solution, this might not be what you want.
 
 Now that we've defined the `type` (or in this case, the `alias` / Record), we can define an initial state of that type:
@@ -184,7 +185,7 @@ For this example the only reason that might happen is when the user provides `--
 
 The pure [[ensign#Applying arguments to state|application transformer]] has now been defined, but for it to be useful we need to aggregate each flag into one application state.
 
-Here's a recursive function which takes an order, a processing function, and our list of flags. You can see that the `process` argument matches our `captureTheFlag` type definition. 
+Here's a recursive function which takes an order, a processing function, and our list of flags. You can see that the `process` argument matches our `captureTheFlag` type definition.
 
 ```mad
 processFlagState :: PizzaOrder
@@ -209,6 +210,7 @@ processFlagState = (state, process, flags) => {
   return walker(false, state, flags)
 }
 ```
+
 That short-circuiting behavior takes effect here, the `done` value is the first value in the `#[Boolean, State]` tuple from the `captureTheFlag` output.
 
 ### Putting it all together
@@ -244,6 +246,7 @@ madlib run src/Main.mad -- --name Pizzapants -t pepperoni -s 4 -t corn -t habane
 ```
 
 Will print a final output:
+
 ```
 {
   base: Just("red sauce"),
@@ -261,6 +264,7 @@ And if you pass something invalid, you can see how we are able to recover becaus
 ```sh
 madlib run src/Main.mad -- --name Pizzapants -x garlic
 ```
+
 ```
 Errors during parsing.
         Unexpected flag x.
@@ -395,5 +399,6 @@ Here's everything above written as a single block of text:
     madlib run src/Main.mad -- --name Pizzapants -t pepperoni -s 4 -t corn -t habanero --no-gf
     // invalid input
     madlib run src/Main.mad -- --name Madness -t pepperoni -s xl --hey there
+
 </code>
 </details>
