@@ -13,10 +13,6 @@
   min-height: 3rem;
   padding-bottom: 1rem;
 
-  @media screen and (min-width: breakpoint.$medium) {
-    padding-bottom: 0;
-  }
-
   &__logo {
     position: absolute;
     z-index: 4001;
@@ -89,16 +85,6 @@
         top 0.2s ease-out;
     }
   }
-
-  &.active {
-    transform: scaleY(1);
-    min-height: 2rem;
-    top: -0.75rem;
-
-    @media screen and (min-width: breakpoint.$medium) {
-      top: calc(-1 * env(safe-area-inset-top) - 1rem);
-    }
-  }
 }
 
 .LogoBox {
@@ -109,10 +95,13 @@
 
     .LogoBox__logo {
       max-height: 1.75rem;
-      translate: 0 -16rem;
+      opacity: 0;
 
       @media (prefers-reduced-motion: no-preference) {
         transition:
+          opacity 0.2s ease-in,
+          fill 0.2s ease-in,
+          transform 0.2s ease-in,
           translate 0.2s ease-out,
           top 0.2s ease-out;
       }
@@ -120,7 +109,7 @@
 
     &.active {
       .LogoBox__logo {
-        translate: 0 0;
+        opacity: 1;
       }
     }
   }

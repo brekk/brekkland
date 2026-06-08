@@ -619,13 +619,55 @@
   }
 }
 
+@keyframes spinghost {
+  0% {
+    opacity: 1;
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateZ(100deg) scale(1.25);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateZ(90deg) scale(1);
+  }
+}
+
 .ProjectDetailRow {
   &__summary {
+    // flex seems to nuke ::marker entirely
     @extend %flexRow;
 
-    &::marker {
+    position: relative;
+    width: 100%;
+
+    &::after {
+      content: "⋯";
+      place-self: center flex-end;
       position: absolute;
       right: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 0.2s ease-in;
+        animation-iteration-count: 1;
+      }
+    }
+  }
+
+  &[open] {
+    .ProjectDetailRow__summary::after {
+      content: "➜";
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 0.2s ease-in;
+        animation-name: spinghost;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-in;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }
