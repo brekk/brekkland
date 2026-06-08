@@ -24,13 +24,27 @@ const { breadcrumbs = [] } = Astro.props
   <!--<LogoBox mods={["floating"]} />-->
   <!--<Guides />-->
   <header class={bem("header")}>
-    <Nav transition:persist />
+    <Nav />
   </header>
-  <FloatingNav transition:persist breadcrumbs={breadcrumbs} />
+  <FloatingNav breadcrumbs={breadcrumbs} />
   <slot />
 </div>
 
 <script>
+  import {
+    pipe,
+    addIndex,
+    map,
+    slice,
+    pathOr,
+    path,
+    tap,
+    prop,
+    chain,
+    props,
+  } from "ramda"
+  import colorable from "colorable"
+  import type { CompactComparison, Accessibility } from "#/colorable.d.ts"
   import {
     getPalette,
     DEFAULT_PALETTE,
@@ -80,6 +94,36 @@ const { breadcrumbs = [] } = Astro.props
     [$fg, $bg, $accent, $modified, $palette],
     (fg, bg, accent, modified, palette) => {
       console.log("COLOR STORE", [fg, accent, bg])
+      const colorCheck = colorable([fg, bg, accent], {
+        compact: true,
+        threshold: 0,
+      })
+      console.log("LSKKLSL", colorCheck)
+      pipe<CompactComparison[], Accessibility[], Accessibility[], void>(
+        chain<CompactComparison, Accessibility>(
+          pipe(prop("combinations"), map(prop("accessibility"))),
+        ),
+        slice(0, 4),
+        ([a, b, _, c]) => [a, b, c],
+        (raw: Accessibility[]) =>
+          raw.forEach(
+            ({ aa, aaa, aaLarge, aaaLarge }: Accessibility, i: number) => {
+              console.log("KINFIFIF", { aaa, aa, aaLarge, aaaLarge, i })
+              const id = "color-" + (i === 0 ? "bg" : i === 1 ? "fg" : "accent")
+              console.log("><?>?", id)
+              const ref = document.getElementById(id)
+              console.log("REF", ref)
+              if (ref) {
+                ref.classList.add(
+                  aa ? "aa" : "no-aa",
+                  aaLarge ? "aa-large" : "no-aa-large",
+                  aaa ? "aaa" : "no-aaa",
+                  aaaLarge ? "aaa-large" : "no-aaa-large",
+                )
+              }
+            },
+          ),
+      )(colorCheck)
     },
   )
 </script>

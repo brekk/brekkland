@@ -46,4 +46,23 @@
     left: 0;
     width: 100%;
   }
+
+  .react-colorful {
+    height: 15rem;
+  }
+
+  .react-colorful__saturation {
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  .react-colorful__hue {
+    height: 2.5rem;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .react-colorful__hue-pointer {
+    width: 0.85rem;
+    height: inherit;
+    border-radius: 0;
+  }
 }

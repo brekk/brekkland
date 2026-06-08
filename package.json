@@ -27,6 +27,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "astro": "^6.1.5",
     "blem": "0.0.9",
+    "colorable": "^1.0.5",
     "debounce": "3.0.0",
     "debug": "4.4.3",
     "lucide-react": "1.8.0",

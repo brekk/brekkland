@@ -32,9 +32,10 @@ export const PALETTE: Record<string, ColorTrio> = {
   blueDream: [$.darkness, $.cream, $.marine],
   agriculture: ["#215226", "#f3b600", "#b6ebae"],
   meline: ["#001f3a", "#c2e3e6", "#c46565"],
+  grayDay: [$.black, $.white, "#9096a2"],
 }
 
-export const DEFAULT_PALETTE = "meline"
+export const DEFAULT_PALETTE = "grayDay"
 
 export const paletteToObject = ([fg, accent, bg]: ColorTrio) => ({
   fg,
