@@ -635,7 +635,28 @@
   }
 }
 
+@keyframes spinghost2 {
+  0% {
+    opacity: 1;
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateZ(100deg) scale(1.25);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateZ(90deg) scale(1);
+  }
+}
+
 .ProjectDetailRow {
+  @extend %flexCol;
+
+  align-items: flex-start;
+  width: 100%;
+
   &__summary {
     // flex seems to nuke ::marker entirely
     @extend %flexRow;
@@ -644,25 +665,29 @@
     width: 100%;
 
     &::after {
-      content: "⋯";
+      content: "+";
       place-self: center flex-end;
       position: absolute;
       right: 0;
 
       @media (prefers-reduced-motion: no-preference) {
         transition: transform 0.2s ease-in;
+        animation-name: spinghost;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-in;
         animation-iteration-count: 1;
+        animation-fill-mode: forwards;
       }
     }
   }
 
   &[open] {
     .ProjectDetailRow__summary::after {
-      content: "➜";
+      content: "▶︎";
 
       @media (prefers-reduced-motion: no-preference) {
         transition: transform 0.2s ease-in;
-        animation-name: spinghost;
+        animation-name: spinghost2;
         animation-duration: 0.2s;
         animation-timing-function: ease-in;
         animation-iteration-count: 1;

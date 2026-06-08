@@ -57,7 +57,7 @@ const domainRepo = "github.com"
             {hasBinary ? "Tool" : "Library"}
           </Badge>
         </div>
-        <Row className={bem("row", "source")}>
+        <Row class={bem("row", "source")}>
           <div slot="label" class={bem("label", "repo")}>Source</div>
           <a
             class={bem("repo-link")}
@@ -68,29 +68,29 @@ const domainRepo = "github.com"
             <span class={bem("repo-text")}>{repo}</span>
           </a>
         </Row>
-        <Row className={bem("row", "version")}>
+        <Row class={bem("row", "version")}>
           <div slot="label" class={bem("label", "version")}>Version</div>
           {version}
         </Row>
-        <Row className={bem("row", "published")}>
+        <Row class={bem("row", "published")}>
           <div slot="label" class={bem("label", ["date", "published"])}>
             Published
           </div>
           <MagicDate isoString={published} />
         </Row>
 
-        <Row className={bem("row", "updated")}>
+        <Row class={bem("row", "updated")}>
           <div slot="label" class={bem("label", ["date", "updated"])}>
             Last Updated
           </div>
           <MagicDate isoString={updated} />
         </Row>
-        <Row className={bem("row", "tags")}>
+        <Row class={bem("row", "tags")}>
           <div slot="label" class={bem("label", "tags")}>Tags</div>
           <Tags tags={tags} />
         </Row>
 
-        <Row className={bem("row", "explorer")}>
+        <Row class={bem("row", "dependencies")}>
           <div slot="label" class={bem("label", ["dependencies"])}>
             Dependencies
           </div>
@@ -109,16 +109,8 @@ const domainRepo = "github.com"
             }
           </ul>
         </Row>
-        <div class={bem("row", "explorer")}>
-          <div class={bem("label", "headings")}>
-            Jump to
-            <a
-              class={bem("scroll-to-top")}
-              href="#body"
-              aria-label="Scroll document to top"
-              ><ArrowUp class={bem("svg", "arrow")} /></a
-            >
-          </div>
+        <Row class={bem("row", "explorer")}>
+          <div slot="label" class={bem("label", "headings")}>Jump to</div>
 
           <ol class={bem("headings-list")}>
             {
@@ -137,7 +129,14 @@ const domainRepo = "github.com"
               })
             }
           </ol>
-        </div>
+        </Row>
+        <a
+          class={bem("scroll-to-top")}
+          href="#body"
+          aria-label="Scroll document to top"
+        >
+          <ArrowUp class={bem("svg", "arrow")} />
+        </a>
       </div>
     </section>
     <section class={bem("section", "usage")}>
