@@ -11,6 +11,7 @@ export type BrekklandGradient =
   | "gradient-triangels"
   | "gradient-stacks"
   | "gradient-dominoes"
+  | "gradient-lightning"
 
 export const GRADIENT_RECORD = [
   "gradient-trisquare",
@@ -23,8 +24,9 @@ export const GRADIENT_RECORD = [
   "gradient-triangels",
   "gradient-stacks",
   "gradient-dominoes",
+  "gradient-lightning",
 ]
-export const DEFAULT_GRADIENT = "gradient-stacks" as BrekklandGradient
+export const DEFAULT_GRADIENT = "gradient-lightning" as BrekklandGradient
 
 export const $settingsVisible = atom<boolean>(false)
 export const $settingsGradient = atom<BrekklandGradient>(DEFAULT_GRADIENT)

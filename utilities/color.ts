@@ -35,9 +35,14 @@ export const PALETTE: Record<string, ColorTrio> = {
   grayDay: [$.black, $.white, "#9096a2"],
   lemonade: ["#35322b", "#e579ad", "#ffdd00"],
   sunwater: ["#144357", "#75efff", "#ffdd00"],
+  mintNomad: ["#232d46", "#b2ffa0", "#7fb174"],
+  purpleDurp: ["#0b1c49", "#aba7ff", "#d296ca"],
+  highlifer: ["#211ead", "#ffffff", "#f2ff00"],
+  fakieThrowback: ["#370c5d", "#fffbd6", "#ffbf5e"],
+  wiger: ["#101010", "#fffaeb", "#ffaf3f"],
 }
 
-export const DEFAULT_PALETTE = "sunwater"
+export const DEFAULT_PALETTE = "wiger"
 
 export const paletteToObject = ([fg, accent, bg]: ColorTrio) => ({
   fg,

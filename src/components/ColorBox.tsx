@@ -1,6 +1,6 @@
 import "@/components/ColorBox.scss"
 import type { PreinitializedWritableAtom, Batched } from "nanostores"
-import React, { useCallback, useRef, useState } from "react"
+import React, { useCallback, useMemo, useRef, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 import type { Accessibility } from "#/colorable.d.ts"
 
@@ -21,87 +21,112 @@ import {
 import { useStore } from "@nanostores/react"
 const bem = blem("ColorBox")
 
+interface PickerProps {
+  mods: string[]
+  isOpen: boolean
+  toggle: () => void
+  label: React.ReactNode
+  short: string
+  color: string
+  onChange: (newColor: string) => void
+  comparisons: { a: Batched; b: Batched }
+  ref: React.RefObject<HTMLDivElement | null>
+}
+
 type Comp = Batched<Accessibility, string>
 
-export const makePicker =
-  (
-    short: string,
-    store: PreinitializedWritableAtom<string>,
-    label: string,
-    [comp1, comp2]: [Comp, Comp],
-  ) =>
-    () => {
-      const $color = useStore(store)
-      const $comp1 = useStore(comp1)
-      const $comp2 = useStore(comp2)
-      const [$isOpen, $setIsOpen] = useState(false)
+export const Picker = ({
+  mods = [],
+  ref,
+  label,
+  onChange,
+  isOpen: $isOpen,
+  short,
+  color: $color,
+  toggle,
+  comparisons: { a: $a, b: $b },
+}: PickerProps) => (
+  <div className={bem("picker", mods)} id={`color-${short}`}>
+    <div
+      className={bem("swatch", [short])}
+      style={{ backgroundColor: $color }}
+      onClick={toggle}
+    >
+      {$b.aaa || $a.aaa ? (
+        <AAA />
+      ) : $b.aaaLarge || $a.aaaLarge ? (
+        <AAALarge />
+      ) : $b.aa || $a.aa ? (
+        <AA />
+      ) : $b.aaLarge || $a.aaLarge ? (
+        <AALarge />
+      ) : null}
+    </div>
 
-      const ref = useClickAway(() => {
-        $setIsOpen(false)
-      })
-      const onChange = (newColor: string) => {
-        store.set(newColor)
-        const varName = `--color-${short}`
-        const [hatemail] = document.getElementsByTagName("html")
-        hatemail?.style.setProperty(varName, newColor)
-        document.getElementById("body")?.style.setProperty(varName, newColor)
-      }
-      const mods = [
-        short,
-        $comp1.aa && $comp2.aa ? "aa" : "no-aa",
-        $comp1.aaLarge && $comp2.aaLarge ? "aa-large" : "no-aa-large",
-        $comp1.aaa && $comp2.aaa ? "aaa" : "no-aaa",
-        $comp1.aaaLarge && $comp2.aaaLarge ? "aaa-large" : "no-aaa-large",
-      ]
+    {$isOpen && (
+      <div className={bem("popover")} ref={ref}>
+        <strong className={bem("label")}>{label}</strong>
+        <HexColorPicker color={$color} onChange={onChange} />
+      </div>
+    )}
+  </div>
+)
+export const usePicker = (
+  short: string,
+  store: PreinitializedWritableAtom<string>,
+  [comp1, comp2]: [Comp, Comp],
+): Omit<PickerProps, "label"> => {
+  const $color = useStore(store)
+  const $comp1 = useStore(comp1)
+  const $comp2 = useStore(comp2)
+  const [$isOpen, $setIsOpen] = useState(false)
 
-      return (
-        <div className={bem("picker", mods)} id={`color-${short}`}>
-          <div
-            className={bem("swatch", [short])}
-            style={{ backgroundColor: $color }}
-            onClick={() => $setIsOpen(true)}
-          >
-            {$comp2.aaa || $comp1.aaa ? (
-              <AAA />
-            ) : $comp2.aaaLarge || $comp1.aaaLarge ? (
-              <AAALarge />
-            ) : $comp2.aa || $comp1.aa ? (
-              <AA />
-            ) : $comp2.aaLarge || $comp1.aaLarge ? (
-              <AALarge />
-            ) : null}
-          </div>
-
-          {$isOpen && (
-            <div className={bem("popover")} ref={ref as any}>
-              <strong className={bem("label")}>{label}</strong>
-              <HexColorPicker color={$color} onChange={onChange} />
-            </div>
-          )}
-        </div>
-      )
-    }
+  const ref = useClickAway(() => {
+    $setIsOpen(false)
+  })
+  const onChange = useCallback(
+    (newColor: string) => {
+      store.set(newColor)
+      const varName = `--color-${short}`
+      const [hatemail] = document.getElementsByTagName("html")
+      hatemail?.style.setProperty(varName, newColor)
+      document.getElementById("body")?.style.setProperty(varName, newColor)
+    },
+    [store, short],
+  )
+  const mods = useMemo(() => [
+    short,
+    $comp1.aa && $comp2.aa ? "aa" : "no-aa",
+    $comp1.aaLarge && $comp2.aaLarge ? "aa-large" : "no-aa-large",
+    $comp1.aaa && $comp2.aaa ? "aaa" : "no-aaa",
+    $comp1.aaaLarge && $comp2.aaaLarge ? "aaa-large" : "no-aaa-large",
+  ], [short, $comp1, $comp2])
+  return {
+    short,
+    color: $color,
+    comparisons: { a: $comp1, b: $comp2 },
+    isOpen: $isOpen,
+    toggle: () => $setIsOpen(!$isOpen),
+    ref: ref as any,
+    mods,
+    onChange,
+  }
+}
 
 export const ColorBoxBg = () => {
-  const C = makePicker("bg", $bg, "Background", [
-    $contrastFgBg,
-    $contrastBgAccent,
-  ])
-  return <C />
+  const dynaProps = usePicker("bg", $bg, [$contrastFgBg, $contrastBgAccent])
+  return <Picker label="Background" {...dynaProps} />
 }
 
 export const ColorBoxFg = () => {
-  const C = makePicker("fg", $fg, "Foreground", [
-    $contrastFgBg,
-    $contrastFgAccent,
-  ])
-  return <C />
+  const dynaProps = usePicker("fg", $fg, [$contrastFgBg, $contrastFgAccent])
+  return <Picker label="Foreground" {...dynaProps} />
 }
 
 export const ColorBoxAccent = () => {
-  const C = makePicker("accent", $accent, "Accent", [
+  const dynaProps = usePicker("accent", $accent, [
     $contrastFgAccent,
     $contrastBgAccent,
   ])
-  return <C />
+  return <Picker label="Accent" {...dynaProps} />
 }

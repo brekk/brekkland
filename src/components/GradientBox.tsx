@@ -6,7 +6,7 @@ import { HexColorPicker } from "react-colorful"
 import type { ChangeEvent } from "react"
 import blem from "#/utilities/blem.ts"
 import { DEFAULT_GRADIENT, GRADIENT_RECORD, $settingsGradient } from "@/stores/settings"
-import { Landmark, Diamond, Hexagon, TableRowsSplit, TriangleDashed, Pyramid, Antenna, Cpu, LayoutDashboard, CirclePile } from "lucide-react"
+import { Zap, Landmark, Diamond, Hexagon, TableRowsSplit, TriangleDashed, Pyramid, Antenna, Cpu, LayoutDashboard, CirclePile } from "lucide-react"
 
 import { useStore } from "@nanostores/react"
 const bem = blem("GradientBox")
@@ -21,21 +21,19 @@ const ICON_RECORD = [
   Diamond,
   CirclePile,
   Landmark,
-  LayoutDashboard
+  LayoutDashboard,
+  Zap
 ]
 
 const GradientBox = () => {
   const [$i, $setI] = useState(GRADIENT_RECORD.indexOf(DEFAULT_GRADIENT))
   const $gradient = useStore($settingsGradient)
-  const clicky = (e: React.MouseEvent<unknown>) => {
+  const clicky = useCallback((e: React.MouseEvent<unknown>) => {
     e.preventDefault()
-    $setI((i) => {
-      const j = (i + 1) % GRADIENT_RECORD.length
-      $settingsGradient.set(GRADIENT_RECORD[j] as BrekklandGradient)
-
-      return j
-    })
-  }
+    const j = ($i + 1) % GRADIENT_RECORD.length
+    $settingsGradient.set(GRADIENT_RECORD[j] as BrekklandGradient)
+    $setI(j)
+  }, [$gradient, $settingsGradient, $i])
   const Icon = ICON_RECORD[$i]
 
   return <div className={bem("")} onClick={clicky}>

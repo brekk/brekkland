@@ -509,6 +509,8 @@
   &__label {
     @extend %flexRow;
 
+    cursor: pointer;
+
     // background: var(--color-accent);
     width: 100%;
     font-family: var(--font-obviously-narrow);
@@ -685,6 +687,7 @@
   &[open] {
     .ProjectDetailRow__summary::after {
       content: "▶︎";
+      transform: rotateZ(90deg);
 
       @media (prefers-reduced-motion: no-preference) {
         transition: transform 0.2s ease-in;
