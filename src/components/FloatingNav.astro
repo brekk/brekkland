@@ -15,21 +15,25 @@ const { breadcrumbs = [] } = Astro.props
 <div class={bem("")}>
   <div class={bem("content")}>
     <div class={bem("subcontent", "primary")}>
-      {
-        breadcrumbs ? (
-          <div class={bem("breadcrumbs")}>
-            {breadcrumbs.map(({ name, path }) => (
-              <a class={bem("breadcrumb")} href={path}>
-                {name}
-              </a>
-            ))}
-          </div>
-        ) : null
-      }
+      <div class={bem("subcontent-wrapper", "primary")}>
+        {
+          breadcrumbs ? (
+            <div class={bem("breadcrumbs")}>
+              {breadcrumbs.map(({ name, path }) => (
+                <a class={bem("breadcrumb")} href={path}>
+                  {name}
+                </a>
+              ))}
+            </div>
+          ) : null
+        }
+      </div>
     </div>
     <LogoBox mods={["nav"]} />
     <div class={bem("subcontent", "secondary")}>
-      <Search client:load />
+      <div class={bem("subcontent-wrapper", "secondary")}>
+        <Search client:load />
+      </div>
     </div>
   </div>
 </div>

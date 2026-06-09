@@ -22,21 +22,19 @@ import { useStore } from "@nanostores/react"
 const bem = blem("ColorBox")
 
 interface PickerProps {
-  mods: string[]
   isOpen: boolean
   toggle: () => void
   label: React.ReactNode
   short: string
   color: string
   onChange: (newColor: string) => void
-  comparisons: { a: Batched; b: Batched }
+  comparisons: [Comp, Comp]
   ref: React.RefObject<HTMLDivElement | null>
 }
 
 type Comp = Batched<Accessibility, string>
 
 export const Picker = ({
-  mods = [],
   ref,
   label,
   onChange,
@@ -44,41 +42,49 @@ export const Picker = ({
   short,
   color: $color,
   toggle,
-  comparisons: { a: $a, b: $b },
-}: PickerProps) => (
-  <div className={bem("picker", mods)} id={`color-${short}`}>
-    <div
-      className={bem("swatch", [short])}
-      style={{ backgroundColor: $color }}
-      onClick={toggle}
-    >
-      {$b.aaa || $a.aaa ? (
-        <AAA />
-      ) : $b.aaaLarge || $a.aaaLarge ? (
-        <AAALarge />
-      ) : $b.aa || $a.aa ? (
-        <AA />
-      ) : $b.aaLarge || $a.aaLarge ? (
-        <AALarge />
-      ) : null}
-    </div>
-
-    {$isOpen && (
-      <div className={bem("popover")} ref={ref}>
-        <strong className={bem("label")}>{label}</strong>
-        <HexColorPicker color={$color} onChange={onChange} />
+  comparisons: [a, b],
+}: PickerProps) => {
+  const $a = useStore(a)
+  const $b = useStore(b)
+  const mods = [
+    short,
+    $a.aa && $b.aa ? "aa" : "no-aa",
+    $a.aaLarge && $b.aaLarge ? "aa-large" : "no-aa-large",
+    $a.aaa && $b.aaa ? "aaa" : "no-aaa",
+    $a.aaaLarge && $b.aaaLarge ? "aaa-large" : "no-aaa-large",
+  ]
+  return (
+    <div className={bem("picker", mods)} id={`color-${short}`}>
+      <div
+        className={bem("swatch", [short])}
+        style={{ backgroundColor: $color }}
+        onClick={toggle}
+      >
+        {$b.aaa || $a.aaa ? (
+          <AAA />
+        ) : $b.aaaLarge || $a.aaaLarge ? (
+          <AAALarge />
+        ) : $b.aa || $a.aa ? (
+          <AA />
+        ) : $b.aaLarge || $a.aaLarge ? (
+          <AALarge />
+        ) : null}
       </div>
-    )}
-  </div>
-)
+
+      {$isOpen && (
+        <div className={bem("popover")} ref={ref}>
+          <strong className={bem("label")}>{label}</strong>
+          <HexColorPicker color={$color} onChange={onChange} />
+        </div>
+      )}
+    </div>
+  )
+}
 export const usePicker = (
   short: string,
   store: PreinitializedWritableAtom<string>,
-  [comp1, comp2]: [Comp, Comp],
-): Omit<PickerProps, "label"> => {
+): Omit<PickerProps, "comparisons" | "label"> => {
   const $color = useStore(store)
-  const $comp1 = useStore(comp1)
-  const $comp2 = useStore(comp2)
   const [$isOpen, $setIsOpen] = useState(false)
 
   const ref = useClickAway(() => {
@@ -94,39 +100,42 @@ export const usePicker = (
     },
     [store, short],
   )
-  const mods = useMemo(() => [
-    short,
-    $comp1.aa && $comp2.aa ? "aa" : "no-aa",
-    $comp1.aaLarge && $comp2.aaLarge ? "aa-large" : "no-aa-large",
-    $comp1.aaa && $comp2.aaa ? "aaa" : "no-aaa",
-    $comp1.aaaLarge && $comp2.aaaLarge ? "aaa-large" : "no-aaa-large",
-  ], [short, $comp1, $comp2])
   return {
     short,
     color: $color,
-    comparisons: { a: $comp1, b: $comp2 },
     isOpen: $isOpen,
     toggle: () => $setIsOpen(!$isOpen),
     ref: ref as any,
-    mods,
     onChange,
   }
 }
 
 export const ColorBoxBg = () => {
-  const dynaProps = usePicker("bg", $bg, [$contrastFgBg, $contrastBgAccent])
-  return <Picker label="Background" {...dynaProps} />
+  const dynaProps = usePicker("bg", $bg)
+  return (
+    <Picker
+      label="Background"
+      {...dynaProps}
+      comparisons={[$contrastFgBg, $contrastBgAccent]}
+    />
+  )
 }
 
 export const ColorBoxFg = () => {
-  const dynaProps = usePicker("fg", $fg, [$contrastFgBg, $contrastFgAccent])
-  return <Picker label="Foreground" {...dynaProps} />
+  const dynaProps = usePicker("fg", $fg)
+  return (
+    <Picker
+      label="Foreground"
+      {...dynaProps}
+      comparisons={[$contrastFgBg, $contrastFgAccent]}
+    />
+  )
 }
 
 export const ColorBoxAccent = () => {
-  const dynaProps = usePicker("accent", $accent, [
+  const dynaProps = usePicker("accent", $accent)
+  return <Picker label="Accent" {...dynaProps} comparisons={[
     $contrastFgAccent,
     $contrastBgAccent,
-  ])
-  return <Picker label="Accent" {...dynaProps} />
+  ]} />
 }

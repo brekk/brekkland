@@ -1,0 +1,5 @@
+:root {
+  --nav-width: min(45%, 30rem);
+  --nav-max-width: 50rem;
+  --sidebar-width: 1fr;
+}

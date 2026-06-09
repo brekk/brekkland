@@ -1,30 +1,30 @@
 @use "../styles/_flex";
+@use "../styles/_shape";
 @use "../styles/_media" as breakpoint;
 
 .GradientBox {
   @extend %flexCol;
+  @extend %hexagon;
 
   background-color: var(--color-accent);
 
   // border-radius: 100%;
   color: var(--color-fg);
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+
+  // center
   position: absolute;
   left: calc(50% - 1.45rem);
 
-  // hide on mobile displays
+  // place-self: center center;
+
   display: none;
-
-  // min-width: 100%;
-
-  // clip-path: polygon(50% 0%, 100% 0, 0 100%);
-
-  // width: 4rem;
   cursor: e-resize;
-  aspect-ratio: cos(30deg);
-  clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
 
   &:hover {
     background-color: var(--color-fg);

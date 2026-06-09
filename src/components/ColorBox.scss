@@ -1,4 +1,5 @@
 @use "../styles/_flex";
+@use "../styles/_shape";
 
 .ColorBox {
   display: flex;
@@ -12,7 +13,8 @@
   padding: 1rem;
 
   &__picker {
-    display: flex;
+    @extend %flexCol;
+
     min-height: 3.5rem;
     min-width: 3.5rem;
     width: 3.5rem;
@@ -22,20 +24,18 @@
 
   &__swatch {
     @extend %flexCol;
+    @extend %hexagon;
+
+    min-width: 3rem;
+    width: 3rem;
+    min-height: 3rem;
+    height: 3rem;
+    cursor: pointer;
 
     svg {
       max-width: 2rem;
     }
 
-    cursor: pointer;
-    aspect-ratio: cos(30deg);
-    clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
-
-    // hex
-    // aspect-ratio: 1 / cos(30deg);
-    // clip-path: content-box polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
-
-    // clip-path: content-box polygon(50% 0, 100% 100%, 0 100%);
     &--fg {
       path {
         fill: var(--color-accent);
@@ -55,6 +55,7 @@
 
   .react-colorful {
     height: 15rem;
+    pointer-events: auto;
   }
 
   .react-colorful__saturation {

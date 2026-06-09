@@ -9,8 +9,8 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 0 var(--color-fg);
-  width: calc(100% - 2rem);
-  padding: 0.25rem 1rem;
+  width: 100%;
+  padding: 0.25rem 0;
   position: sticky;
   background-color: var(--color-bg);
   overflow: hidden;
@@ -22,10 +22,12 @@
   // top: 14.75rem;
   z-index: 400;
 
+  --logo-width: 8rem;
+
   &__logo {
     place-self: center center;
     height: 1rem;
-    width: auto;
+    width: var(--logo-width);
   }
 
   &__content {
@@ -43,8 +45,33 @@
   &__subcontent {
     @extend %flexRow;
 
+    --subcontent-width: calc((100vw - var(--logo-width)) / 2);
+
+    // the rest!
+    width: var(--subcontent-width);
+
     .Search__search-icon {
       fill: var(--color-fg);
+    }
+
+    &--secondary {
+      justify-content: flex-end;
+    }
+  }
+
+  &__subcontent-wrapper {
+    @extend %flexRow;
+
+    width: 100%;
+
+    &--secondary {
+      // width: calc(25vw - 0.75rem);
+      // width: 32vw;
+      padding-right: 1rem;
+      max-width: 24.5rem;
+      justify-content: flex-end;
+
+      // justify-content: flex-start;
     }
   }
 

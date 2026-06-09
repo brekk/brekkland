@@ -227,8 +227,8 @@
     @media screen and (min-width: breakpoint.$medium) {
       margin-bottom: 4rem;
       padding: 1rem;
-      width: min(45%, 30rem);
-      max-width: 50rem;
+      width: var(--nav-width);
+      max-width: var(--nav-max-width);
     }
   }
 
