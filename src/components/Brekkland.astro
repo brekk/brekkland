@@ -6,7 +6,6 @@ import blem from "#/utilities/blem"
 import Nav from "@/components/Nav.astro"
 import FloatingNav from "@/components/FloatingNav.astro"
 import SearchOverlay from "@/components/SearchOverlay.tsx"
-import { ClientRouter } from "astro:transitions"
 import { colorFg, colorBg, colorAccent, palette } from "@/stores/colors"
 
 const bem = blem("Brekkland")
@@ -29,7 +28,6 @@ const { breadcrumbs = [] } = Astro.props
   </header>
   <FloatingNav breadcrumbs={breadcrumbs} />
   <slot />
-  <ClientRouter />
 </div>
 
 <script>
