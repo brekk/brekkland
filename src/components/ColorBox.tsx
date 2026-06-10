@@ -1,5 +1,5 @@
 import "@/components/ColorBox.scss"
-import type { PreinitializedWritableAtom, Batched } from "nanostores"
+import type { PreinitializedWritableAtom as Atom, Batched } from "nanostores"
 import React, { useCallback, useMemo, useRef, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 import type { Accessibility } from "#/colorable.d.ts"
@@ -28,11 +28,34 @@ interface PickerProps {
   short: string
   color: string
   onChange: (newColor: string) => void
-  comparisons: [Comp, Comp]
+  mods: string[]
   ref: React.RefObject<HTMLDivElement | null>
+  children: React.ReactNode
 }
 
 type Comp = Batched<Accessibility, string>
+
+const comparisonsToIcon = ($a: Comp, $b: Comp) =>
+  $b.aaa || $a.aaa ? (
+    <AAA />
+  ) : $b.aaaLarge || $a.aaaLarge ? (
+    <AAALarge />
+  ) : $b.aa || $a.aa ? (
+    <AA />
+  ) : $b.aaLarge || $a.aaLarge ? (
+    <AALarge />
+  ) : null
+
+const useComparison = (a: Comp, b: Comp) => {
+  const $a = useStore(a)
+  const $b = useStore(b)
+  return [
+    $a.aa && $b.aa ? "aa" : "no-aa",
+    $a.aaLarge && $b.aaLarge ? "aa-large" : "no-aa-large",
+    $a.aaa && $b.aaa ? "aaa" : "no-aaa",
+    $a.aaaLarge && $b.aaaLarge ? "aaa-large" : "no-aaa-large",
+  ]
+}
 
 export const Picker = ({
   ref,
@@ -42,17 +65,9 @@ export const Picker = ({
   short,
   color: $color,
   toggle,
-  comparisons: [a, b],
+  children,
+  mods = [],
 }: PickerProps) => {
-  const $a = useStore(a)
-  const $b = useStore(b)
-  const mods = [
-    short,
-    $a.aa && $b.aa ? "aa" : "no-aa",
-    $a.aaLarge && $b.aaLarge ? "aa-large" : "no-aa-large",
-    $a.aaa && $b.aaa ? "aaa" : "no-aaa",
-    $a.aaaLarge && $b.aaaLarge ? "aaa-large" : "no-aaa-large",
-  ]
   return (
     <div className={bem("picker", mods)} id={`color-${short}`}>
       <div
@@ -60,15 +75,7 @@ export const Picker = ({
         style={{ backgroundColor: $color }}
         onClick={toggle}
       >
-        {$b.aaa || $a.aaa ? (
-          <AAA />
-        ) : $b.aaaLarge || $a.aaaLarge ? (
-          <AAALarge />
-        ) : $b.aa || $a.aa ? (
-          <AA />
-        ) : $b.aaLarge || $a.aaLarge ? (
-          <AALarge />
-        ) : null}
+        {children}
       </div>
 
       {$isOpen && (
@@ -82,8 +89,8 @@ export const Picker = ({
 }
 export const usePicker = (
   short: string,
-  store: PreinitializedWritableAtom<string>,
-): Omit<PickerProps, "comparisons" | "label"> => {
+  store: Atom<string>,
+): Omit<PickerProps, "mods" | "label" | "children"> => {
   const $color = useStore(store)
   const [$isOpen, $setIsOpen] = useState(false)
 
@@ -110,32 +117,32 @@ export const usePicker = (
   }
 }
 
-export const ColorBoxBg = () => {
-  const dynaProps = usePicker("bg", $bg)
-  return (
-    <Picker
-      label="Background"
-      {...dynaProps}
-      comparisons={[$contrastFgBg, $contrastBgAccent]}
-    />
-  )
+const makePickerComponent = (
+  label: string,
+  key: string,
+  store: Atom<string>,
+  ab: [Comp, Comp],
+) => {
+  const C = () => {
+    const pickerProps = usePicker(key, store)
+    const children = comparisonsToIcon(...ab)
+    const mods = useComparison(...ab)
+    const dynaProps = { ...pickerProps, mods, label, children }
+    return <Picker {...dynaProps} />
+  }
+  C.displayName = label + "Picker"
+  return C
 }
 
-export const ColorBoxFg = () => {
-  const dynaProps = usePicker("fg", $fg)
-  return (
-    <Picker
-      label="Foreground"
-      {...dynaProps}
-      comparisons={[$contrastFgBg, $contrastFgAccent]}
-    />
-  )
-}
-
-export const ColorBoxAccent = () => {
-  const dynaProps = usePicker("accent", $accent)
-  return <Picker label="Accent" {...dynaProps} comparisons={[
-    $contrastFgAccent,
-    $contrastBgAccent,
-  ]} />
-}
+export const ColorBoxBg = makePickerComponent("Background", "bg", $bg, [
+  $contrastFgBg,
+  $contrastBgAccent,
+])
+export const ColorBoxFg = makePickerComponent("Foreground", "fg", $fg, [
+  $contrastFgBg,
+  $contrastFgAccent,
+])
+export const ColorBoxAccent = makePickerComponent("accent", "accent", $accent, [
+  $contrastBgAccent,
+  $contrastFgAccent,
+])
