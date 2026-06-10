@@ -2,7 +2,7 @@
 repo: brekk/study
 title: Study
 description: A helpful library for reusable test harnesses
-version: v0.0.8
+version: v0.0.4
 published: 01/01/2020
 updated: 01/01/2020
 tags:
@@ -61,7 +61,7 @@ This works fine for this simple example. (In fact, there are some [[intentional 
 
 ### report
 
-One of the primary functions that `Study` exports is `report` &mdash; it expects whatever is being tested to be a unary function which takes a list of `#[input, output]` tuples.
+One of the primary functions that `Study` exports is `report` — it expects whatever is being tested to be a unary function which takes a list of `#[input, output]` tuples.
 
 ```madlib
 report :: (a -> b) -> String -> List #[a, b] -> Wish TestResult TestResult
@@ -74,7 +74,7 @@ report :: (a -> b) -> String -> List #[a, b] -> Wish TestResult TestResult
  2. `what` - Something which identifies this test
  3. `where` - A list of input -> output tuple pairs to run against the `who`
 
-So to take our [[example API|#Default]] and write a test for it:
+So we can take our [example](#Example) and write a test for it using `Study`, like so:
 
 ```madlib
 import MyLibrary from "@/MyLibrary"
@@ -124,7 +124,6 @@ xJoinTest("starts and ends with x", [
 Additionally, right now we're invoking our tests with an inline call to `String.words`, we can simplify our harness further:
 
 ```madlib
-
 xJoinTest = Study.report(
   pipe(
     String.words,
@@ -146,9 +145,9 @@ xJoinTest("starts and ends with x", [
 ])
 ```
 
-If you recall from our original [[example]], our `xJoin` implementation is a partially applied form of `magicJoin`.
+If you recall from our original [Example](#Example), our `xJoin` implementation is a partially applied form of `magicJoin`.
 
-Up to now all of the examples have _conveniently_ been written for unary functions (one input, one output).
+Up to now all of the examples have _conveniently_ been written for unary functions (one input, one output). Let's briefly go over how `Study` helps simplify your tests by allowing for discrete inputs as tuples.
 
 ### Multivariate functions
 
@@ -170,6 +169,7 @@ report(
 ```
 
 Note the nested Tuple here, the `input` (`#[1, 2]`) value is being applied to `two`, so `a` is 1 and `b` is 2 in the applied call.
+
 
 
 
