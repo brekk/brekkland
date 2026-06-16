@@ -263,5 +263,6 @@ export default defineConfig({
   },
   build: {
     assets: "_assets",
+    ignorePatterns: ["**/.obsidian/**", "**/_bases/**"],
   },
 })

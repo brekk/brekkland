@@ -286,7 +286,7 @@
           @extend %flexRow;
 
           color: var(--color-fg);
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
           text-decoration: none;
           order: 1;
@@ -535,9 +535,20 @@
     }
 
     code {
-      background: var(--color-fg);
+      background: var(--color-fg) !important;
       color: var(--color-accent) !important;
-      padding: 0.125rem 0.25rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      code {
+        padding: 0 0.5rem;
+        text-transform: lowercase;
+      }
     }
 
     pre {
@@ -550,6 +561,7 @@
       code {
         @extend %flexCol;
 
+        padding: 0.125rem 0.25rem;
         align-items: flex-start;
         background: transparent;
         color: var(--color-accent) !important;

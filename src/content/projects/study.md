@@ -55,7 +55,7 @@ test("MyLibrary.coolJoin", () => {
 })
 ```
 
-This works fine for this simple example. (In fact, there are some [[intentional issues]] with the code above, see [[the fix]] below if you want to jump ahead.)
+This works fine for this simple example. (In fact, there are some [intentional issues](#Shortcomings%20of%20the%20default%20Test%20module) with the code above, see the explanation below for more context)
 
 `Study` has some opinionated approaches that help express this same problem more succinctly, especially as the complexity of our API increases.
 
@@ -171,7 +171,93 @@ report(
 Note the nested Tuple here, the `input` (`#[1, 2]`) value is being applied to `two`, so `a` is 1 and `b` is 2 in the applied call.
 
 
+## Shortcomings of the default Test module
 
+In the original [[#example]] we briefly mentioned that there are intentional errors in the example. 
+
+### Without do notation, failures are silent 
+
+As written: failures in assertions fail silently unless they are the assertion returned.
+
+This will pass:
+
+```madlib
+test("this will pass", () => {
+  assertEquals(true, false) // <~~ not returned, thrown away
+  assertEquals(1, 200)
+  return assertEquals(true, true)
+})
+```
+
+In order to fix this, we have to rewrite the function to use `do` notation. 
+
+```madlib
+test("this will correctly catch the failure", () => do {
+  _ <- assertEquals(true, false) // <~~ correctly fails 
+  _ <- assertEquals(1, 200)
+  return assertEquals(true, true)
+})
+```
+
+But that's easy to forget to do, and that syntax (executing the `assertEquals` function and assigning it to an empty / gap assignment) is likely confusing to newcomers.
+
+### Errors fail the entire sequence
+
+Another issue with the default `test` example is that if you have a failure in a test function, even a proper `do` notation style function, a failure will prevent further execution of the function. This makes sense and is very rational for how Madlib works. However, as a tester, optimizing for transparency across the entire suite is most of the workflow. If you have a test that appears to fail catastrophically, but in actuality has one failing assertion and several assertions that never run, it feels scarier. A lot of what we want to optimize for in Madlib is developer confidence, both in how the system works and how the system fails.
+
+```madlib
+test(
+  "this has multiple failures, but only one will win",
+  () => do {
+    _ <- assertEquals(true, true)
+    _ <- assertEquals(1, 100) // <~~ this wins
+    _ <- assertEquals(true, true)
+    return assertEquals(true, false) // <~~ this never runs
+  },
+)
+```
+
+The only way we can fix this (and truly, the same mechanism by which `Study` does it) is to move each assertion to its own `test` function. An example of this is left to the reader. 😁
+
+### Assertions are expressions
+
+This isn't an issue per se, but one of the things that we strive for in most of Madlib is being a language of functions. A knock-on effect of the `do` notation function approach is that it reduces the utility of the binary function `assertEquals` back to an expression (and, a non-unary function is harder to compose). We can assign it to something, but relative to how it functions, it doesn't really make sense to do so. This means that we have to wade through the rest of the test when something fails, because currently the test runner only captures the failure site. Again, not really a shortcoming of the testing design, but more the effect of running an assertion within a Wish / Monad.
+
+`Study` aims to fix this by making the core transformation very explicit `#[input, output]` pairs. There's no additional syntactic noise (other than the tuple wrapping), so that you can focus on the assertions themselves.
+
+### Test functions are opaque
+
+Test functions are nullary. That means that anything we're manipulating within those functions has to be managed independently / kept in global space. But this runs into issues because tests are run in isolation. (The running in isolation is part of the reasoning / rationale behind the nullary function approach, so it's unfair to frame it as a problem that the default testing approach has, it's just a specific trade-off)
+
+`Study` doesn't necessarily address this problem directly, but it makes it so that the test surface is much more transparent. You can convert a test from a nullary function associated to a string label to more repeatable test expressions that have clear edges.
+
+The default `test` cannot take advantage of the natural currying that `Study` utilizes, and we can define natural domains for our tests.
+
+If I have a test that I know I want to run several tests upon, especially in different groups, I can define a partially-applied `report`:
+
+```madlib
+testMyFunction = Study.report(myFunction)
+```
+
+Now I can reuse this instance across different slices:
+
+```madlib
+testMyFunction("myFunction returns zero in the default case", [#[100, 0]])
+testMyFunction("myFunction returns negative values when out of bounds", [#[-300, -1]])
+```
+
+Because we have a list of tuples as our final input, `report` is designed for multiple cases and is easy to manipulate. We've all had tests where we just need to add a single case and we don't want to understand all the context of the existing test harness. We can use composition to aid us in expressing tests simply and declaratively and define our testing harness _using_ the very functions which we are testing as an input; this allows us to manipulate tests much more naturally.
+
+```madlib
+Study.report(
+  pipe(
+    simplifyTestHarnessFixture,
+    myFunction 
+  ),
+  "my important test with harness fixture",
+  MY_TEST_CASES_WITH_FIXTURE
+)
+```
 
 
 
